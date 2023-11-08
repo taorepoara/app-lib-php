@@ -1,0 +1,309 @@
+openapi: 3.1.0
+info:
+  title: Lenra server internal API
+  description: The API usable by the Lenra appmications
+  license:
+    name: MIT
+    identifier: MIT
+  version: 0.0.0
+  contact:
+    name: Lenra
+    url: https://www.lenra.io/contact.html
+servers:
+  - url: http://localhost:4001
+    description: Devtool
+tags:
+  - name: Data
+    description: Data management API
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    data.document:
+      title: Document
+      description: A document in MongoDB database
+      type: object
+      properties:
+        _id:
+          type: string
+      required:
+        - _id
+      additionalProperties: true
+    data.query:
+      title: Query
+      description: Mongo data query
+      type: object
+      additionalProperties: true
+    data.update:
+      title: Query
+      description: Mongo data query
+      type: object
+      additionalProperties: true
+security:
+  - bearerAuth:
+      - api
+      - transaction
+paths:
+  /app-api/v1-api/v1/data/colls/{coll}:
+    delete:
+      tags:
+        - Data
+      summary: Deletes a collection from database
+      operationId: deleteCollection
+      parameters:
+        - name: coll
+          in: path
+          description: The document collection name
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Collection deleted
+  /app-api/v1/data/colls/{coll}/docs:
+    get:
+      tags:
+        - Data
+      summary: Gets documents from database
+      operationId: getDocuments
+      parameters:
+        - name: coll
+          in: path
+          description: The document collection name
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Documents found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/data.document"
+    post:
+      tags:
+        - Data
+      summary: Creates a document in database
+      operationId: createDocument
+      parameters:
+        - name: coll
+          in: path
+          description: The document collection name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The document to create
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Document created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/data.document"
+  /app-api/v1/data/colls/{coll}/docs/{id}:
+    get:
+      tags:
+        - Data
+      summary: Gets a document from database
+      operationId: getDocumentById
+      parameters:
+        - name: coll
+          in: path
+          description: The document collection name
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: The document identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Document created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/data.document"
+    put:
+      tags:
+        - Data
+      summary: Updates a document in database
+      operationId: updateDocumentById
+      parameters:
+        - name: coll
+          in: path
+          description: The document collection name
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: The document identifier
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The document to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/data.document"
+      responses:
+        "200":
+          description: Document updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/data.document"
+    delete:
+      tags:
+        - Data
+      summary: Deletes a document from database
+      operationId: deleteDocumentById
+      parameters:
+        - name: coll
+          in: path
+          description: The document collection name
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: The document identifier
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Document deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/data.document"
+  /app-api/v1/data/colls/{coll}/find:
+    post:
+      tags:
+        - Data
+      summary: Finds documents in database
+      operationId: findDocuments
+      parameters:
+        - name: coll
+          in: path
+          description: The document collection name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The query to find documents
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  $ref: "#/components/schemas/data.query"
+                projection:
+                  type: object
+              required:
+                - query
+              additionalProperties: false
+      responses:
+        "200":
+          description: Documents found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/data.document"
+  /app-api/v1/data/colls/{coll}/updateMany:
+    post:
+      tags:
+        - Data
+      summary: Updates many documents in database
+      operationId: updateManyDocuments
+      parameters:
+        - name: coll
+          in: path
+          description: The document collection name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The query to find documents
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter:
+                  $ref: "#/components/schemas/data.query"
+                update:
+                  $ref: "#/components/schemas/data.update"
+              required:
+                - filter
+                - update
+              additionalProperties: false
+      responses:
+        "200":
+          description: Documents updated
+          content:
+            application/json:
+              schema:
+                type: object
+  /app-api/v1/data/transaction:
+    post:
+      tags:
+        - Data
+      summary: Creates a transaction
+      operationId: createTransaction
+      security:
+        - bearerAuth:
+            - api
+      responses:
+        "200":
+          description: Transaction created
+          content:
+            application/json:
+              schema:
+                description: The transaction token
+                type: string
+  /app-api/v1/data/transaction/commit:
+    post:
+      tags:
+        - Data
+      summary: Commits a transaction
+      operationId: commitTransaction
+      security:
+        - bearerAuth:
+            - transaction
+      responses:
+        "200":
+          description: Transaction commited
+  /app-api/v1/data/transaction/abort:
+    post:
+      tags:
+        - Data
+      summary: Aborts a transaction
+      operationId: abortTransaction
+      security:
+        - bearerAuth:
+            - transaction
+      responses:
+        "200":
+          description: Transaction aborted

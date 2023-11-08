@@ -1,0 +1,30 @@
+{
+    "name": "lenra/app",
+    "description": "Lenra's app server lib",
+    "type": "library",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/internal-api"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lenra\\App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lenra\\App\\Test\\": "test/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lenra"
+        }
+    ],
+    "require": {
+        "lenra/internal-api-client": "*"
+    }
+}
