@@ -5,8 +5,8 @@
     "license": "MIT",
     "repositories": [
         {
-            "type": "path",
-            "url": "./packages/internal-api"
+            "type": "vcs",
+            "url": "https://github.com/lenra-io/internal-api-client-lib-php.git"
         }
     ],
     "autoload": {
@@ -25,6 +25,7 @@
         }
     ],
     "require": {
-        "lenra/internal-api-client": "*"
+        "lenra/internal-api-client": "@dev",
+        "json-mapper/json-mapper": "^2.20"
     }
 }
