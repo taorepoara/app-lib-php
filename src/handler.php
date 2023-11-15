@@ -21,6 +21,7 @@ class ListenerRequest {
 function handleRequest($request) {
     // Check if data matches one of the expected queries
     if (isset($request->view)) {
+        error_log("View: $request->view");
         includeFile('views', $request->view, new ViewRequest(
             $request->data ?? [],
             $request->props ?? [],
@@ -28,6 +29,7 @@ function handleRequest($request) {
         ));
     } 
     elseif (isset($request->listener)) {
+        error_log("Listener: $request->listener");
         includeFile('listeners', $request->listener, new ListenerRequest(
             $request->props ?? [],
             $request->event ?? [],
@@ -35,10 +37,10 @@ function handleRequest($request) {
         ));
     } 
     elseif (isset($request->resource)) {
-        echo json_encode([
-            'resource' => $request->resource,
-        ]);
+        error_log("Resource: $request->resource");
+        readfile("resources/$request->resource");
     } else {
+        error_log("Manifest");
         includeFile('manifest');
     }
 }
