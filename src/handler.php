@@ -10,18 +10,11 @@ class ViewRequest {
 function handleRequest($request) {
     // Check if data matches one of the expected queries
     if (isset($request->view)) {
-        $response = includeFile('views', $request->view, new ViewRequest(
+        includeFile('views', $request->view, new ViewRequest(
             $request->data ?? [],
             $request->props ?? [],
             $request->context ?? [],
         ));
-        if (isset($response)) {
-            echo json_encode($response);
-        } else {
-            // headers_send(500);
-            $GLOBALS['http_response_code'] = 500;
-            throw new Exception('No response was generated');
-        }
     } 
     elseif (isset($request->listener)) {
         echo json_encode([
@@ -33,16 +26,25 @@ function handleRequest($request) {
             'resource' => $request->resource,
         ]);
     } else {
-        echo json_encode([
-            'manifest' => 'yes',
-        ]);
+        includeFile('manifest');
     }
 }
 
-function includeFile($type, $name, $request) {
-    $path = $type . '/' . str_replace(".", "/", $name) . '.php';
+function includeFile($type, $name = null, $request = null) {
+    if (isset($name)) {
+        $path = $type . '/' . str_replace(".", "/", $name) . '.php';
+    }
+    else {
+        $path = $type . '.php';
+    }
     if (include $path) {
-        return $response;
+        if (isset($response)) {
+            echo json_encode($response);
+        } else {
+            // headers_send(500);
+            $GLOBALS['http_response_code'] = 500;
+            throw new Exception('No response was generated');
+        }
     } else {
         throw new Exception('Could not include the file: ' . $path);
     }
