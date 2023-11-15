@@ -1,9 +1,20 @@
 <?php
+
+use Lenra\App\Api;
+
 class ViewRequest {
     public function __construct(
         public $data,
         public $props,
         public $context
+    ) {}
+}
+
+class ListenerRequest {
+    public function __construct(
+        public $props,
+        public $event,
+        public Api $api
     ) {}
 }
 
@@ -17,9 +28,11 @@ function handleRequest($request) {
         ));
     } 
     elseif (isset($request->listener)) {
-        echo json_encode([
-            'listener' => $request->listener,
-        ]);
+        includeFile('listeners', $request->listener, new ListenerRequest(
+            $request->props ?? [],
+            $request->event ?? [],
+            new Api($request->api),
+        ));
     } 
     elseif (isset($request->resource)) {
         echo json_encode([
