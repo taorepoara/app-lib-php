@@ -4,6 +4,12 @@ namespace Lenra\App;
 
 use Exception;
 
+class Runner {
+    public static function start() {
+        echo "couocu";
+    }
+}
+
 function run() {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception('The request must be POST');
