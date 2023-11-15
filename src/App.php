@@ -4,7 +4,7 @@ namespace Lenra\App;
 
 use Exception;
 
-class Runner {
+class App {
     public static function start() {
         echo "couocu";
     }
