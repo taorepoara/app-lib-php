@@ -1,7 +1,7 @@
 <?php
 
 final class Data {
-    public $_id: string;
+    public string $_id;
 }
 
 ?>

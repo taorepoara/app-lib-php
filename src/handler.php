@@ -18,8 +18,8 @@ function handleRequest($request) {
         if (isset($response)) {
             echo json_encode($response);
         } else {
-            headers_send(500);
-            // $GLOBALS['http_response_code'] = 500;
+            // headers_send(500);
+            $GLOBALS['http_response_code'] = 500;
             throw new Exception('No response was generated');
         }
     } 

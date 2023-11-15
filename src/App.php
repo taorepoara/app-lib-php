@@ -2,6 +2,8 @@
 
 namespace Lenra\App;
 
+use Exception;
+
 function run() {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception('The request must be POST');
