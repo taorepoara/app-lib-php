@@ -144,10 +144,8 @@ abstract class AbstractDataApi
 
     private $collections = [];
     private $typedCollections = [];
-    public ApiDataApi $api;
-    public function __construct(ApiDataApi $api)
+    public function __construct(public ApiDataApi $api)
     {
-        $this->api = $api->getConfig();
     }
 
     // public function headers()

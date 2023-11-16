@@ -44,9 +44,6 @@ function handleRequest($request)
     } elseif (isset($request->listener)) {
         error_log("Listener: $request->listener");
 
-        var_error_log($request);
-        var_error_log($request->api);
-
         $api = new Api($request->api);
         error_log("Listener: $request->listener - api: $api");
 
