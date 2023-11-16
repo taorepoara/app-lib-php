@@ -52,15 +52,18 @@ function includeFile($type, $name = null, $request = null) {
     else {
         $path = $type . '.php';
     }
+    error_log("include file $path");
     if (include $path) {
         if (isset($response)) {
             echo json_encode($response);
         } else {
+            error_log("no response defined");
             // headers_send(500);
             $GLOBALS['http_response_code'] = 500;
             throw new Exception('No response was generated');
         }
     } else {
+        error_log("include failed");
         throw new Exception('Could not include the file: ' . $path);
     }
 }
