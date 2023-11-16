@@ -45,14 +45,12 @@ function handleRequest($request)
         error_log("Listener: $request->listener");
 
         $api = new Api($request->api);
-        error_log("Listener: $request->listener - api: $api");
 
         $listenerRequest = new ListenerRequest(
             $request->props ?? [],
             $request->event ?? [],
             $api,
         );
-        error_log("Listener: $request->listener - listenerRequest: $listenerRequest");
 
         includeFile('listeners', $request->listener, $listenerRequest);
     } elseif (isset($request->resource)) {
