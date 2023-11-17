@@ -68,7 +68,7 @@ class Collection
     }
 
     // Mongo functions
-    public function find($query, $projection)
+    public function find($query, $projection = null)
     {
         return $this->api->api->findDocumentsAsync(
             $this->name,
