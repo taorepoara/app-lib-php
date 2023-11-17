@@ -19,8 +19,13 @@ class Runner {
         // var_dump($data->view);
         
         require_once 'handler.php';
-        
-        handleRequest($data);
+
+        try {
+            handleRequest($data);
+        }
+        catch (\Exception $e) {
+            error_log("Un error occured: " . $e->getMessage());
+        }
     }
 }
 
