@@ -70,13 +70,13 @@ class Collection
     // Mongo functions
     public function find($query, $projection = null)
     {
-        return $this->api->api->findDocumentsAsync(
-            $this->name,
-            [
-                'query' => $query,
-                'projection' => $projection
-            ]
-        );
+        $payload = [
+            'query' => $query
+        ];
+        if (isset($projection)) {
+            $payload['projection'] = $projection;
+        }
+        return $this->api->api->findDocumentsAsync($this->name, $payload);
     }
 
     public function updateMany($filter, $update)
