@@ -2,7 +2,7 @@
 
 namespace Lenra\App;
 
-final class Data {
+abstract class Data {
     public string $_id;
 }
 
