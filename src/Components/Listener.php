@@ -16,7 +16,7 @@ class Listener implements \JsonSerializable
         $this->data->setName($name);
     }
 
-    public function props($props) {
+    public function props($props): Listener {
         $this->data->setProps($props);
         return $this;
     }
@@ -30,7 +30,7 @@ class Listener implements \JsonSerializable
         return Listener::$normalizer->normalize($this->data);
     }
 
-    public static function builder(string $name) {
+    public static function builder(string $name): Listener {
         return new Listener($name);
     }
 }

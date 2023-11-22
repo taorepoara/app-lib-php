@@ -96,7 +96,7 @@ class Collection
     }
 }
 
-class TypedCollection
+class TypedCollection 
 {
     private $collection;
     private $collClass;
@@ -158,7 +158,7 @@ abstract class AbstractDataApi
     //     return array('Authorization' => 'Bearer ' . $this->api->token);
     // }
 
-    public function coll($nameOrClass)
+    public function coll($nameOrClass): Collection | TypedCollection
     {
         if (is_string($nameOrClass)) {
             if (!isset($this->collections[$nameOrClass])) {
