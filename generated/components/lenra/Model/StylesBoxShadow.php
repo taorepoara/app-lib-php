@@ -1,0 +1,127 @@
+<?php
+
+namespace Lenra\App\Components\Lenra\Model;
+
+class StylesBoxShadow
+{
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
+     * Color type
+     *
+     * @var int
+     */
+    protected $color;
+    /**
+     * The blur radius
+     *
+     * @var float
+     */
+    protected $blurRadius = 0;
+    /**
+     * The spread radius
+     *
+     * @var float
+     */
+    protected $spreadRadius = 0;
+    /**
+     * Element of type Offset
+     *
+     * @var StylesOffset
+     */
+    protected $offset;
+    /**
+     * Color type
+     *
+     * @return int
+     */
+    public function getColor() : int
+    {
+        return $this->color;
+    }
+    /**
+     * Color type
+     *
+     * @param int $color
+     *
+     * @return self
+     */
+    public function setColor(int $color) : self
+    {
+        $this->initialized['color'] = true;
+        $this->color = $color;
+        return $this;
+    }
+    /**
+     * The blur radius
+     *
+     * @return float
+     */
+    public function getBlurRadius() : float
+    {
+        return $this->blurRadius;
+    }
+    /**
+     * The blur radius
+     *
+     * @param float $blurRadius
+     *
+     * @return self
+     */
+    public function setBlurRadius(float $blurRadius) : self
+    {
+        $this->initialized['blurRadius'] = true;
+        $this->blurRadius = $blurRadius;
+        return $this;
+    }
+    /**
+     * The spread radius
+     *
+     * @return float
+     */
+    public function getSpreadRadius() : float
+    {
+        return $this->spreadRadius;
+    }
+    /**
+     * The spread radius
+     *
+     * @param float $spreadRadius
+     *
+     * @return self
+     */
+    public function setSpreadRadius(float $spreadRadius) : self
+    {
+        $this->initialized['spreadRadius'] = true;
+        $this->spreadRadius = $spreadRadius;
+        return $this;
+    }
+    /**
+     * Element of type Offset
+     *
+     * @return StylesOffset
+     */
+    public function getOffset() : StylesOffset
+    {
+        return $this->offset;
+    }
+    /**
+     * Element of type Offset
+     *
+     * @param StylesOffset $offset
+     *
+     * @return self
+     */
+    public function setOffset(StylesOffset $offset) : self
+    {
+        $this->initialized['offset'] = true;
+        $this->offset = $offset;
+        return $this;
+    }
+}
