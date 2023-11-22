@@ -5,29 +5,20 @@ namespace Lenra\App\Components;
 use Lenra\App\Components\Json\Model\Listener as ModelListener;
 use Lenra\App\Components\Json\Normalizer\ListenerNormalizer;
 
-class Listener implements \JsonSerializable
+/**
+ * @template-extends Builder<ModelListener>
+ */
+class Listener extends Builder
 {
-    private static ListenerNormalizer $normalizer;
-    private ModelListener $data;
     public function __construct(string $name)
     {
-        $this->data = new ModelListener();
-        $this->data->setType("listener");
+        parent::__construct("listener", ModelListener::class, ListenerNormalizer::class);
         $this->data->setName($name);
     }
 
     public function props($props): Listener {
         $this->data->setProps($props);
         return $this;
-    }
-
-    function jsonSerialize(): mixed
-    {
-        if (!isset(Listener::$normalizer)) {
-            Listener::$normalizer = new ListenerNormalizer();
-        }
-
-        return Listener::$normalizer->normalize($this->data);
     }
 
     public static function builder(string $name): Listener {

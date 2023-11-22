@@ -24,7 +24,7 @@ class Runner {
             handleRequest($data);
         }
         catch (\Exception $e) {
-            error_log("Un error occured: " . $e->getMessage());
+            error_log("An error occured: " . $e->getMessage());
         }
     }
 }
