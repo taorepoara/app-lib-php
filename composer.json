@@ -11,7 +11,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Lenra\\App\\": "src/"
+            "Lenra\\App\\": "src/",
+            "Lenra\\App\\Components\\": "generated/components"
         }
     },
     "autoload-dev": {
@@ -26,6 +27,11 @@
     ],
     "require": {
         "lenra/internal-api-client": "@dev",
-        "json-mapper/json-mapper": "^2.20"
+        "json-mapper/json-mapper": "^2.20",
+        "jane-php/json-schema-runtime": "^7.5"
+    },
+    "require-dev": {
+        "jane-php/json-schema": "^7.5",
+        "friendsofphp/php-cs-fixer": "^3.39"
     }
 }
