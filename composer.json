@@ -12,7 +12,8 @@
     "autoload": {
         "psr-4": {
             "Lenra\\App\\": "src/",
-            "Lenra\\App\\Components\\": "generated/components"
+            "Lenra\\App\\Components\\Json\\": "generated/components/json",
+            "Lenra\\App\\Components\\Lenra\\": "generated/components/lenra"
         }
     },
     "autoload-dev": {
