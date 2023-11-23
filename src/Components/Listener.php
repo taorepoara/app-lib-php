@@ -2,6 +2,7 @@
 
 namespace Lenra\App\Components;
 
+use Lenra\App\Components\Base\Builder;
 use Lenra\App\Components\Json\Model\Listener as ModelListener;
 use Lenra\App\Components\Json\Normalizer\ListenerNormalizer;
 

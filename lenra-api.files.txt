@@ -1,2 +1,3 @@
-components/lenra.schema.json
-components/json.schema.json
+# components/lenra.schema.json
+# components/json.schema.json
+responses/view.schema.json
