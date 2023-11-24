@@ -33,6 +33,7 @@
     },
     "require-dev": {
         "jane-php/json-schema": "^7.5",
-        "friendsofphp/php-cs-fixer": "^3.39"
+        "friendsofphp/php-cs-fixer": "^3.39",
+        "phpunit/phpunit": "^10"
     }
 }
