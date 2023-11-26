@@ -3,10 +3,10 @@
 
 namespace Lenra\App\Components;
 
-class Listener extends \Lenra\App\Base\Components\ListenerBase {
+class Actionable extends \Lenra\App\Base\Components\ActionableBase {
   // Add here custom implementations
 
-  public static function builder(string $name): Listener {
-    return new Listener($name);
+  public static function builder($child): Actionable {
+    return new Actionable($child);
   }
 }

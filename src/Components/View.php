@@ -3,10 +3,10 @@
 
 namespace Lenra\App\Components;
 
-class Listener extends \Lenra\App\Base\Components\ListenerBase {
+class View extends \Lenra\App\Base\Components\ViewBase {
   // Add here custom implementations
 
-  public static function builder(string $name): Listener {
-    return new Listener($name);
+  public static function builder(string $name): View {
+    return new View($name);
   }
 }

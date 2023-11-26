@@ -3,10 +3,10 @@
 
 namespace Lenra\App\Components;
 
-class Listener extends \Lenra\App\Base\Components\ListenerBase {
+class Text extends \Lenra\App\Base\Components\TextBase {
   // Add here custom implementations
 
-  public static function builder(string $name): Listener {
-    return new Listener($name);
+  public static function builder(string $value): Text {
+    return new Text($value);
   }
 }

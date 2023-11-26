@@ -3,10 +3,10 @@
 
 namespace Lenra\App\Components;
 
-class Listener extends \Lenra\App\Base\Components\ListenerBase {
+class Menu extends \Lenra\App\Base\Components\MenuBase {
   // Add here custom implementations
 
-  public static function builder(string $name): Listener {
-    return new Listener($name);
+  public static function builder(array $children): Menu {
+    return new Menu($children);
   }
 }

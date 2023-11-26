@@ -3,10 +3,10 @@
 
 namespace Lenra\App\Components;
 
-class Listener extends \Lenra\App\Base\Components\ListenerBase {
+class Checkbox extends \Lenra\App\Base\Components\CheckboxBase {
   // Add here custom implementations
 
-  public static function builder(string $name): Listener {
-    return new Listener($name);
+  public static function builder(bool $value): Checkbox {
+    return new Checkbox($value);
   }
 }
