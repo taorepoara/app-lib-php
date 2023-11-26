@@ -3,13 +3,15 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+
+$genDir = __DIR__ . '/../generated';
+$baseClassesDir = $genDir . "/Base";
+$implClassesDir = __DIR__ . '/../src';
+
 generateClasses();
 
 function generateClasses()
 {
-  $genDir = __DIR__ . '/../generated';
-  $baseClassesDir = $genDir . "/Base";
-  $implClassesDir = __DIR__ . '/../src';
 
   $schemaPath = realpath(__DIR__ . '/../api/responses/view.schema.json');
   $mainSchema = json_decode(file_get_contents($schemaPath), true);
@@ -27,6 +29,10 @@ function generateClasses()
 
     echo "Managing $defPath\n";
 
+    $typeParser = new TypeParser($defPath, $schema);
+    $typeParser->generateBaseClass();
+    $typeParser->generateImplClass();
+
     // Generate not existing classes
     // $componentsExports = file_exists($componentsFile) ? array_filter(
     //   explode("\n", file_get_contents($componentsFile)),
@@ -41,140 +47,308 @@ function generateClasses()
 
     // Check if the class exists
     // $defPath = end(explode("/", $ref));
-    $defPathParts = explode(".", $defPath);
-    foreach ($defPathParts as &$part) {
-      $part = ucfirst($part);
-    }
-    // $schema = $mainSchema['definitions'][$defPath];
+    //   $defPathParts = explode(".", $defPath);
+    //   foreach ($defPathParts as &$part) {
+    //     $part = ucfirst($part);
+    //   }
+    //   // $schema = $mainSchema['definitions'][$defPath];
 
-    $model = "Lenra\\App\\Response\\View\\Model\\" . join("", $defPathParts);
-    $classFilePath = join("/", $defPathParts);
+    //   $model = "Lenra\\App\\Response\\View\\Model\\" . join("", $defPathParts);
 
-    $className = array_pop($defPathParts);
-    $baseClassNameSpace = "Lenra\\App\\Base\\" . join("\\", $defPathParts);
-    $baseClassFileDir = $baseClassesDir . "/" . join("/", $defPathParts);
-    $baseClassPath = $baseClassNameSpace . "\\" . $className;
-    $implClassNameSpace = "Lenra\\App\\" . join("\\", $defPathParts);
-    $implClassFileDir = $implClassesDir . "/" . join("/", $defPathParts);
+    //   $className = array_pop($defPathParts);
+    //   $baseClassNameSpace = "Lenra\\App\\Base\\" . join("\\", $defPathParts);
+    //   $baseClassFileDir = $baseClassesDir . "/" . join("/", $defPathParts);
+    //   $baseClassPath = $baseClassNameSpace . "\\" . $className;
+    //   $implClassNameSpace = "Lenra\\App\\" . join("\\", $defPathParts);
+    //   $implClassFileDir = $implClassesDir . "/" . join("/", $defPathParts);
 
-    $comp = $schema["title"];
-    $baseClassPath = $baseClassFileDir . "/" . $className . "Base.php";
-    echo "Generating " . $baseClassPath . " file for " . $comp . " for building " . $model . "\n";
-    mkdir($baseClassFileDir, 0777, true);
-    file_put_contents(realpath($baseClassPath), generateBaseClass($schema, $model, $baseClassNameSpace, $className));
+    //   $comp = $schema["title"];
+    //   $baseClassPath = $baseClassFileDir . "/" . $className . "Base.php";
+    //   echo "Generating " . $baseClassPath . " file for " . $comp . " for building " . $model . "\n";
+    //   mkdir($baseClassFileDir, 0777, true);
+    //   file_put_contents($baseClassPath, generateBaseClass($schema, $model, $baseClassNameSpace, $className));
 
-    // Check if the file corresponding to the schema exists
-    $classPath = $implClassFileDir . "/" . $className . ".php";
+    //   // Check if the file corresponding to the schema exists
+    //   $classPath = $implClassFileDir . "/" . $className . ".php";
 
-    if (!file_exists($classPath)) {
-      // Creates the file
-      echo "Generating " . $classPath . " file for " . $comp . "\n";
-      mkdir($implClassFileDir, 0777, true);
-      file_put_contents(realpath($classPath), generateImplClass($baseClassPath, $implClassNameSpace, $className));
-    }
+    //   if (!file_exists($classPath)) {
+    //     // Creates the file
+    //     echo "Generating " . $classPath . " file for " . $comp . "\n";
+    //     mkdir($implClassFileDir, 0777, true);
+    //     file_put_contents($classPath, generateImplClass($baseClassPath, $implClassNameSpace, $className));
+    //   }
 
-    // // Check if the file is imported in the main components file
-    // $importComponent = "export * from './" . $comp . ".php';";
-    // if (!in_array($importComponent, $componentsExports)) {
-    //   echo "Adding import for " . $classPath . "\n";
-    //   $componentsExports[] = $importComponent;
-    //   $componentsFileChanged = true;
-    // }
+    //   // // Check if the file is imported in the main components file
+    //   // $importComponent = "export * from './" . $comp . ".php';";
+    //   // if (!in_array($importComponent, $componentsExports)) {
+    //   //   echo "Adding import for " . $classPath . "\n";
+    //   //   $componentsExports[] = $importComponent;
+    //   //   $componentsFileChanged = true;
+    //   // }
   }
 
-  // if ($componentsFileChanged) {
-  //   echo "Updating " . $componentsFile . "\n";
-  //   sort($componentsExports);
-  //   array_unshift($componentsExports, "// This file is auto-generated by generate-classes.php. Do not edit it.");
-  //   file_put_contents($componentsFile, implode("\n", $componentsExports));
-  // }
+  // // if ($componentsFileChanged) {
+  // //   echo "Updating " . $componentsFile . "\n";
+  // //   sort($componentsExports);
+  // //   array_unshift($componentsExports, "// This file is auto-generated by generate-classes.php. Do not edit it.");
+  // //   file_put_contents($componentsFile, implode("\n", $componentsExports));
+  // // }
 }
 
-function generateBaseClass($schema, $model, $ns, $className)
-{
-  $properties = $schema["properties"];
-  $required = $schema["required"];
-  $propertiesNotRequired = array_filter(array_keys($properties), function ($key) use ($required) {
-    return !in_array($key, $required);
-  });
+// function generateBaseClass($schema, $model, $ns, $className)
+// {
+//   $properties = $schema["properties"];
+//   $required = $schema["required"];
+//   $propertiesNotRequired = array_filter(array_keys($properties), function ($key) use ($required) {
+//     return !in_array($key, $required);
+//   });
 
-  $code = "// This file is auto-generated by generate-classes.php. Do not edit it.\n\n";
-  $code .= "namespace " . $ns . ";\n\n";
-  $code .= "use Lenra\App\Components\Base\Builder;\n\n";
-  $code .= "/**\n* @template-extends Builder<\\" . $model .  ">\n*/\n";
-  $code .= "class " . $className . "Base extends Builder {\n";
+//   $code = "<?php\n// This file is auto-generated by generate-classes.php. Do not edit it.\n\n";
+//   $code .= "namespace " . $ns . ";\n\n";
+//   $code .= "use Lenra\App\Components\Base\Builder;\n\n";
+//   $code .= "/**\n* @template-extends Builder<\\" . $model .  ">\n*/\n";
+//   $code .= "class " . $className . "Base extends Builder {\n";
 
-  $classReflection = new ReflectionClass($model);
+//   $classReflection = new ReflectionClass($model);
 
-  $args = [];
-  $argNames = [];
-  $setters = [];
+//   $args = [];
+//   $argNames = [];
+//   $setters = [];
 
-  foreach ($required as $key) {
-    // $property = $properties[$key];
-    $setter = "set" . ucfirst($key);
-    // get the type define by the setter
-    $type = $classReflection->getMethod($setter)->getParameters()[0]->getType();
-    $arg = $key;
-    if (isset($type)) {
-      $arg = $type . " " . $arg;
-    }
-    array_push($args, $arg);
-    array_push($argNames, $key);
-    array_push($setters, $setter . "(" . $key . ");");
-  }
+//   foreach ($required as $key) {
+//     // $property = $properties[$key];
+//     if ($key == "_type") continue;
+//     $setter = "set" . ucfirst($key);
+//     echo "Create setter $setter for $key\n";
+//     // get the type define by the setter
+//     $type = $classReflection->getMethod($setter)->getParameters()[0]->getType();
+//     $arg = '$' . $key;
+//     array_push($argNames, $arg);
+//     array_push($setters, '$this->data->' . $setter . "(" . $arg . ");");
+//     if (isset($type)) {
+//       $arg = $type . " " . $arg;
+//     }
+//     array_push($args, $arg);
+//   }
 
-  $args = join(", ", $args);
-  $argNames = join(", ", $argNames);
+//   $args = join(", ", $args);
+//   $argNames = join(", ", $argNames);
 
-  $componentType = array_reduce(["properties", "_type", "const"], function ($o, $key) {
-    if (isset($o) && isset($o[$key])) return $o[$key];
-    return Null;
-  });
-  $componentType = isset($componentType) ? "'" . $componentType . "'" : 'Null';
-  $code .= "public function __construct(" . $args . ")\n{\n";
-  $code .= "  parent::__construct(" . $componentType . ", \Lenra\App\Response\View\Model\ComponentsListener::class, ListenerNormalizer::class);\n";
-  foreach ($setters as $key => $setterCall) {
-    $code .= "  " . $setterCall . "\n";
-  }
-  $code .= "}";
+//   $componentType = array_reduce(["properties", "_type", "const"], function ($o, $key) {
+//     if (isset($o) && isset($o[$key])) return $o[$key];
+//     return Null;
+//   });
+//   $componentType = isset($componentType) ? "'" . $componentType . "'" : 'Null';
+//   $code .= "public function __construct(" . $args . ")\n{\n";
+//   $code .= "  parent::__construct(" . $componentType . ", \Lenra\App\Response\View\Model\ComponentsListener::class, ListenerNormalizer::class);\n";
+//   foreach ($setters as $key => $setterCall) {
+//     $code .= "  " . $setterCall . "\n";
+//   }
+//   $code .= "}";
 
-  foreach ($propertiesNotRequired as $key) {
-    // $property = $properties[$key];
-    $setter = "set" . ucfirst($key);
-    // get the type define by the setter
-    $type = $classReflection->getMethod($setter)->getParameters()[0]->getType();
-    $code .= "  public function " . $key . "(";
-    if (isset($type)) {
-      $code .= $type . " ";
-    }
-    $code .= "\$value) {\n";
-    $code .= "    if (\$value instanceof Builder) \$value = \$value->data;\n";
-    $code .= "    \$this->data->" . $setter . "(\$value);\n";
-    $code .= "    return \$this;\n";
-    $code .= "  }\n";
-  }
+//   foreach ($propertiesNotRequired as $key) {
+//     // $property = $properties[$key];
+//     $setter = "set" . ucfirst($key);
+//     // get the type define by the setter
+//     $type = $classReflection->getMethod($setter)->getParameters()[0]->getType();
+//     $code .= "  public function " . $key . "(";
+//     if (isset($type)) {
+//       $code .= $type . " ";
+//     }
+//     $code .= "\$value) {\n";
+//     $code .= "    if (\$value instanceof Builder) \$value = \$value->data;\n";
+//     $code .= "    \$this->data->" . $setter . "(\$value);\n";
+//     $code .= "    return \$this;\n";
+//     $code .= "  }\n\n";
+//   }
 
-  $code .= "  public static function builder(" . $args . "): " . $className . " {\n";
-  $code .= "    return new " . $className . "(". $argNames .");\n";
-  $code .= "  }";
+//   $code .= "  public static function builder(" . $args . "): " . $className . " {\n";
+//   $code .= "    return new " . $className . "(" . $argNames . ");\n";
+//   $code .= "  }";
 
-  $code .= "}\n";
+//   $code .= "}\n";
 
-  return $code;
-}
+//   return $code;
+// }
 
-function generateImplClass($baseClass, $ns, $className)
-{
-  $code = "// This file is auto-generated by generate-classes.php but it can be edited\n\n";
-  $code .= "namespace " . $ns . ";\n\n";
-  $code .= "class " . $className . " extends \\" . $baseClass . " {\n";
-  $code .= "  // Add here custom implementations\n";
-  $code .= "}\n\n";
+// function generateImplClass($baseClass, $ns, $className)
+// {
+//   $code = "<?php\n// This file is auto-generated by generate-classes.php but it can be edited\n\n";
+//   $code .= "namespace " . $ns . ";\n\n";
+//   $code .= "class " . $className . " extends \\" . $baseClass . " {\n";
+//   $code .= "  // Add here custom implementations\n\n";
+//   $code .= "  public static function builder(" . $args . "): " . $className . " {\n";
+//   $code .= "    return new " . $className . "(" . $argNames . ");\n";
+//   $code .= "  }\n";
+//   $code .= "}\n\n";
 
-  return $code;
-}
+//   return $code;
+// }
 
 // function startsWith($haystack, $needle) {
 //   return substr($haystack, 0, strlen($needle)) === $needle;
 // }
+
+class TypeParser
+{
+  private string $model;
+  private string $normalizer;
+  private string $className;
+
+  private string $baseClassNameSpace;
+  private string $baseClassPath;
+  private string $baseClassFileDir;
+  private string $baseClassFile;
+
+  private string $implClassNameSpace;
+  private string $implClassPath;
+  private string $implClassFileDir;
+  private string $implClassFile;
+
+  /** 
+   * @var Property[] 
+   */
+  private array $constructArgs;
+  /** 
+   * @var Property[] 
+   */
+  private array $properties;
+
+  public function __construct($defPath, $schema)
+  {
+    global $baseClassesDir, $implClassesDir;
+    $defPathParts = explode(".", $defPath);
+    foreach ($defPathParts as &$part) {
+      $part = ucfirst($part);
+    }
+
+    $genClassName = join("", $defPathParts);
+    $this->model = "Lenra\\App\\Response\\View\\Model\\" . $genClassName;
+    $this->normalizer = "Lenra\\App\\Response\\View\\Normalizer\\" . $genClassName . "Normalizer";
+    $this->className = array_pop($defPathParts);
+
+    $this->baseClassNameSpace = "Lenra\\App\\Base\\" . join("\\", $defPathParts);
+    $this->baseClassPath = $this->baseClassNameSpace . "\\" . $this->className . "Base";
+    $this->baseClassFileDir = $baseClassesDir . "/" . join("/", $defPathParts);
+    $this->baseClassFile =  $this->baseClassFileDir . "/" . $this->className . "Base.php";
+
+    $this->implClassNameSpace = "Lenra\\App\\" . join("\\", $defPathParts);
+    $this->implClassPath = $this->implClassNameSpace . "\\" . $this->className;
+    $this->implClassFileDir = $implClassesDir . "/" . join("/", $defPathParts);
+    $this->implClassFile = $this->implClassFileDir . "/" . $this->className . ".php";
+
+    $propertiesNames = array_keys($schema["properties"]);
+    $required = $schema["required"];
+
+    $classReflection = new ReflectionClass($this->model);
+
+    $this->constructArgs = [];
+    $this->properties = [];
+
+    foreach ($propertiesNames as $key) {
+      if ($key == "_type") continue;
+      $name = $key;
+      if (substr($name, 0, 1) == "_") $name = substr($name, 1);
+      $setter = "set" . ucfirst($name);
+      echo "Create setter $setter for $key\n";
+      // get the type define by the setter
+      $type = $classReflection->getMethod($setter)->getParameters()[0]->getType();
+      $property = new Property($key, $name, '$' . $name, $type, $setter);
+      if (in_array($key, $required)) {
+        array_push($this->constructArgs, $property);
+      } else {
+        array_push($this->properties, $property);
+      }
+    }
+  }
+
+  function generateBaseClass()
+  {
+    echo "Generating " . $this->baseClassFile . " file for " . $this->className . " for building " . $this->model . "\n";
+    $code = "<?php\n// This file is auto-generated by generate-classes.php. Do not edit it.\n\n";
+    $code .= "namespace " . $this->baseClassNameSpace . ";\n\n";
+    $code .= "use Lenra\App\Components\Base\Builder;\n\n";
+    $code .= "/**\n* @template-extends Builder<\\" . $this->model .  ">\n*/\n";
+    $code .= "abstract class " . $this->className . "Base extends Builder {\n";
+
+    $componentType = array_reduce(["properties", "_type", "const"], function ($o, $key) {
+      if (isset($o) && isset($o[$key])) return $o[$key];
+      return Null;
+    });
+    $componentType = isset($componentType) ? "'" . $componentType . "'" : 'Null';
+    $code .= "  public function __construct(" . join(" ,", array_map(function ($arg) {
+      if (isset($arg->type)) return $arg->type . " " . $arg->var;
+      return $arg->name;
+    }, $this->constructArgs)) . ")\n  {\n";
+    $code .= "    parent::__construct(" . $componentType . ", \\" . $this->model . "::class, " . $this->normalizer . "::class);\n";
+    $code .= join("", array_map(function ($arg) {
+      return '    $this->data->' . $arg->setter . "(" . $arg->var . ");\n";
+    }, $this->constructArgs));
+    $code .= "  }\n\n";
+
+    foreach ($this->properties as $prop) {
+      $code .= "  public function " . $prop->name . "(";
+      if (isset($prop->type)) {
+        $code .= $prop->type . " ";
+      }
+      $code .= "\$value): " . $this->className . "Base {\n";
+      $code .= "    if (\$value instanceof Builder) \$value = \$value->data;\n";
+      $code .= "    \$this->data->" . $prop->setter . "(\$value);\n";
+      $code .= "    return \$this;\n";
+      $code .= "  }\n\n";
+    }
+
+    $code .= "}\n";
+
+    if (!file_exists($this->baseClassFileDir)) {
+      mkdir($this->baseClassFileDir, 0777, true);
+    }
+    file_put_contents($this->baseClassFile, $code);
+  }
+
+  function generateImplClass()
+  {
+    if (file_exists($this->implClassFile)) return;
+    echo "Generating " . $this->implClassFile . " file for " . $this->className . "\n";
+    $code = "<?php\n// This file is auto-generated by generate-classes.php but it can be edited\n\n";
+    $code .= "namespace " . $this->implClassNameSpace . ";\n\n";
+    $code .= "class " . $this->className . " extends \\" . $this->baseClassPath . " {\n";
+    $code .= "  // Add here custom implementations\n\n";
+
+    $code .= "  public static function builder(" . join(" ,", array_map(function ($arg) {
+      if (isset($arg->type)) return $arg->type . " " . $arg->var;
+      return $arg->var;
+    }, $this->constructArgs)) . "): " . $this->className . " {\n";
+
+    $code .= "    return new " . $this->className . "(" . join(" ,", array_map(function ($arg) {
+      return $arg->var;
+    }, $this->constructArgs)) . ");\n";
+
+    $code .= "  }\n";
+    $code .= "}\n";
+
+
+    if (!file_exists($this->implClassFileDir)) {
+      mkdir($this->implClassFileDir, 0777, true);
+    }
+    file_put_contents($this->implClassFile, $code);
+  }
+}
+
+class Property
+{
+  readonly string $key;
+  readonly string $name;
+  readonly string $var;
+  readonly string|Null $type;
+  readonly string $setter;
+
+  public function __construct($key, $name, $var, $type, $setter)
+  {
+    $this->key = $key;
+    $this->name = $name;
+    $this->var = $var;
+    $this->type = $type;
+    $this->setter = $setter;
+  }
+}
