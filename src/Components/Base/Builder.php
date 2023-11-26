@@ -12,12 +12,14 @@ class Builder implements \JsonSerializable
      * @var T
      */
     protected $data;
-    protected string $normalizer;
-    public function __construct(string $type, string $model, string $normalizer)
+    private string $normalizer;
+    public function __construct(string|Null $type, string $model, string $normalizer)
     {
-        $this->data = new ($model)();
-        $this->data->setType($type);
         $this->normalizer = $normalizer;
+        $this->data = new ($model)();
+        if (isset($type)) {
+            $this->data->setType($type);
+        }
     }
 
     function jsonSerialize(): mixed

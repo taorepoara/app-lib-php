@@ -10,8 +10,10 @@ docker run --rm --interactive --tty -v $PWD:/app composer install
 ```bash
 # Load API
 wget https://github.com/lenra-io/api/releases/latest/download/load-api.sh -O - -q | bash
-# generate Components
+# generate Models
 php vendor/bin/jane generate --config-file "config/jane/components.php"
+# generate builder classes
+php script/generate-classes.php
 ```
 
 ## Run unit tests

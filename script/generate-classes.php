@@ -1,51 +1,76 @@
 <?php
 // FILEPATH: /home/taorepoara/lenra/libs/app-lib-php/script/generate-classes.php
 
-$genDir = realpath(__DIR__ . '/../generated');
-$modelNamespace = "Lenra\\App\\Response\\View\\Model";
-$baseComponentsDir = realpath($genDir . "/components/base");
-$componentsImplDir = realpath(__DIR__ . '/../src/components');
+require_once __DIR__ . '/../vendor/autoload.php';
 
 generateClasses();
 
-function generateClasses() {
-  global $baseComponentsDir, $componentsImplDir;
+function generateClasses()
+{
+  $genDir = __DIR__ . '/../generated';
+  $baseClassesDir = $genDir . "/Base";
+  $implClassesDir = __DIR__ . '/../src';
 
   $schemaPath = realpath(__DIR__ . '/../api/responses/view.schema.json');
   $mainSchema = json_decode(file_get_contents($schemaPath), true);
-  $componentList = array_merge(
-    $mainSchema["definitions"]["components.lenra"]["oneOf"],
-    $mainSchema["definitions"]["components.json"]["oneOf"]
-  );
+  // $componentList = array_merge(
+  //   $mainSchema["definitions"]["components.lenra"]["oneOf"],
+  //   $mainSchema["definitions"]["components.json"]["oneOf"]
+  // );
+  // Get all the non component types that are not defined by a oneOf
+  // $types = [];
 
-  // Generate not existing classes
-  // $componentsExports = file_exists($componentsFile) ? array_filter(
-  //   explode("\n", file_get_contents($componentsFile)),
-  //   function ($line) {
-  //     return !startsWith($line, "//");
-  //   }
-  // ) : ["export * from './component.php';"];
-  // $componentsFileChanged = false;
+  foreach ($mainSchema["definitions"] as $defPath => $schema) {
+    // if (isset($schema["oneOf"]) || isset($schema['$ref'])) continue;
+    if (!(isset($schema["type"]) && $schema["type"] == "object") || isset($schema["patternProperties"])) continue;
 
-  foreach ($componentList as $component) {
-    $ref = $component['$ref'];
+
+    echo "Managing $defPath\n";
+
+    // Generate not existing classes
+    // $componentsExports = file_exists($componentsFile) ? array_filter(
+    //   explode("\n", file_get_contents($componentsFile)),
+    //   function ($line) {
+    //     return !startsWith($line, "//");
+    //   }
+    // ) : ["export * from './component.php';"];
+    // $componentsFileChanged = false;
+
+    // foreach ($componentList as $component) {
+    // $ref = $component['$ref'];
 
     // Check if the class exists
-    $schema = array_reduce(explode("/", trim($ref, "/")), function ($o, $part) {
-      return $o[$part];
-    }, $mainSchema);
+    // $defPath = end(explode("/", $ref));
+    $defPathParts = explode(".", $defPath);
+    foreach ($defPathParts as &$part) {
+      $part = ucfirst($part);
+    }
+    // $schema = $mainSchema['definitions'][$defPath];
+
+    $model = "Lenra\\App\\Response\\View\\Model\\" . join("", $defPathParts);
+    $classFilePath = join("/", $defPathParts);
+
+    $className = array_pop($defPathParts);
+    $baseClassNameSpace = "Lenra\\App\\Base\\" . join("\\", $defPathParts);
+    $baseClassFileDir = $baseClassesDir . "/" . join("/", $defPathParts);
+    $baseClassPath = $baseClassNameSpace . "\\" . $className;
+    $implClassNameSpace = "Lenra\\App\\" . join("\\", $defPathParts);
+    $implClassFileDir = $implClassesDir . "/" . join("/", $defPathParts);
+
     $comp = $schema["title"];
-    $baseClassPath = $baseComponentsDir . "/" . $comp . "Base.php";
-    echo "Generating " . $baseClassPath . " file for " . $comp . "\n";
-    file_put_contents($baseClassPath, generateBaseClass($schema));
+    $baseClassPath = $baseClassFileDir . "/" . $className . "Base.php";
+    echo "Generating " . $baseClassPath . " file for " . $comp . " for building " . $model . "\n";
+    mkdir($baseClassFileDir, 0777, true);
+    file_put_contents(realpath($baseClassPath), generateBaseClass($schema, $model, $baseClassNameSpace, $className));
 
     // Check if the file corresponding to the schema exists
-    $classPath = $componentsImplDir . "/" . $comp . ".php";
+    $classPath = $implClassFileDir . "/" . $className . ".php";
 
     if (!file_exists($classPath)) {
       // Creates the file
       echo "Generating " . $classPath . " file for " . $comp . "\n";
-      file_put_contents($classPath, generateImplClass($schema, $comp));
+      mkdir($implClassFileDir, 0777, true);
+      file_put_contents(realpath($classPath), generateImplClass($baseClassPath, $implClassNameSpace, $className));
     }
 
     // // Check if the file is imported in the main components file
@@ -65,10 +90,8 @@ function generateClasses() {
   // }
 }
 
-function generateBaseClass($schema) {
-  global $modelNamespace;
-  
-  $title = $schema["title"];
+function generateBaseClass($schema, $model, $ns, $className)
+{
   $properties = $schema["properties"];
   $required = $schema["required"];
   $propertiesNotRequired = array_filter(array_keys($properties), function ($key) use ($required) {
@@ -76,70 +99,78 @@ function generateBaseClass($schema) {
   });
 
   $code = "// This file is auto-generated by generate-classes.php. Do not edit it.\n\n";
+  $code .= "namespace " . $ns . ";\n\n";
   $code .= "use Lenra\App\Components\Base\Builder;\n\n";
-  $code .= "class " . $title . "Impl extends Builder {\n";
-  $code .= "class " . $title . "BaseImpl extends Component implements I" . $title . " {\n";
-  foreach ($propertiesNotRequired as $key) {
-    $property = $properties[$key];
-    $jsdocLines = [];
-    $jsdoc = '';
+  $code .= "/**\n* @template-extends Builder<\\" . $model .  ">\n*/\n";
+  $code .= "class " . $className . "Base extends Builder {\n";
 
-    if (isset($property["description"])) {
-      $jsdocLines[] = $property["description"];
+  $classReflection = new ReflectionClass($model);
+
+  $args = [];
+  $argNames = [];
+  $setters = [];
+
+  foreach ($required as $key) {
+    // $property = $properties[$key];
+    $setter = "set" . ucfirst($key);
+    // get the type define by the setter
+    $type = $classReflection->getMethod($setter)->getParameters()[0]->getType();
+    $arg = $key;
+    if (isset($type)) {
+      $arg = $type . " " . $arg;
     }
-    if (isset($property["deprecated"])) {
-      $jsdocLines[] = "@deprecated " . ($property["deprecatedComment"] ?? "");
-    }
-    if (count($jsdocLines) > 0) {
-      $jsdoc = "/**\n";
-      foreach ($jsdocLines as $line) {
-        $jsdoc .= " * " . $line . "\n";
-      }
-      $jsdoc .= " */\n";
-    }
-    if (preg_match("/^on[A-Z]/", $key)) {
-      $code .= $jsdoc . "  public function " . $key . "(\$listener, \$props = []) {\n";
-      $code .= "    return \$this->setListener('" . $key . "', \$listener, \$props);\n";
-      $code .= "  }\n";
-    } else {
-      $code .= $jsdoc . "  public function " . $key . "(\$value) {\n";
-      $code .= "    \$this->model['" . $key . "'] = \$value;\n";
-      $code .= "    return \$this;\n";
-      $code .= "  }\n";
-    }
+    array_push($args, $arg);
+    array_push($argNames, $key);
+    array_push($setters, $setter . "(" . $key . ");");
   }
-  $code .= "}\n\n";
-  $code .= "export { I" . $title . " };\n";
+
+  $args = join(", ", $args);
+  $argNames = join(", ", $argNames);
+
+  $componentType = array_reduce(["properties", "_type", "const"], function ($o, $key) {
+    if (isset($o) && isset($o[$key])) return $o[$key];
+    return Null;
+  });
+  $componentType = isset($componentType) ? "'" . $componentType . "'" : 'Null';
+  $code .= "public function __construct(" . $args . ")\n{\n";
+  $code .= "  parent::__construct(" . $componentType . ", \Lenra\App\Response\View\Model\ComponentsListener::class, ListenerNormalizer::class);\n";
+  foreach ($setters as $key => $setterCall) {
+    $code .= "  " . $setterCall . "\n";
+  }
+  $code .= "}";
+
+  foreach ($propertiesNotRequired as $key) {
+    // $property = $properties[$key];
+    $setter = "set" . ucfirst($key);
+    // get the type define by the setter
+    $type = $classReflection->getMethod($setter)->getParameters()[0]->getType();
+    $code .= "  public function " . $key . "(";
+    if (isset($type)) {
+      $code .= $type . " ";
+    }
+    $code .= "\$value) {\n";
+    $code .= "    if (\$value instanceof Builder) \$value = \$value->data;\n";
+    $code .= "    \$this->data->" . $setter . "(\$value);\n";
+    $code .= "    return \$this;\n";
+    $code .= "  }\n";
+  }
+
+  $code .= "  public static function builder(" . $args . "): " . $className . " {\n";
+  $code .= "    return new " . $className . "(". $argNames .");\n";
+  $code .= "  }";
+
+  $code .= "}\n";
 
   return $code;
 }
 
-function generateImplClass($schema) {
-
-  $title = $schema["title"];
-  $properties = $schema["properties"];
-  $required = $schema["required"];
-  $requiredNoType = array_filter($required, function ($key) {
-    return $key != "_type";
-  });
-
+function generateImplClass($baseClass, $ns, $className)
+{
   $code = "// This file is auto-generated by generate-classes.php but it can be edited\n\n";
-  $code .= "use Lenra\App\Components\Base\Builder;\n\n";
-  $code .= "class " . $title . "Impl extends Builder {\n";
+  $code .= "namespace " . $ns . ";\n\n";
+  $code .= "class " . $className . " extends \\" . $baseClass . " {\n";
   $code .= "  // Add here custom implementations\n";
   $code .= "}\n\n";
-  $code .= "function " . $title . "(" . implode(", ", array_map(function ($key) use ($title) {
-    return "$" . $key;
-  }, $requiredNoType)) . ") {\n";
-  $code .= "  return new " . $title . "Impl([\n";
-  $code .= "    '_type' => '" . $properties["_type"]["const"] . "',\n";
-  foreach ($requiredNoType as $key) {
-    $code .= "    '" . $key . "' => $" . $key . ",\n";
-  }
-  $code .= "  ]);\n";
-  $code .= "}\n\n";
-  $code .= "interface I" . $title . " {}\n\n";
-  $code .= "export { I" . $title . " };\n";
 
   return $code;
 }
