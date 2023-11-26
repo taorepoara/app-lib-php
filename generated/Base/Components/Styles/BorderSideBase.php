@@ -11,18 +11,16 @@ use Lenra\App\Components\Base\Builder;
 abstract class BorderSideBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderSide::class, Lenra\App\Response\View\Normalizer\ComponentsStylesBorderSideNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderSide::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBorderSideNormalizer::class);
   }
 
   public function width(float $width): BorderSideBase {
-    if ($width instanceof Builder) $width = $width->data;
-    $this->data->setWidth($width);
+    $this->data->setWidth(Builder::convert($width));
     return $this;
   }
 
   public function color(int $color): BorderSideBase {
-    if ($color instanceof Builder) $color = $color->data;
-    $this->data->setColor($color);
+    $this->data->setColor(Builder::convert($color));
     return $this;
   }
 

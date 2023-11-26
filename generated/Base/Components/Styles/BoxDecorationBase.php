@@ -11,30 +11,26 @@ use Lenra\App\Components\Base\Builder;
 abstract class BoxDecorationBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxDecoration::class, Lenra\App\Response\View\Normalizer\ComponentsStylesBoxDecorationNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxDecoration::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBoxDecorationNormalizer::class);
   }
 
   public function borderRadius(\Lenra\App\Components\Styles\BorderRadius $borderRadius): BoxDecorationBase {
-    if ($borderRadius instanceof Builder) $borderRadius = $borderRadius->data;
-    $this->data->setBorderRadius($borderRadius);
+    $this->data->setBorderRadius(Builder::convert($borderRadius));
     return $this;
   }
 
   public function boxShadow(\Lenra\App\Components\Styles\BoxShadow $boxShadow): BoxDecorationBase {
-    if ($boxShadow instanceof Builder) $boxShadow = $boxShadow->data;
-    $this->data->setBoxShadow($boxShadow);
+    $this->data->setBoxShadow(Builder::convert($boxShadow));
     return $this;
   }
 
   public function color(int $color): BoxDecorationBase {
-    if ($color instanceof Builder) $color = $color->data;
-    $this->data->setColor($color);
+    $this->data->setColor(Builder::convert($color));
     return $this;
   }
 
   public function shape(string $shape): BoxDecorationBase {
-    if ($shape instanceof Builder) $shape = $shape->data;
-    $this->data->setShape($shape);
+    $this->data->setShape(Builder::convert($shape));
     return $this;
   }
 

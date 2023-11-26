@@ -11,60 +11,51 @@ use Lenra\App\Components\Base\Builder;
 abstract class StrutStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesStrutStyle::class, Lenra\App\Response\View\Normalizer\ComponentsStylesStrutStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesStrutStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesStrutStyleNormalizer::class);
   }
 
   public function debugLabel(string $debugLabel): StrutStyleBase {
-    if ($debugLabel instanceof Builder) $debugLabel = $debugLabel->data;
-    $this->data->setDebugLabel($debugLabel);
+    $this->data->setDebugLabel(Builder::convert($debugLabel));
     return $this;
   }
 
   public function fontFamily(string $fontFamily): StrutStyleBase {
-    if ($fontFamily instanceof Builder) $fontFamily = $fontFamily->data;
-    $this->data->setFontFamily($fontFamily);
+    $this->data->setFontFamily(Builder::convert($fontFamily));
     return $this;
   }
 
   public function fontFamilyFallback(array $fontFamilyFallback): StrutStyleBase {
-    if ($fontFamilyFallback instanceof Builder) $fontFamilyFallback = $fontFamilyFallback->data;
-    $this->data->setFontFamilyFallback($fontFamilyFallback);
+    $this->data->setFontFamilyFallback(Builder::convert($fontFamilyFallback));
     return $this;
   }
 
   public function fontSize(float $fontSize): StrutStyleBase {
-    if ($fontSize instanceof Builder) $fontSize = $fontSize->data;
-    $this->data->setFontSize($fontSize);
+    $this->data->setFontSize(Builder::convert($fontSize));
     return $this;
   }
 
   public function fontWeight(string $fontWeight): StrutStyleBase {
-    if ($fontWeight instanceof Builder) $fontWeight = $fontWeight->data;
-    $this->data->setFontWeight($fontWeight);
+    $this->data->setFontWeight(Builder::convert($fontWeight));
     return $this;
   }
 
   public function forceStrutHeight(bool $forceStrutHeight): StrutStyleBase {
-    if ($forceStrutHeight instanceof Builder) $forceStrutHeight = $forceStrutHeight->data;
-    $this->data->setForceStrutHeight($forceStrutHeight);
+    $this->data->setForceStrutHeight(Builder::convert($forceStrutHeight));
     return $this;
   }
 
   public function height(float $height): StrutStyleBase {
-    if ($height instanceof Builder) $height = $height->data;
-    $this->data->setHeight($height);
+    $this->data->setHeight(Builder::convert($height));
     return $this;
   }
 
   public function leading(float $leading): StrutStyleBase {
-    if ($leading instanceof Builder) $leading = $leading->data;
-    $this->data->setLeading($leading);
+    $this->data->setLeading(Builder::convert($leading));
     return $this;
   }
 
   public function leadingDistribution(string $leadingDistribution): StrutStyleBase {
-    if ($leadingDistribution instanceof Builder) $leadingDistribution = $leadingDistribution->data;
-    $this->data->setLeadingDistribution($leadingDistribution);
+    $this->data->setLeadingDistribution(Builder::convert($leadingDistribution));
     return $this;
   }
 

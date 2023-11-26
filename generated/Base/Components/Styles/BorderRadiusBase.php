@@ -11,30 +11,26 @@ use Lenra\App\Components\Base\Builder;
 abstract class BorderRadiusBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderRadius::class, Lenra\App\Response\View\Normalizer\ComponentsStylesBorderRadiusNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderRadius::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBorderRadiusNormalizer::class);
   }
 
   public function topLeft(\Lenra\App\Components\Styles\BorderRadius\Definitions\RadiusType $topLeft): BorderRadiusBase {
-    if ($topLeft instanceof Builder) $topLeft = $topLeft->data;
-    $this->data->setTopLeft($topLeft);
+    $this->data->setTopLeft(Builder::convert($topLeft));
     return $this;
   }
 
   public function topRight(\Lenra\App\Components\Styles\BorderRadius\Definitions\RadiusType $topRight): BorderRadiusBase {
-    if ($topRight instanceof Builder) $topRight = $topRight->data;
-    $this->data->setTopRight($topRight);
+    $this->data->setTopRight(Builder::convert($topRight));
     return $this;
   }
 
   public function bottomLeft(\Lenra\App\Components\Styles\BorderRadius\Definitions\RadiusType $bottomLeft): BorderRadiusBase {
-    if ($bottomLeft instanceof Builder) $bottomLeft = $bottomLeft->data;
-    $this->data->setBottomLeft($bottomLeft);
+    $this->data->setBottomLeft(Builder::convert($bottomLeft));
     return $this;
   }
 
   public function bottomRight(\Lenra\App\Components\Styles\BorderRadius\Definitions\RadiusType $bottomRight): BorderRadiusBase {
-    if ($bottomRight instanceof Builder) $bottomRight = $bottomRight->data;
-    $this->data->setBottomRight($bottomRight);
+    $this->data->setBottomRight(Builder::convert($bottomRight));
     return $this;
   }
 

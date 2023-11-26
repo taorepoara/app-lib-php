@@ -11,49 +11,47 @@ use Lenra\App\Components\Base\Builder;
 abstract class ToggleBase extends Builder {
   public function __construct(bool $value)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsToggle::class, Lenra\App\Response\View\Normalizer\ComponentsToggleNormalizer::class);
-    $this->data->setValue($value);
+    parent::__construct('toggle', \Lenra\App\Response\View\Model\ComponentsToggle::class, \Lenra\App\Response\View\Normalizer\ComponentsToggleNormalizer::class);
+    $this->value($value);
+  }
+
+  public function value(bool $value): ToggleBase {
+    $this->data->setValue(Builder::convert($value));
+    return $this;
   }
 
   public function splashRadius(float $splashRadius): ToggleBase {
-    if ($splashRadius instanceof Builder) $splashRadius = $splashRadius->data;
-    $this->data->setSplashRadius($splashRadius);
+    $this->data->setSplashRadius(Builder::convert($splashRadius));
     return $this;
   }
 
   public function autofocus(bool $autofocus): ToggleBase {
-    if ($autofocus instanceof Builder) $autofocus = $autofocus->data;
-    $this->data->setAutofocus($autofocus);
+    $this->data->setAutofocus(Builder::convert($autofocus));
     return $this;
   }
 
   public function dragStartBehavior(string $dragStartBehavior): ToggleBase {
-    if ($dragStartBehavior instanceof Builder) $dragStartBehavior = $dragStartBehavior->data;
-    $this->data->setDragStartBehavior($dragStartBehavior);
+    $this->data->setDragStartBehavior(Builder::convert($dragStartBehavior));
     return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): ToggleBase {
-    if ($onPressed instanceof Builder) $onPressed = $onPressed->data;
-    $this->data->setOnPressed($onPressed);
+    $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }
 
   public function style(\Lenra\App\Components\Styles\ToggleStyle $style): ToggleBase {
-    if ($style instanceof Builder) $style = $style->data;
-    $this->data->setStyle($style);
+    $this->data->setStyle(Builder::convert($style));
     return $this;
   }
 
   public function name(string $name): ToggleBase {
-    if ($name instanceof Builder) $name = $name->data;
-    $this->data->setName($name);
+    $this->data->setName(Builder::convert($name));
     return $this;
   }
 
   public function disabled(bool $disabled): ToggleBase {
-    if ($disabled instanceof Builder) $disabled = $disabled->data;
-    $this->data->setDisabled($disabled);
+    $this->data->setDisabled(Builder::convert($disabled));
     return $this;
   }
 

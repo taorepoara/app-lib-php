@@ -11,84 +11,71 @@ use Lenra\App\Components\Base\Builder;
 abstract class CarouselOptionsBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCarouselOptions::class, Lenra\App\Response\View\Normalizer\ComponentsStylesCarouselOptionsNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCarouselOptions::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesCarouselOptionsNormalizer::class);
   }
 
   public function height(float $height): CarouselOptionsBase {
-    if ($height instanceof Builder) $height = $height->data;
-    $this->data->setHeight($height);
+    $this->data->setHeight(Builder::convert($height));
     return $this;
   }
 
   public function enlargeCenterPage(bool $enlargeCenterPage): CarouselOptionsBase {
-    if ($enlargeCenterPage instanceof Builder) $enlargeCenterPage = $enlargeCenterPage->data;
-    $this->data->setEnlargeCenterPage($enlargeCenterPage);
+    $this->data->setEnlargeCenterPage(Builder::convert($enlargeCenterPage));
     return $this;
   }
 
   public function autoPlay(bool $autoPlay): CarouselOptionsBase {
-    if ($autoPlay instanceof Builder) $autoPlay = $autoPlay->data;
-    $this->data->setAutoPlay($autoPlay);
+    $this->data->setAutoPlay(Builder::convert($autoPlay));
     return $this;
   }
 
   public function autoPlayInterval(\Lenra\App\Components\Styles\Duration $autoPlayInterval): CarouselOptionsBase {
-    if ($autoPlayInterval instanceof Builder) $autoPlayInterval = $autoPlayInterval->data;
-    $this->data->setAutoPlayInterval($autoPlayInterval);
+    $this->data->setAutoPlayInterval(Builder::convert($autoPlayInterval));
     return $this;
   }
 
   public function autoPlayAnimationDuration(\Lenra\App\Components\Styles\Duration $autoPlayAnimationDuration): CarouselOptionsBase {
-    if ($autoPlayAnimationDuration instanceof Builder) $autoPlayAnimationDuration = $autoPlayAnimationDuration->data;
-    $this->data->setAutoPlayAnimationDuration($autoPlayAnimationDuration);
+    $this->data->setAutoPlayAnimationDuration(Builder::convert($autoPlayAnimationDuration));
     return $this;
   }
 
   public function pauseAutoPlayOnTouch(bool $pauseAutoPlayOnTouch): CarouselOptionsBase {
-    if ($pauseAutoPlayOnTouch instanceof Builder) $pauseAutoPlayOnTouch = $pauseAutoPlayOnTouch->data;
-    $this->data->setPauseAutoPlayOnTouch($pauseAutoPlayOnTouch);
+    $this->data->setPauseAutoPlayOnTouch(Builder::convert($pauseAutoPlayOnTouch));
     return $this;
   }
 
   public function aspectRatio(float $aspectRatio): CarouselOptionsBase {
-    if ($aspectRatio instanceof Builder) $aspectRatio = $aspectRatio->data;
-    $this->data->setAspectRatio($aspectRatio);
+    $this->data->setAspectRatio(Builder::convert($aspectRatio));
     return $this;
   }
 
   public function initialPage(int $initialPage): CarouselOptionsBase {
-    if ($initialPage instanceof Builder) $initialPage = $initialPage->data;
-    $this->data->setInitialPage($initialPage);
+    $this->data->setInitialPage(Builder::convert($initialPage));
     return $this;
   }
 
   public function enableInfiniteScroll(bool $enableInfiniteScroll): CarouselOptionsBase {
-    if ($enableInfiniteScroll instanceof Builder) $enableInfiniteScroll = $enableInfiniteScroll->data;
-    $this->data->setEnableInfiniteScroll($enableInfiniteScroll);
+    $this->data->setEnableInfiniteScroll(Builder::convert($enableInfiniteScroll));
     return $this;
   }
 
   public function reverse(bool $reverse): CarouselOptionsBase {
-    if ($reverse instanceof Builder) $reverse = $reverse->data;
-    $this->data->setReverse($reverse);
+    $this->data->setReverse(Builder::convert($reverse));
     return $this;
   }
 
   public function scrollDirection(string $scrollDirection): CarouselOptionsBase {
-    if ($scrollDirection instanceof Builder) $scrollDirection = $scrollDirection->data;
-    $this->data->setScrollDirection($scrollDirection);
+    $this->data->setScrollDirection(Builder::convert($scrollDirection));
     return $this;
   }
 
   public function viewportFraction(float $viewportFraction): CarouselOptionsBase {
-    if ($viewportFraction instanceof Builder) $viewportFraction = $viewportFraction->data;
-    $this->data->setViewportFraction($viewportFraction);
+    $this->data->setViewportFraction(Builder::convert($viewportFraction));
     return $this;
   }
 
   public function enlargeStrategy(string $enlargeStrategy): CarouselOptionsBase {
-    if ($enlargeStrategy instanceof Builder) $enlargeStrategy = $enlargeStrategy->data;
-    $this->data->setEnlargeStrategy($enlargeStrategy);
+    $this->data->setEnlargeStrategy(Builder::convert($enlargeStrategy));
     return $this;
   }
 

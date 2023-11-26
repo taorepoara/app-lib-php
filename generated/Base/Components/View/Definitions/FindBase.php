@@ -11,14 +11,23 @@ use Lenra\App\Components\Base\Builder;
 abstract class FindBase extends Builder {
   public function __construct(string $coll ,iterable $query)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsViewDefinitionsFind::class, Lenra\App\Response\View\Normalizer\ComponentsViewDefinitionsFindNormalizer::class);
-    $this->data->setColl($coll);
-    $this->data->setQuery($query);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsViewDefinitionsFind::class, \Lenra\App\Response\View\Normalizer\ComponentsViewDefinitionsFindNormalizer::class);
+    $this->coll($coll);
+    $this->query($query);
+  }
+
+  public function coll(string $coll): FindBase {
+    $this->data->setColl(Builder::convert($coll));
+    return $this;
+  }
+
+  public function query(iterable $query): FindBase {
+    $this->data->setQuery(Builder::convert($query));
+    return $this;
   }
 
   public function projection(iterable $projection): FindBase {
-    if ($projection instanceof Builder) $projection = $projection->data;
-    $this->data->setProjection($projection);
+    $this->data->setProjection(Builder::convert($projection));
     return $this;
   }
 

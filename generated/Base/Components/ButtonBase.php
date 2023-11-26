@@ -11,49 +11,47 @@ use Lenra\App\Components\Base\Builder;
 abstract class ButtonBase extends Builder {
   public function __construct(string $text)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsButton::class, Lenra\App\Response\View\Normalizer\ComponentsButtonNormalizer::class);
-    $this->data->setText($text);
+    parent::__construct('button', \Lenra\App\Response\View\Model\ComponentsButton::class, \Lenra\App\Response\View\Normalizer\ComponentsButtonNormalizer::class);
+    $this->text($text);
+  }
+
+  public function text(string $text): ButtonBase {
+    $this->data->setText(Builder::convert($text));
+    return $this;
   }
 
   public function disabled(bool $disabled): ButtonBase {
-    if ($disabled instanceof Builder) $disabled = $disabled->data;
-    $this->data->setDisabled($disabled);
+    $this->data->setDisabled(Builder::convert($disabled));
     return $this;
   }
 
   public function size(string $size): ButtonBase {
-    if ($size instanceof Builder) $size = $size->data;
-    $this->data->setSize($size);
+    $this->data->setSize(Builder::convert($size));
     return $this;
   }
 
   public function mainStyle(string $mainStyle): ButtonBase {
-    if ($mainStyle instanceof Builder) $mainStyle = $mainStyle->data;
-    $this->data->setMainStyle($mainStyle);
+    $this->data->setMainStyle(Builder::convert($mainStyle));
     return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): ButtonBase {
-    if ($onPressed instanceof Builder) $onPressed = $onPressed->data;
-    $this->data->setOnPressed($onPressed);
+    $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }
 
   public function leftIcon(\Lenra\App\Components\Icon $leftIcon): ButtonBase {
-    if ($leftIcon instanceof Builder) $leftIcon = $leftIcon->data;
-    $this->data->setLeftIcon($leftIcon);
+    $this->data->setLeftIcon(Builder::convert($leftIcon));
     return $this;
   }
 
   public function rightIcon(\Lenra\App\Components\Icon $rightIcon): ButtonBase {
-    if ($rightIcon instanceof Builder) $rightIcon = $rightIcon->data;
-    $this->data->setRightIcon($rightIcon);
+    $this->data->setRightIcon(Builder::convert($rightIcon));
     return $this;
   }
 
   public function submit(bool $submit): ButtonBase {
-    if ($submit instanceof Builder) $submit = $submit->data;
-    $this->data->setSubmit($submit);
+    $this->data->setSubmit(Builder::convert($submit));
     return $this;
   }
 

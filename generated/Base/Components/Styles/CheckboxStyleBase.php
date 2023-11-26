@@ -11,54 +11,46 @@ use Lenra\App\Components\Base\Builder;
 abstract class CheckboxStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCheckboxStyle::class, Lenra\App\Response\View\Normalizer\ComponentsStylesCheckboxStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCheckboxStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesCheckboxStyleNormalizer::class);
   }
 
   public function activeColor(int $activeColor): CheckboxStyleBase {
-    if ($activeColor instanceof Builder) $activeColor = $activeColor->data;
-    $this->data->setActiveColor($activeColor);
+    $this->data->setActiveColor(Builder::convert($activeColor));
     return $this;
   }
 
   public function checkColor(int $checkColor): CheckboxStyleBase {
-    if ($checkColor instanceof Builder) $checkColor = $checkColor->data;
-    $this->data->setCheckColor($checkColor);
+    $this->data->setCheckColor(Builder::convert($checkColor));
     return $this;
   }
 
   public function focusColor(int $focusColor): CheckboxStyleBase {
-    if ($focusColor instanceof Builder) $focusColor = $focusColor->data;
-    $this->data->setFocusColor($focusColor);
+    $this->data->setFocusColor(Builder::convert($focusColor));
     return $this;
   }
 
   public function hoverColor(int $hoverColor): CheckboxStyleBase {
-    if ($hoverColor instanceof Builder) $hoverColor = $hoverColor->data;
-    $this->data->setHoverColor($hoverColor);
+    $this->data->setHoverColor(Builder::convert($hoverColor));
     return $this;
   }
 
   public function splashRadius(float $splashRadius): CheckboxStyleBase {
-    if ($splashRadius instanceof Builder) $splashRadius = $splashRadius->data;
-    $this->data->setSplashRadius($splashRadius);
+    $this->data->setSplashRadius(Builder::convert($splashRadius));
     return $this;
   }
 
   public function visualDensity(string $visualDensity): CheckboxStyleBase {
-    if ($visualDensity instanceof Builder) $visualDensity = $visualDensity->data;
-    $this->data->setVisualDensity($visualDensity);
+    $this->data->setVisualDensity(Builder::convert($visualDensity));
     return $this;
   }
 
   public function shape(\Lenra\App\Components\Styles\OutlinedBorder $shape): CheckboxStyleBase {
-    if ($shape instanceof Builder) $shape = $shape->data;
-    $this->data->setShape($shape);
+    $this->data->setShape(Builder::convert($shape));
     return $this;
   }
 
   public function side(\Lenra\App\Components\Styles\BorderSide $side): CheckboxStyleBase {
-    if ($side instanceof Builder) $side = $side->data;
-    $this->data->setSide($side);
+    $this->data->setSide(Builder::convert($side));
     return $this;
   }
 

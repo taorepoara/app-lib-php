@@ -11,24 +11,21 @@ use Lenra\App\Components\Base\Builder;
 abstract class LocaleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesLocale::class, Lenra\App\Response\View\Normalizer\ComponentsStylesLocaleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesLocale::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesLocaleNormalizer::class);
   }
 
   public function countryCode(string $countryCode): LocaleBase {
-    if ($countryCode instanceof Builder) $countryCode = $countryCode->data;
-    $this->data->setCountryCode($countryCode);
+    $this->data->setCountryCode(Builder::convert($countryCode));
     return $this;
   }
 
   public function languageCode(string $languageCode): LocaleBase {
-    if ($languageCode instanceof Builder) $languageCode = $languageCode->data;
-    $this->data->setLanguageCode($languageCode);
+    $this->data->setLanguageCode(Builder::convert($languageCode));
     return $this;
   }
 
   public function scriptCode(string $scriptCode): LocaleBase {
-    if ($scriptCode instanceof Builder) $scriptCode = $scriptCode->data;
-    $this->data->setScriptCode($scriptCode);
+    $this->data->setScriptCode(Builder::convert($scriptCode));
     return $this;
   }
 

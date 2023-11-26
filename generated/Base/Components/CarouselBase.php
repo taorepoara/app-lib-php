@@ -11,13 +11,17 @@ use Lenra\App\Components\Base\Builder;
 abstract class CarouselBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsCarousel::class, Lenra\App\Response\View\Normalizer\ComponentsCarouselNormalizer::class);
-    $this->data->setChildren($children);
+    parent::__construct('carousel', \Lenra\App\Response\View\Model\ComponentsCarousel::class, \Lenra\App\Response\View\Normalizer\ComponentsCarouselNormalizer::class);
+    $this->children($children);
+  }
+
+  public function children(array $children): CarouselBase {
+    $this->data->setChildren(Builder::convert($children));
+    return $this;
   }
 
   public function options(\Lenra\App\Components\Styles\CarouselOptions $options): CarouselBase {
-    if ($options instanceof Builder) $options = $options->data;
-    $this->data->setOptions($options);
+    $this->data->setOptions(Builder::convert($options));
     return $this;
   }
 

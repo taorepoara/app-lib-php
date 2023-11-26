@@ -11,43 +11,42 @@ use Lenra\App\Components\Base\Builder;
 abstract class TextBase extends Builder {
   public function __construct(string $value)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsText::class, Lenra\App\Response\View\Normalizer\ComponentsTextNormalizer::class);
-    $this->data->setValue($value);
+    parent::__construct('text', \Lenra\App\Response\View\Model\ComponentsText::class, \Lenra\App\Response\View\Normalizer\ComponentsTextNormalizer::class);
+    $this->value($value);
+  }
+
+  public function value(string $value): TextBase {
+    $this->data->setValue(Builder::convert($value));
+    return $this;
   }
 
   public function style(\Lenra\App\Components\Styles\TextStyle $style): TextBase {
-    if ($style instanceof Builder) $style = $style->data;
-    $this->data->setStyle($style);
+    $this->data->setStyle(Builder::convert($style));
     return $this;
   }
 
   public function locale(\Lenra\App\Components\Styles\Locale $locale): TextBase {
-    if ($locale instanceof Builder) $locale = $locale->data;
-    $this->data->setLocale($locale);
+    $this->data->setLocale(Builder::convert($locale));
     return $this;
   }
 
   public function semanticsLabel(string $semanticsLabel): TextBase {
-    if ($semanticsLabel instanceof Builder) $semanticsLabel = $semanticsLabel->data;
-    $this->data->setSemanticsLabel($semanticsLabel);
+    $this->data->setSemanticsLabel(Builder::convert($semanticsLabel));
     return $this;
   }
 
   public function spellOut(bool $spellOut): TextBase {
-    if ($spellOut instanceof Builder) $spellOut = $spellOut->data;
-    $this->data->setSpellOut($spellOut);
+    $this->data->setSpellOut(Builder::convert($spellOut));
     return $this;
   }
 
   public function textAlign($textAlign): TextBase {
-    if ($textAlign instanceof Builder) $textAlign = $textAlign->data;
-    $this->data->setTextAlign($textAlign);
+    $this->data->setTextAlign(Builder::convert($textAlign));
     return $this;
   }
 
   public function children(array $children): TextBase {
-    if ($children instanceof Builder) $children = $children->data;
-    $this->data->setChildren($children);
+    $this->data->setChildren(Builder::convert($children));
     return $this;
   }
 

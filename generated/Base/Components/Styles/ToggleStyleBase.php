@@ -11,60 +11,51 @@ use Lenra\App\Components\Base\Builder;
 abstract class ToggleStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToggleStyle::class, Lenra\App\Response\View\Normalizer\ComponentsStylesToggleStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToggleStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesToggleStyleNormalizer::class);
   }
 
   public function activeColor(int $activeColor): ToggleStyleBase {
-    if ($activeColor instanceof Builder) $activeColor = $activeColor->data;
-    $this->data->setActiveColor($activeColor);
+    $this->data->setActiveColor(Builder::convert($activeColor));
     return $this;
   }
 
   public function activeTrackColor(int $activeTrackColor): ToggleStyleBase {
-    if ($activeTrackColor instanceof Builder) $activeTrackColor = $activeTrackColor->data;
-    $this->data->setActiveTrackColor($activeTrackColor);
+    $this->data->setActiveTrackColor(Builder::convert($activeTrackColor));
     return $this;
   }
 
   public function inactiveTrackColor(int $inactiveTrackColor): ToggleStyleBase {
-    if ($inactiveTrackColor instanceof Builder) $inactiveTrackColor = $inactiveTrackColor->data;
-    $this->data->setInactiveTrackColor($inactiveTrackColor);
+    $this->data->setInactiveTrackColor(Builder::convert($inactiveTrackColor));
     return $this;
   }
 
   public function inactiveThumbColor(int $inactiveThumbColor): ToggleStyleBase {
-    if ($inactiveThumbColor instanceof Builder) $inactiveThumbColor = $inactiveThumbColor->data;
-    $this->data->setInactiveThumbColor($inactiveThumbColor);
+    $this->data->setInactiveThumbColor(Builder::convert($inactiveThumbColor));
     return $this;
   }
 
   public function hoverColor(int $hoverColor): ToggleStyleBase {
-    if ($hoverColor instanceof Builder) $hoverColor = $hoverColor->data;
-    $this->data->setHoverColor($hoverColor);
+    $this->data->setHoverColor(Builder::convert($hoverColor));
     return $this;
   }
 
   public function focusColor(int $focusColor): ToggleStyleBase {
-    if ($focusColor instanceof Builder) $focusColor = $focusColor->data;
-    $this->data->setFocusColor($focusColor);
+    $this->data->setFocusColor(Builder::convert($focusColor));
     return $this;
   }
 
   public function activeThumbImage(\Lenra\App\Components\Image $activeThumbImage): ToggleStyleBase {
-    if ($activeThumbImage instanceof Builder) $activeThumbImage = $activeThumbImage->data;
-    $this->data->setActiveThumbImage($activeThumbImage);
+    $this->data->setActiveThumbImage(Builder::convert($activeThumbImage));
     return $this;
   }
 
   public function inactiveThumbImage(\Lenra\App\Components\Image $inactiveThumbImage): ToggleStyleBase {
-    if ($inactiveThumbImage instanceof Builder) $inactiveThumbImage = $inactiveThumbImage->data;
-    $this->data->setInactiveThumbImage($inactiveThumbImage);
+    $this->data->setInactiveThumbImage(Builder::convert($inactiveThumbImage));
     return $this;
   }
 
   public function materialTapTargetSize(string $materialTapTargetSize): ToggleStyleBase {
-    if ($materialTapTargetSize instanceof Builder) $materialTapTargetSize = $materialTapTargetSize->data;
-    $this->data->setMaterialTapTargetSize($materialTapTargetSize);
+    $this->data->setMaterialTapTargetSize(Builder::convert($materialTapTargetSize));
     return $this;
   }
 

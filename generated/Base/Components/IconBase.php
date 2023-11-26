@@ -11,31 +11,32 @@ use Lenra\App\Components\Base\Builder;
 abstract class IconBase extends Builder {
   public function __construct(string $value)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsIcon::class, Lenra\App\Response\View\Normalizer\ComponentsIconNormalizer::class);
-    $this->data->setValue($value);
+    parent::__construct('icon', \Lenra\App\Response\View\Model\ComponentsIcon::class, \Lenra\App\Response\View\Normalizer\ComponentsIconNormalizer::class);
+    $this->value($value);
   }
 
   public function size(float $size): IconBase {
-    if ($size instanceof Builder) $size = $size->data;
-    $this->data->setSize($size);
+    $this->data->setSize(Builder::convert($size));
     return $this;
   }
 
   public function color(int $color): IconBase {
-    if ($color instanceof Builder) $color = $color->data;
-    $this->data->setColor($color);
+    $this->data->setColor(Builder::convert($color));
     return $this;
   }
 
   public function semanticLabel(string $semanticLabel): IconBase {
-    if ($semanticLabel instanceof Builder) $semanticLabel = $semanticLabel->data;
-    $this->data->setSemanticLabel($semanticLabel);
+    $this->data->setSemanticLabel(Builder::convert($semanticLabel));
+    return $this;
+  }
+
+  public function value(string $value): IconBase {
+    $this->data->setValue(Builder::convert($value));
     return $this;
   }
 
   public function style(string $style): IconBase {
-    if ($style instanceof Builder) $style = $style->data;
-    $this->data->setStyle($style);
+    $this->data->setStyle(Builder::convert($style));
     return $this;
   }
 

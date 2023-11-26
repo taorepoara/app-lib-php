@@ -11,30 +11,26 @@ use Lenra\App\Components\Base\Builder;
 abstract class RectBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRect::class, Lenra\App\Response\View\Normalizer\ComponentsStylesRectNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRect::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesRectNormalizer::class);
   }
 
   public function left(float $left): RectBase {
-    if ($left instanceof Builder) $left = $left->data;
-    $this->data->setLeft($left);
+    $this->data->setLeft(Builder::convert($left));
     return $this;
   }
 
   public function top(float $top): RectBase {
-    if ($top instanceof Builder) $top = $top->data;
-    $this->data->setTop($top);
+    $this->data->setTop(Builder::convert($top));
     return $this;
   }
 
   public function width(float $width): RectBase {
-    if ($width instanceof Builder) $width = $width->data;
-    $this->data->setWidth($width);
+    $this->data->setWidth(Builder::convert($width));
     return $this;
   }
 
   public function height(float $height): RectBase {
-    if ($height instanceof Builder) $height = $height->data;
-    $this->data->setHeight($height);
+    $this->data->setHeight(Builder::convert($height));
     return $this;
   }
 

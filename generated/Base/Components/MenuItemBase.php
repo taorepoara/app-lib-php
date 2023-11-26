@@ -11,31 +11,32 @@ use Lenra\App\Components\Base\Builder;
 abstract class MenuItemBase extends Builder {
   public function __construct(string $text)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsMenuItem::class, Lenra\App\Response\View\Normalizer\ComponentsMenuItemNormalizer::class);
-    $this->data->setText($text);
+    parent::__construct('menuItem', \Lenra\App\Response\View\Model\ComponentsMenuItem::class, \Lenra\App\Response\View\Normalizer\ComponentsMenuItemNormalizer::class);
+    $this->text($text);
+  }
+
+  public function text(string $text): MenuItemBase {
+    $this->data->setText(Builder::convert($text));
+    return $this;
   }
 
   public function isSelected(bool $isSelected): MenuItemBase {
-    if ($isSelected instanceof Builder) $isSelected = $isSelected->data;
-    $this->data->setIsSelected($isSelected);
+    $this->data->setIsSelected(Builder::convert($isSelected));
     return $this;
   }
 
   public function disabled(bool $disabled): MenuItemBase {
-    if ($disabled instanceof Builder) $disabled = $disabled->data;
-    $this->data->setDisabled($disabled);
+    $this->data->setDisabled(Builder::convert($disabled));
     return $this;
   }
 
   public function icon(\Lenra\App\Components\Icon $icon): MenuItemBase {
-    if ($icon instanceof Builder) $icon = $icon->data;
-    $this->data->setIcon($icon);
+    $this->data->setIcon(Builder::convert($icon));
     return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): MenuItemBase {
-    if ($onPressed instanceof Builder) $onPressed = $onPressed->data;
-    $this->data->setOnPressed($onPressed);
+    $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }
 

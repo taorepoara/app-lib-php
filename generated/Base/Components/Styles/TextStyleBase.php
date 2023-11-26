@@ -11,102 +11,86 @@ use Lenra\App\Components\Base\Builder;
 abstract class TextStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextStyle::class, Lenra\App\Response\View\Normalizer\ComponentsStylesTextStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesTextStyleNormalizer::class);
   }
 
   public function color(int $color): TextStyleBase {
-    if ($color instanceof Builder) $color = $color->data;
-    $this->data->setColor($color);
+    $this->data->setColor(Builder::convert($color));
     return $this;
   }
 
   public function decoration(string $decoration): TextStyleBase {
-    if ($decoration instanceof Builder) $decoration = $decoration->data;
-    $this->data->setDecoration($decoration);
+    $this->data->setDecoration(Builder::convert($decoration));
     return $this;
   }
 
   public function decorationColor(int $decorationColor): TextStyleBase {
-    if ($decorationColor instanceof Builder) $decorationColor = $decorationColor->data;
-    $this->data->setDecorationColor($decorationColor);
+    $this->data->setDecorationColor(Builder::convert($decorationColor));
     return $this;
   }
 
   public function decorationStyle(string $decorationStyle): TextStyleBase {
-    if ($decorationStyle instanceof Builder) $decorationStyle = $decorationStyle->data;
-    $this->data->setDecorationStyle($decorationStyle);
+    $this->data->setDecorationStyle(Builder::convert($decorationStyle));
     return $this;
   }
 
   public function decorationThickness(float $decorationThickness): TextStyleBase {
-    if ($decorationThickness instanceof Builder) $decorationThickness = $decorationThickness->data;
-    $this->data->setDecorationThickness($decorationThickness);
+    $this->data->setDecorationThickness(Builder::convert($decorationThickness));
     return $this;
   }
 
   public function fontFamily(string $fontFamily): TextStyleBase {
-    if ($fontFamily instanceof Builder) $fontFamily = $fontFamily->data;
-    $this->data->setFontFamily($fontFamily);
+    $this->data->setFontFamily(Builder::convert($fontFamily));
     return $this;
   }
 
   public function fontFamilyFallback(array $fontFamilyFallback): TextStyleBase {
-    if ($fontFamilyFallback instanceof Builder) $fontFamilyFallback = $fontFamilyFallback->data;
-    $this->data->setFontFamilyFallback($fontFamilyFallback);
+    $this->data->setFontFamilyFallback(Builder::convert($fontFamilyFallback));
     return $this;
   }
 
   public function fontSize(float $fontSize): TextStyleBase {
-    if ($fontSize instanceof Builder) $fontSize = $fontSize->data;
-    $this->data->setFontSize($fontSize);
+    $this->data->setFontSize(Builder::convert($fontSize));
     return $this;
   }
 
   public function fontStyle(string $fontStyle): TextStyleBase {
-    if ($fontStyle instanceof Builder) $fontStyle = $fontStyle->data;
-    $this->data->setFontStyle($fontStyle);
+    $this->data->setFontStyle(Builder::convert($fontStyle));
     return $this;
   }
 
   public function fontWeight(string $fontWeight): TextStyleBase {
-    if ($fontWeight instanceof Builder) $fontWeight = $fontWeight->data;
-    $this->data->setFontWeight($fontWeight);
+    $this->data->setFontWeight(Builder::convert($fontWeight));
     return $this;
   }
 
   public function height(float $height): TextStyleBase {
-    if ($height instanceof Builder) $height = $height->data;
-    $this->data->setHeight($height);
+    $this->data->setHeight(Builder::convert($height));
     return $this;
   }
 
   public function letterSpacing(float $letterSpacing): TextStyleBase {
-    if ($letterSpacing instanceof Builder) $letterSpacing = $letterSpacing->data;
-    $this->data->setLetterSpacing($letterSpacing);
+    $this->data->setLetterSpacing(Builder::convert($letterSpacing));
     return $this;
   }
 
   public function overflow(string $overflow): TextStyleBase {
-    if ($overflow instanceof Builder) $overflow = $overflow->data;
-    $this->data->setOverflow($overflow);
+    $this->data->setOverflow(Builder::convert($overflow));
     return $this;
   }
 
   public function shadows(array $shadows): TextStyleBase {
-    if ($shadows instanceof Builder) $shadows = $shadows->data;
-    $this->data->setShadows($shadows);
+    $this->data->setShadows(Builder::convert($shadows));
     return $this;
   }
 
   public function textBaseline(string $textBaseline): TextStyleBase {
-    if ($textBaseline instanceof Builder) $textBaseline = $textBaseline->data;
-    $this->data->setTextBaseline($textBaseline);
+    $this->data->setTextBaseline(Builder::convert($textBaseline));
     return $this;
   }
 
   public function wordSpacing(float $wordSpacing): TextStyleBase {
-    if ($wordSpacing instanceof Builder) $wordSpacing = $wordSpacing->data;
-    $this->data->setWordSpacing($wordSpacing);
+    $this->data->setWordSpacing(Builder::convert($wordSpacing));
     return $this;
   }
 

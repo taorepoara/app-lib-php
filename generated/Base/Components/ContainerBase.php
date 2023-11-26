@@ -11,42 +11,36 @@ use Lenra\App\Components\Base\Builder;
 abstract class ContainerBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsContainer::class, Lenra\App\Response\View\Normalizer\ComponentsContainerNormalizer::class);
+    parent::__construct('container', \Lenra\App\Response\View\Model\ComponentsContainer::class, \Lenra\App\Response\View\Normalizer\ComponentsContainerNormalizer::class);
   }
 
   public function child($child): ContainerBase {
-    if ($child instanceof Builder) $child = $child->data;
-    $this->data->setChild($child);
+    $this->data->setChild(Builder::convert($child));
     return $this;
   }
 
   public function alignment(string $alignment): ContainerBase {
-    if ($alignment instanceof Builder) $alignment = $alignment->data;
-    $this->data->setAlignment($alignment);
+    $this->data->setAlignment(Builder::convert($alignment));
     return $this;
   }
 
   public function border(\Lenra\App\Components\Styles\Border $border): ContainerBase {
-    if ($border instanceof Builder) $border = $border->data;
-    $this->data->setBorder($border);
+    $this->data->setBorder(Builder::convert($border));
     return $this;
   }
 
   public function padding(\Lenra\App\Components\Styles\Padding $padding): ContainerBase {
-    if ($padding instanceof Builder) $padding = $padding->data;
-    $this->data->setPadding($padding);
+    $this->data->setPadding(Builder::convert($padding));
     return $this;
   }
 
   public function constraints(\Lenra\App\Components\Styles\BoxConstraints $constraints): ContainerBase {
-    if ($constraints instanceof Builder) $constraints = $constraints->data;
-    $this->data->setConstraints($constraints);
+    $this->data->setConstraints(Builder::convert($constraints));
     return $this;
   }
 
   public function decoration(\Lenra\App\Components\Styles\BoxDecoration $decoration): ContainerBase {
-    if ($decoration instanceof Builder) $decoration = $decoration->data;
-    $this->data->setDecoration($decoration);
+    $this->data->setDecoration(Builder::convert($decoration));
     return $this;
   }
 

@@ -30,4 +30,23 @@ class Builder implements \JsonSerializable
 
         return Builder::$normalizers[$this->normalizer]->normalize($this->data);
     }
+
+    static function convert($value): mixed
+    {
+        echo "convert\n";
+        var_dump($value);
+        if ($value instanceof Builder) {
+            echo "Builder\n";
+            $value = $value->data;
+        }
+        elseif (is_array($value)) {
+            echo "array\n";
+            $value = array_map(function ($item) {
+                return Builder::convert($item);
+            }, $value);
+        }
+        echo "return\n";
+        var_dump($value);
+        return $value;
+    }
 }

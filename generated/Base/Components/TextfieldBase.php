@@ -11,169 +11,147 @@ use Lenra\App\Components\Base\Builder;
 abstract class TextfieldBase extends Builder {
   public function __construct(string $value)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsTextfield::class, Lenra\App\Response\View\Normalizer\ComponentsTextfieldNormalizer::class);
-    $this->data->setValue($value);
+    parent::__construct('textfield', \Lenra\App\Response\View\Model\ComponentsTextfield::class, \Lenra\App\Response\View\Normalizer\ComponentsTextfieldNormalizer::class);
+    $this->value($value);
+  }
+
+  public function value(string $value): TextfieldBase {
+    $this->data->setValue(Builder::convert($value));
+    return $this;
   }
 
   public function autocorrect(bool $autocorrect): TextfieldBase {
-    if ($autocorrect instanceof Builder) $autocorrect = $autocorrect->data;
-    $this->data->setAutocorrect($autocorrect);
+    $this->data->setAutocorrect(Builder::convert($autocorrect));
     return $this;
   }
 
   public function autofillHints(array $autofillHints): TextfieldBase {
-    if ($autofillHints instanceof Builder) $autofillHints = $autofillHints->data;
-    $this->data->setAutofillHints($autofillHints);
+    $this->data->setAutofillHints(Builder::convert($autofillHints));
     return $this;
   }
 
   public function autofocus(bool $autofocus): TextfieldBase {
-    if ($autofocus instanceof Builder) $autofocus = $autofocus->data;
-    $this->data->setAutofocus($autofocus);
+    $this->data->setAutofocus(Builder::convert($autofocus));
     return $this;
   }
 
   public function buildCounter(\Lenra\App\Components\Listener $buildCounter): TextfieldBase {
-    if ($buildCounter instanceof Builder) $buildCounter = $buildCounter->data;
-    $this->data->setBuildCounter($buildCounter);
+    $this->data->setBuildCounter(Builder::convert($buildCounter));
     return $this;
   }
 
   public function style(\Lenra\App\Components\Styles\TextFieldStyle $style): TextfieldBase {
-    if ($style instanceof Builder) $style = $style->data;
-    $this->data->setStyle($style);
+    $this->data->setStyle(Builder::convert($style));
     return $this;
   }
 
   public function dragStartBehavior(string $dragStartBehavior): TextfieldBase {
-    if ($dragStartBehavior instanceof Builder) $dragStartBehavior = $dragStartBehavior->data;
-    $this->data->setDragStartBehavior($dragStartBehavior);
+    $this->data->setDragStartBehavior(Builder::convert($dragStartBehavior));
     return $this;
   }
 
   public function enabled(bool $enabled): TextfieldBase {
-    if ($enabled instanceof Builder) $enabled = $enabled->data;
-    $this->data->setEnabled($enabled);
+    $this->data->setEnabled(Builder::convert($enabled));
     return $this;
   }
 
   public function enableInteractiveSelection(bool $enableInteractiveSelection): TextfieldBase {
-    if ($enableInteractiveSelection instanceof Builder) $enableInteractiveSelection = $enableInteractiveSelection->data;
-    $this->data->setEnableInteractiveSelection($enableInteractiveSelection);
+    $this->data->setEnableInteractiveSelection(Builder::convert($enableInteractiveSelection));
     return $this;
   }
 
   public function expands(bool $expands): TextfieldBase {
-    if ($expands instanceof Builder) $expands = $expands->data;
-    $this->data->setExpands($expands);
+    $this->data->setExpands(Builder::convert($expands));
     return $this;
   }
 
   public function keyboardType(\Lenra\App\Components\Styles\TextInputType $keyboardType): TextfieldBase {
-    if ($keyboardType instanceof Builder) $keyboardType = $keyboardType->data;
-    $this->data->setKeyboardType($keyboardType);
+    $this->data->setKeyboardType(Builder::convert($keyboardType));
     return $this;
   }
 
   public function maxLength(int $maxLength): TextfieldBase {
-    if ($maxLength instanceof Builder) $maxLength = $maxLength->data;
-    $this->data->setMaxLength($maxLength);
+    $this->data->setMaxLength(Builder::convert($maxLength));
     return $this;
   }
 
   public function maxLengthEnforcement(string $maxLengthEnforcement): TextfieldBase {
-    if ($maxLengthEnforcement instanceof Builder) $maxLengthEnforcement = $maxLengthEnforcement->data;
-    $this->data->setMaxLengthEnforcement($maxLengthEnforcement);
+    $this->data->setMaxLengthEnforcement(Builder::convert($maxLengthEnforcement));
     return $this;
   }
 
   public function maxLines(int $maxLines): TextfieldBase {
-    if ($maxLines instanceof Builder) $maxLines = $maxLines->data;
-    $this->data->setMaxLines($maxLines);
+    $this->data->setMaxLines(Builder::convert($maxLines));
     return $this;
   }
 
   public function minLines(int $minLines): TextfieldBase {
-    if ($minLines instanceof Builder) $minLines = $minLines->data;
-    $this->data->setMinLines($minLines);
+    $this->data->setMinLines(Builder::convert($minLines));
     return $this;
   }
 
   public function obscureText(bool $obscureText): TextfieldBase {
-    if ($obscureText instanceof Builder) $obscureText = $obscureText->data;
-    $this->data->setObscureText($obscureText);
+    $this->data->setObscureText(Builder::convert($obscureText));
     return $this;
   }
 
   public function onAppPrivateCommand(\Lenra\App\Components\Listener $onAppPrivateCommand): TextfieldBase {
-    if ($onAppPrivateCommand instanceof Builder) $onAppPrivateCommand = $onAppPrivateCommand->data;
-    $this->data->setOnAppPrivateCommand($onAppPrivateCommand);
+    $this->data->setOnAppPrivateCommand(Builder::convert($onAppPrivateCommand));
     return $this;
   }
 
   public function onChanged(\Lenra\App\Components\Listener $onChanged): TextfieldBase {
-    if ($onChanged instanceof Builder) $onChanged = $onChanged->data;
-    $this->data->setOnChanged($onChanged);
+    $this->data->setOnChanged(Builder::convert($onChanged));
     return $this;
   }
 
   public function onEditingComplete(\Lenra\App\Components\Listener $onEditingComplete): TextfieldBase {
-    if ($onEditingComplete instanceof Builder) $onEditingComplete = $onEditingComplete->data;
-    $this->data->setOnEditingComplete($onEditingComplete);
+    $this->data->setOnEditingComplete(Builder::convert($onEditingComplete));
     return $this;
   }
 
   public function onSubmitted(\Lenra\App\Components\Listener $onSubmitted): TextfieldBase {
-    if ($onSubmitted instanceof Builder) $onSubmitted = $onSubmitted->data;
-    $this->data->setOnSubmitted($onSubmitted);
+    $this->data->setOnSubmitted(Builder::convert($onSubmitted));
     return $this;
   }
 
   public function onTap(\Lenra\App\Components\Listener $onTap): TextfieldBase {
-    if ($onTap instanceof Builder) $onTap = $onTap->data;
-    $this->data->setOnTap($onTap);
+    $this->data->setOnTap(Builder::convert($onTap));
     return $this;
   }
 
   public function readOnly(bool $readOnly): TextfieldBase {
-    if ($readOnly instanceof Builder) $readOnly = $readOnly->data;
-    $this->data->setReadOnly($readOnly);
+    $this->data->setReadOnly(Builder::convert($readOnly));
     return $this;
   }
 
   public function showCursor(bool $showCursor): TextfieldBase {
-    if ($showCursor instanceof Builder) $showCursor = $showCursor->data;
-    $this->data->setShowCursor($showCursor);
+    $this->data->setShowCursor(Builder::convert($showCursor));
     return $this;
   }
 
   public function textCapitalization(string $textCapitalization): TextfieldBase {
-    if ($textCapitalization instanceof Builder) $textCapitalization = $textCapitalization->data;
-    $this->data->setTextCapitalization($textCapitalization);
+    $this->data->setTextCapitalization(Builder::convert($textCapitalization));
     return $this;
   }
 
   public function textDirection(string $textDirection): TextfieldBase {
-    if ($textDirection instanceof Builder) $textDirection = $textDirection->data;
-    $this->data->setTextDirection($textDirection);
+    $this->data->setTextDirection(Builder::convert($textDirection));
     return $this;
   }
 
   public function textInputAction(string $textInputAction): TextfieldBase {
-    if ($textInputAction instanceof Builder) $textInputAction = $textInputAction->data;
-    $this->data->setTextInputAction($textInputAction);
+    $this->data->setTextInputAction(Builder::convert($textInputAction));
     return $this;
   }
 
   public function toolbarOptions(\Lenra\App\Components\Styles\ToolbarOptions $toolbarOptions): TextfieldBase {
-    if ($toolbarOptions instanceof Builder) $toolbarOptions = $toolbarOptions->data;
-    $this->data->setToolbarOptions($toolbarOptions);
+    $this->data->setToolbarOptions(Builder::convert($toolbarOptions));
     return $this;
   }
 
   public function name(string $name): TextfieldBase {
-    if ($name instanceof Builder) $name = $name->data;
-    $this->data->setName($name);
+    $this->data->setName(Builder::convert($name));
     return $this;
   }
 

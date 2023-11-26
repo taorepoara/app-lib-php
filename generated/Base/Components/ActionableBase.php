@@ -11,43 +11,42 @@ use Lenra\App\Components\Base\Builder;
 abstract class ActionableBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsActionable::class, Lenra\App\Response\View\Normalizer\ComponentsActionableNormalizer::class);
-    $this->data->setChild($child);
+    parent::__construct('actionable', \Lenra\App\Response\View\Model\ComponentsActionable::class, \Lenra\App\Response\View\Normalizer\ComponentsActionableNormalizer::class);
+    $this->child($child);
+  }
+
+  public function child($child): ActionableBase {
+    $this->data->setChild(Builder::convert($child));
+    return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): ActionableBase {
-    if ($onPressed instanceof Builder) $onPressed = $onPressed->data;
-    $this->data->setOnPressed($onPressed);
+    $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }
 
   public function onDoublePressed(\Lenra\App\Components\Listener $onDoublePressed): ActionableBase {
-    if ($onDoublePressed instanceof Builder) $onDoublePressed = $onDoublePressed->data;
-    $this->data->setOnDoublePressed($onDoublePressed);
+    $this->data->setOnDoublePressed(Builder::convert($onDoublePressed));
     return $this;
   }
 
   public function onLongPressed(\Lenra\App\Components\Listener $onLongPressed): ActionableBase {
-    if ($onLongPressed instanceof Builder) $onLongPressed = $onLongPressed->data;
-    $this->data->setOnLongPressed($onLongPressed);
+    $this->data->setOnLongPressed(Builder::convert($onLongPressed));
     return $this;
   }
 
   public function onPressedCancel(\Lenra\App\Components\Listener $onPressedCancel): ActionableBase {
-    if ($onPressedCancel instanceof Builder) $onPressedCancel = $onPressedCancel->data;
-    $this->data->setOnPressedCancel($onPressedCancel);
+    $this->data->setOnPressedCancel(Builder::convert($onPressedCancel));
     return $this;
   }
 
   public function onHovered(\Lenra\App\Components\Listener $onHovered): ActionableBase {
-    if ($onHovered instanceof Builder) $onHovered = $onHovered->data;
-    $this->data->setOnHovered($onHovered);
+    $this->data->setOnHovered(Builder::convert($onHovered));
     return $this;
   }
 
   public function submit(bool $submit): ActionableBase {
-    if ($submit instanceof Builder) $submit = $submit->data;
-    $this->data->setSubmit($submit);
+    $this->data->setSubmit(Builder::convert($submit));
     return $this;
   }
 

@@ -11,19 +11,22 @@ use Lenra\App\Components\Base\Builder;
 abstract class StackBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStack::class, Lenra\App\Response\View\Normalizer\ComponentsStackNormalizer::class);
-    $this->data->setChildren($children);
+    parent::__construct('stack', \Lenra\App\Response\View\Model\ComponentsStack::class, \Lenra\App\Response\View\Normalizer\ComponentsStackNormalizer::class);
+    $this->children($children);
+  }
+
+  public function children(array $children): StackBase {
+    $this->data->setChildren(Builder::convert($children));
+    return $this;
   }
 
   public function alignment(string $alignment): StackBase {
-    if ($alignment instanceof Builder) $alignment = $alignment->data;
-    $this->data->setAlignment($alignment);
+    $this->data->setAlignment(Builder::convert($alignment));
     return $this;
   }
 
   public function fit(string $fit): StackBase {
-    if ($fit instanceof Builder) $fit = $fit->data;
-    $this->data->setFit($fit);
+    $this->data->setFit(Builder::convert($fit));
     return $this;
   }
 

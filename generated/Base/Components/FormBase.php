@@ -11,13 +11,17 @@ use Lenra\App\Components\Base\Builder;
 abstract class FormBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsForm::class, Lenra\App\Response\View\Normalizer\ComponentsFormNormalizer::class);
-    $this->data->setChild($child);
+    parent::__construct('form', \Lenra\App\Response\View\Model\ComponentsForm::class, \Lenra\App\Response\View\Normalizer\ComponentsFormNormalizer::class);
+    $this->child($child);
+  }
+
+  public function child($child): FormBase {
+    $this->data->setChild(Builder::convert($child));
+    return $this;
   }
 
   public function onSubmit(\Lenra\App\Components\Listener $onSubmit): FormBase {
-    if ($onSubmit instanceof Builder) $onSubmit = $onSubmit->data;
-    $this->data->setOnSubmit($onSubmit);
+    $this->data->setOnSubmit(Builder::convert($onSubmit));
     return $this;
   }
 

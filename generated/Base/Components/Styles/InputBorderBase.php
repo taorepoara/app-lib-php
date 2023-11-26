@@ -11,19 +11,22 @@ use Lenra\App\Components\Base\Builder;
 abstract class InputBorderBase extends Builder {
   public function __construct(\Lenra\App\Components\Styles\BorderSide $borderSide)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesInputBorder::class, Lenra\App\Response\View\Normalizer\ComponentsStylesInputBorderNormalizer::class);
-    $this->data->setBorderSide($borderSide);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesInputBorder::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesInputBorderNormalizer::class);
+    $this->borderSide($borderSide);
   }
 
   public function type(string $type): InputBorderBase {
-    if ($type instanceof Builder) $type = $type->data;
-    $this->data->setType($type);
+    $this->data->setType(Builder::convert($type));
     return $this;
   }
 
   public function borderRadius(\Lenra\App\Components\Styles\BorderRadius $borderRadius): InputBorderBase {
-    if ($borderRadius instanceof Builder) $borderRadius = $borderRadius->data;
-    $this->data->setBorderRadius($borderRadius);
+    $this->data->setBorderRadius(Builder::convert($borderRadius));
+    return $this;
+  }
+
+  public function borderSide(\Lenra\App\Components\Styles\BorderSide $borderSide): InputBorderBase {
+    $this->data->setBorderSide(Builder::convert($borderSide));
     return $this;
   }
 

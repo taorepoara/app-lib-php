@@ -11,18 +11,16 @@ use Lenra\App\Components\Base\Builder;
 abstract class OffsetBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesOffset::class, Lenra\App\Response\View\Normalizer\ComponentsStylesOffsetNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesOffset::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesOffsetNormalizer::class);
   }
 
   public function dx(float $dx): OffsetBase {
-    if ($dx instanceof Builder) $dx = $dx->data;
-    $this->data->setDx($dx);
+    $this->data->setDx(Builder::convert($dx));
     return $this;
   }
 
   public function dy(float $dy): OffsetBase {
-    if ($dy instanceof Builder) $dy = $dy->data;
-    $this->data->setDy($dy);
+    $this->data->setDy(Builder::convert($dy));
     return $this;
   }
 

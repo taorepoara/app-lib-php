@@ -11,43 +11,42 @@ use Lenra\App\Components\Base\Builder;
 abstract class CheckboxBase extends Builder {
   public function __construct(bool $value)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsCheckbox::class, Lenra\App\Response\View\Normalizer\ComponentsCheckboxNormalizer::class);
-    $this->data->setValue($value);
+    parent::__construct('checkbox', \Lenra\App\Response\View\Model\ComponentsCheckbox::class, \Lenra\App\Response\View\Normalizer\ComponentsCheckboxNormalizer::class);
+    $this->value($value);
+  }
+
+  public function value(bool $value): CheckboxBase {
+    $this->data->setValue(Builder::convert($value));
+    return $this;
   }
 
   public function tristate(bool $tristate): CheckboxBase {
-    if ($tristate instanceof Builder) $tristate = $tristate->data;
-    $this->data->setTristate($tristate);
+    $this->data->setTristate(Builder::convert($tristate));
     return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): CheckboxBase {
-    if ($onPressed instanceof Builder) $onPressed = $onPressed->data;
-    $this->data->setOnPressed($onPressed);
+    $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }
 
   public function style(\Lenra\App\Components\Styles\CheckboxStyle $style): CheckboxBase {
-    if ($style instanceof Builder) $style = $style->data;
-    $this->data->setStyle($style);
+    $this->data->setStyle(Builder::convert($style));
     return $this;
   }
 
   public function materialTapTargetSize(string $materialTapTargetSize): CheckboxBase {
-    if ($materialTapTargetSize instanceof Builder) $materialTapTargetSize = $materialTapTargetSize->data;
-    $this->data->setMaterialTapTargetSize($materialTapTargetSize);
+    $this->data->setMaterialTapTargetSize(Builder::convert($materialTapTargetSize));
     return $this;
   }
 
   public function autofocus(bool $autofocus): CheckboxBase {
-    if ($autofocus instanceof Builder) $autofocus = $autofocus->data;
-    $this->data->setAutofocus($autofocus);
+    $this->data->setAutofocus(Builder::convert($autofocus));
     return $this;
   }
 
   public function name(string $name): CheckboxBase {
-    if ($name instanceof Builder) $name = $name->data;
-    $this->data->setName($name);
+    $this->data->setName(Builder::convert($name));
     return $this;
   }
 

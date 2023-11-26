@@ -11,30 +11,26 @@ use Lenra\App\Components\Base\Builder;
 abstract class BoxShadowBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxShadow::class, Lenra\App\Response\View\Normalizer\ComponentsStylesBoxShadowNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxShadow::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBoxShadowNormalizer::class);
   }
 
   public function color(int $color): BoxShadowBase {
-    if ($color instanceof Builder) $color = $color->data;
-    $this->data->setColor($color);
+    $this->data->setColor(Builder::convert($color));
     return $this;
   }
 
   public function blurRadius(float $blurRadius): BoxShadowBase {
-    if ($blurRadius instanceof Builder) $blurRadius = $blurRadius->data;
-    $this->data->setBlurRadius($blurRadius);
+    $this->data->setBlurRadius(Builder::convert($blurRadius));
     return $this;
   }
 
   public function spreadRadius(float $spreadRadius): BoxShadowBase {
-    if ($spreadRadius instanceof Builder) $spreadRadius = $spreadRadius->data;
-    $this->data->setSpreadRadius($spreadRadius);
+    $this->data->setSpreadRadius(Builder::convert($spreadRadius));
     return $this;
   }
 
   public function offset(\Lenra\App\Components\Styles\Offset $offset): BoxShadowBase {
-    if ($offset instanceof Builder) $offset = $offset->data;
-    $this->data->setOffset($offset);
+    $this->data->setOffset(Builder::convert($offset));
     return $this;
   }
 

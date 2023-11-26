@@ -11,25 +11,27 @@ use Lenra\App\Components\Base\Builder;
 abstract class OverlayEntryBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsOverlayEntry::class, Lenra\App\Response\View\Normalizer\ComponentsOverlayEntryNormalizer::class);
-    $this->data->setChild($child);
+    parent::__construct('overlayEntry', \Lenra\App\Response\View\Model\ComponentsOverlayEntry::class, \Lenra\App\Response\View\Normalizer\ComponentsOverlayEntryNormalizer::class);
+    $this->child($child);
+  }
+
+  public function child($child): OverlayEntryBase {
+    $this->data->setChild(Builder::convert($child));
+    return $this;
   }
 
   public function maintainState(bool $maintainState): OverlayEntryBase {
-    if ($maintainState instanceof Builder) $maintainState = $maintainState->data;
-    $this->data->setMaintainState($maintainState);
+    $this->data->setMaintainState(Builder::convert($maintainState));
     return $this;
   }
 
   public function opaque(bool $opaque): OverlayEntryBase {
-    if ($opaque instanceof Builder) $opaque = $opaque->data;
-    $this->data->setOpaque($opaque);
+    $this->data->setOpaque(Builder::convert($opaque));
     return $this;
   }
 
   public function showOverlay(bool $showOverlay): OverlayEntryBase {
-    if ($showOverlay instanceof Builder) $showOverlay = $showOverlay->data;
-    $this->data->setShowOverlay($showOverlay);
+    $this->data->setShowOverlay(Builder::convert($showOverlay));
     return $this;
   }
 

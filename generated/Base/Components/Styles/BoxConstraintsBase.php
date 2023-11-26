@@ -11,30 +11,26 @@ use Lenra\App\Components\Base\Builder;
 abstract class BoxConstraintsBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxConstraints::class, Lenra\App\Response\View\Normalizer\ComponentsStylesBoxConstraintsNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxConstraints::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBoxConstraintsNormalizer::class);
   }
 
   public function minWidth(float $minWidth): BoxConstraintsBase {
-    if ($minWidth instanceof Builder) $minWidth = $minWidth->data;
-    $this->data->setMinWidth($minWidth);
+    $this->data->setMinWidth(Builder::convert($minWidth));
     return $this;
   }
 
   public function maxWidth(float $maxWidth): BoxConstraintsBase {
-    if ($maxWidth instanceof Builder) $maxWidth = $maxWidth->data;
-    $this->data->setMaxWidth($maxWidth);
+    $this->data->setMaxWidth(Builder::convert($maxWidth));
     return $this;
   }
 
   public function minHeight(float $minHeight): BoxConstraintsBase {
-    if ($minHeight instanceof Builder) $minHeight = $minHeight->data;
-    $this->data->setMinHeight($minHeight);
+    $this->data->setMinHeight(Builder::convert($minHeight));
     return $this;
   }
 
   public function maxHeight(float $maxHeight): BoxConstraintsBase {
-    if ($maxHeight instanceof Builder) $maxHeight = $maxHeight->data;
-    $this->data->setMaxHeight($maxHeight);
+    $this->data->setMaxHeight(Builder::convert($maxHeight));
     return $this;
   }
 

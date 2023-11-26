@@ -11,72 +11,61 @@ use Lenra\App\Components\Base\Builder;
 abstract class SliderBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsSlider::class, Lenra\App\Response\View\Normalizer\ComponentsSliderNormalizer::class);
+    parent::__construct('slider', \Lenra\App\Response\View\Model\ComponentsSlider::class, \Lenra\App\Response\View\Normalizer\ComponentsSliderNormalizer::class);
   }
 
   public function style(\Lenra\App\Components\Styles\SliderStyle $style): SliderBase {
-    if ($style instanceof Builder) $style = $style->data;
-    $this->data->setStyle($style);
+    $this->data->setStyle(Builder::convert($style));
     return $this;
   }
 
   public function autofocus(bool $autofocus): SliderBase {
-    if ($autofocus instanceof Builder) $autofocus = $autofocus->data;
-    $this->data->setAutofocus($autofocus);
+    $this->data->setAutofocus(Builder::convert($autofocus));
     return $this;
   }
 
   public function divisions(float $divisions): SliderBase {
-    if ($divisions instanceof Builder) $divisions = $divisions->data;
-    $this->data->setDivisions($divisions);
+    $this->data->setDivisions(Builder::convert($divisions));
     return $this;
   }
 
   public function label(string $label): SliderBase {
-    if ($label instanceof Builder) $label = $label->data;
-    $this->data->setLabel($label);
+    $this->data->setLabel(Builder::convert($label));
     return $this;
   }
 
   public function min(float $min): SliderBase {
-    if ($min instanceof Builder) $min = $min->data;
-    $this->data->setMin($min);
+    $this->data->setMin(Builder::convert($min));
     return $this;
   }
 
   public function max(float $max): SliderBase {
-    if ($max instanceof Builder) $max = $max->data;
-    $this->data->setMax($max);
+    $this->data->setMax(Builder::convert($max));
     return $this;
   }
 
   public function onChanged(\Lenra\App\Components\Listener $onChanged): SliderBase {
-    if ($onChanged instanceof Builder) $onChanged = $onChanged->data;
-    $this->data->setOnChanged($onChanged);
+    $this->data->setOnChanged(Builder::convert($onChanged));
     return $this;
   }
 
   public function onChangeEnd(\Lenra\App\Components\Listener $onChangeEnd): SliderBase {
-    if ($onChangeEnd instanceof Builder) $onChangeEnd = $onChangeEnd->data;
-    $this->data->setOnChangeEnd($onChangeEnd);
+    $this->data->setOnChangeEnd(Builder::convert($onChangeEnd));
     return $this;
   }
 
   public function onChangeStart(\Lenra\App\Components\Listener $onChangeStart): SliderBase {
-    if ($onChangeStart instanceof Builder) $onChangeStart = $onChangeStart->data;
-    $this->data->setOnChangeStart($onChangeStart);
+    $this->data->setOnChangeStart(Builder::convert($onChangeStart));
     return $this;
   }
 
   public function value(float $value): SliderBase {
-    if ($value instanceof Builder) $value = $value->data;
-    $this->data->setValue($value);
+    $this->data->setValue(Builder::convert($value));
     return $this;
   }
 
   public function name(string $name): SliderBase {
-    if ($name instanceof Builder) $name = $name->data;
-    $this->data->setName($name);
+    $this->data->setName(Builder::convert($name));
     return $this;
   }
 

@@ -11,25 +11,27 @@ use Lenra\App\Components\Base\Builder;
 abstract class ViewBase extends Builder {
   public function __construct(string $name)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsView::class, Lenra\App\Response\View\Normalizer\ComponentsViewNormalizer::class);
-    $this->data->setName($name);
+    parent::__construct('view', \Lenra\App\Response\View\Model\ComponentsView::class, \Lenra\App\Response\View\Normalizer\ComponentsViewNormalizer::class);
+    $this->name($name);
+  }
+
+  public function name(string $name): ViewBase {
+    $this->data->setName(Builder::convert($name));
+    return $this;
   }
 
   public function props($props): ViewBase {
-    if ($props instanceof Builder) $props = $props->data;
-    $this->data->setProps($props);
+    $this->data->setProps(Builder::convert($props));
     return $this;
   }
 
   public function find(\Lenra\App\Components\View\Definitions\Find $find): ViewBase {
-    if ($find instanceof Builder) $find = $find->data;
-    $this->data->setFind($find);
+    $this->data->setFind(Builder::convert($find));
     return $this;
   }
 
   public function context($context): ViewBase {
-    if ($context instanceof Builder) $context = $context->data;
-    $this->data->setContext($context);
+    $this->data->setContext(Builder::convert($context));
     return $this;
   }
 

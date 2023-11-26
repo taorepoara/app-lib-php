@@ -11,30 +11,26 @@ use Lenra\App\Components\Base\Builder;
 abstract class BorderBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorder::class, Lenra\App\Response\View\Normalizer\ComponentsStylesBorderNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorder::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBorderNormalizer::class);
   }
 
   public function top(\Lenra\App\Components\Styles\BorderSide $top): BorderBase {
-    if ($top instanceof Builder) $top = $top->data;
-    $this->data->setTop($top);
+    $this->data->setTop(Builder::convert($top));
     return $this;
   }
 
   public function left(\Lenra\App\Components\Styles\BorderSide $left): BorderBase {
-    if ($left instanceof Builder) $left = $left->data;
-    $this->data->setLeft($left);
+    $this->data->setLeft(Builder::convert($left));
     return $this;
   }
 
   public function bottom(\Lenra\App\Components\Styles\BorderSide $bottom): BorderBase {
-    if ($bottom instanceof Builder) $bottom = $bottom->data;
-    $this->data->setBottom($bottom);
+    $this->data->setBottom(Builder::convert($bottom));
     return $this;
   }
 
   public function right(\Lenra\App\Components\Styles\BorderSide $right): BorderBase {
-    if ($right instanceof Builder) $right = $right->data;
-    $this->data->setRight($right);
+    $this->data->setRight(Builder::convert($right));
     return $this;
   }
 

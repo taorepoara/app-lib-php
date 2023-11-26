@@ -11,30 +11,26 @@ use Lenra\App\Components\Base\Builder;
 abstract class TextInputTypeBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextInputType::class, Lenra\App\Response\View\Normalizer\ComponentsStylesTextInputTypeNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextInputType::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesTextInputTypeNormalizer::class);
   }
 
   public function copy(bool $copy): TextInputTypeBase {
-    if ($copy instanceof Builder) $copy = $copy->data;
-    $this->data->setCopy($copy);
+    $this->data->setCopy(Builder::convert($copy));
     return $this;
   }
 
   public function cut(bool $cut): TextInputTypeBase {
-    if ($cut instanceof Builder) $cut = $cut->data;
-    $this->data->setCut($cut);
+    $this->data->setCut(Builder::convert($cut));
     return $this;
   }
 
   public function paste(bool $paste): TextInputTypeBase {
-    if ($paste instanceof Builder) $paste = $paste->data;
-    $this->data->setPaste($paste);
+    $this->data->setPaste(Builder::convert($paste));
     return $this;
   }
 
   public function selectAll(bool $selectAll): TextInputTypeBase {
-    if ($selectAll instanceof Builder) $selectAll = $selectAll->data;
-    $this->data->setSelectAll($selectAll);
+    $this->data->setSelectAll(Builder::convert($selectAll));
     return $this;
   }
 

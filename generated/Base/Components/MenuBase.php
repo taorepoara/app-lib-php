@@ -11,8 +11,13 @@ use Lenra\App\Components\Base\Builder;
 abstract class MenuBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsMenu::class, Lenra\App\Response\View\Normalizer\ComponentsMenuNormalizer::class);
-    $this->data->setChildren($children);
+    parent::__construct('menu', \Lenra\App\Response\View\Model\ComponentsMenu::class, \Lenra\App\Response\View\Normalizer\ComponentsMenuNormalizer::class);
+    $this->children($children);
+  }
+
+  public function children(array $children): MenuBase {
+    $this->data->setChildren(Builder::convert($children));
+    return $this;
   }
 
 }

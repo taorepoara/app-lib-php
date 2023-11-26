@@ -11,32 +11,38 @@ use Lenra\App\Components\Base\Builder;
 abstract class DropdownButtonBase extends Builder {
   public function __construct(string $text ,$child)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsDropdownButton::class, Lenra\App\Response\View\Normalizer\ComponentsDropdownButtonNormalizer::class);
-    $this->data->setText($text);
-    $this->data->setChild($child);
+    parent::__construct('dropdownButton', \Lenra\App\Response\View\Model\ComponentsDropdownButton::class, \Lenra\App\Response\View\Normalizer\ComponentsDropdownButtonNormalizer::class);
+    $this->text($text);
+    $this->child($child);
+  }
+
+  public function text(string $text): DropdownButtonBase {
+    $this->data->setText(Builder::convert($text));
+    return $this;
   }
 
   public function disabled(bool $disabled): DropdownButtonBase {
-    if ($disabled instanceof Builder) $disabled = $disabled->data;
-    $this->data->setDisabled($disabled);
+    $this->data->setDisabled(Builder::convert($disabled));
     return $this;
   }
 
   public function size(string $size): DropdownButtonBase {
-    if ($size instanceof Builder) $size = $size->data;
-    $this->data->setSize($size);
+    $this->data->setSize(Builder::convert($size));
     return $this;
   }
 
   public function mainStyle(string $mainStyle): DropdownButtonBase {
-    if ($mainStyle instanceof Builder) $mainStyle = $mainStyle->data;
-    $this->data->setMainStyle($mainStyle);
+    $this->data->setMainStyle(Builder::convert($mainStyle));
+    return $this;
+  }
+
+  public function child($child): DropdownButtonBase {
+    $this->data->setChild(Builder::convert($child));
     return $this;
   }
 
   public function icon(\Lenra\App\Components\Icon $icon): DropdownButtonBase {
-    if ($icon instanceof Builder) $icon = $icon->data;
-    $this->data->setIcon($icon);
+    $this->data->setIcon(Builder::convert($icon));
     return $this;
   }
 

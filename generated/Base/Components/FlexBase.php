@@ -11,67 +11,62 @@ use Lenra\App\Components\Base\Builder;
 abstract class FlexBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsFlex::class, Lenra\App\Response\View\Normalizer\ComponentsFlexNormalizer::class);
-    $this->data->setChildren($children);
+    parent::__construct('flex', \Lenra\App\Response\View\Model\ComponentsFlex::class, \Lenra\App\Response\View\Normalizer\ComponentsFlexNormalizer::class);
+    $this->children($children);
+  }
+
+  public function children(array $children): FlexBase {
+    $this->data->setChildren(Builder::convert($children));
+    return $this;
   }
 
   public function direction(string $direction): FlexBase {
-    if ($direction instanceof Builder) $direction = $direction->data;
-    $this->data->setDirection($direction);
+    $this->data->setDirection(Builder::convert($direction));
     return $this;
   }
 
   public function mainAxisAlignment(string $mainAxisAlignment): FlexBase {
-    if ($mainAxisAlignment instanceof Builder) $mainAxisAlignment = $mainAxisAlignment->data;
-    $this->data->setMainAxisAlignment($mainAxisAlignment);
+    $this->data->setMainAxisAlignment(Builder::convert($mainAxisAlignment));
     return $this;
   }
 
   public function crossAxisAlignment(string $crossAxisAlignment): FlexBase {
-    if ($crossAxisAlignment instanceof Builder) $crossAxisAlignment = $crossAxisAlignment->data;
-    $this->data->setCrossAxisAlignment($crossAxisAlignment);
+    $this->data->setCrossAxisAlignment(Builder::convert($crossAxisAlignment));
     return $this;
   }
 
   public function spacing(float $spacing): FlexBase {
-    if ($spacing instanceof Builder) $spacing = $spacing->data;
-    $this->data->setSpacing($spacing);
+    $this->data->setSpacing(Builder::convert($spacing));
     return $this;
   }
 
   public function fillParent(bool $fillParent): FlexBase {
-    if ($fillParent instanceof Builder) $fillParent = $fillParent->data;
-    $this->data->setFillParent($fillParent);
+    $this->data->setFillParent(Builder::convert($fillParent));
     return $this;
   }
 
   public function scroll(bool $scroll): FlexBase {
-    if ($scroll instanceof Builder) $scroll = $scroll->data;
-    $this->data->setScroll($scroll);
+    $this->data->setScroll(Builder::convert($scroll));
     return $this;
   }
 
   public function padding(\Lenra\App\Components\Styles\Padding $padding): FlexBase {
-    if ($padding instanceof Builder) $padding = $padding->data;
-    $this->data->setPadding($padding);
+    $this->data->setPadding(Builder::convert($padding));
     return $this;
   }
 
   public function horizontalDirection(string $horizontalDirection): FlexBase {
-    if ($horizontalDirection instanceof Builder) $horizontalDirection = $horizontalDirection->data;
-    $this->data->setHorizontalDirection($horizontalDirection);
+    $this->data->setHorizontalDirection(Builder::convert($horizontalDirection));
     return $this;
   }
 
   public function verticalDirection(string $verticalDirection): FlexBase {
-    if ($verticalDirection instanceof Builder) $verticalDirection = $verticalDirection->data;
-    $this->data->setVerticalDirection($verticalDirection);
+    $this->data->setVerticalDirection(Builder::convert($verticalDirection));
     return $this;
   }
 
   public function textBaseline(string $textBaseline): FlexBase {
-    if ($textBaseline instanceof Builder) $textBaseline = $textBaseline->data;
-    $this->data->setTextBaseline($textBaseline);
+    $this->data->setTextBaseline(Builder::convert($textBaseline));
     return $this;
   }
 

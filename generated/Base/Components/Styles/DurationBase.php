@@ -11,42 +11,36 @@ use Lenra\App\Components\Base\Builder;
 abstract class DurationBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesDuration::class, Lenra\App\Response\View\Normalizer\ComponentsStylesDurationNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesDuration::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesDurationNormalizer::class);
   }
 
   public function days(int $days): DurationBase {
-    if ($days instanceof Builder) $days = $days->data;
-    $this->data->setDays($days);
+    $this->data->setDays(Builder::convert($days));
     return $this;
   }
 
   public function hours(int $hours): DurationBase {
-    if ($hours instanceof Builder) $hours = $hours->data;
-    $this->data->setHours($hours);
+    $this->data->setHours(Builder::convert($hours));
     return $this;
   }
 
   public function minutes(int $minutes): DurationBase {
-    if ($minutes instanceof Builder) $minutes = $minutes->data;
-    $this->data->setMinutes($minutes);
+    $this->data->setMinutes(Builder::convert($minutes));
     return $this;
   }
 
   public function seconds(int $seconds): DurationBase {
-    if ($seconds instanceof Builder) $seconds = $seconds->data;
-    $this->data->setSeconds($seconds);
+    $this->data->setSeconds(Builder::convert($seconds));
     return $this;
   }
 
   public function milliseconds(int $milliseconds): DurationBase {
-    if ($milliseconds instanceof Builder) $milliseconds = $milliseconds->data;
-    $this->data->setMilliseconds($milliseconds);
+    $this->data->setMilliseconds(Builder::convert($milliseconds));
     return $this;
   }
 
   public function microseconds(int $microseconds): DurationBase {
-    if ($microseconds instanceof Builder) $microseconds = $microseconds->data;
-    $this->data->setMicroseconds($microseconds);
+    $this->data->setMicroseconds(Builder::convert($microseconds));
     return $this;
   }
 

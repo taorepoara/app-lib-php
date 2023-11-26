@@ -37,6 +37,7 @@ class TypeParser
   private string $model;
   private string $normalizer;
   private string $className;
+  private string|Null $type;
 
   private string $baseClassNameSpace;
   private string $baseClassPath;
@@ -69,6 +70,10 @@ class TypeParser
     $this->model = "Lenra\\App\\Response\\View\\Model\\" . $genClassName;
     $this->normalizer = "Lenra\\App\\Response\\View\\Normalizer\\" . $genClassName . "Normalizer";
     $this->className = array_pop($defPathParts);
+    $this->type = array_reduce(["properties", "_type", "const"], function ($o, $key) {
+      if (isset($o) && isset($o[$key])) return $o[$key];
+      return Null;
+    }, $schema);
 
     $this->baseClassNameSpace = "Lenra\\App\\Base\\" . join("\\", $defPathParts);
     $this->baseClassPath = $this->baseClassNameSpace . "\\" . $this->className . "Base";
@@ -99,9 +104,8 @@ class TypeParser
       $property = new Property($key, $name, '$' . $name, $type, $setter);
       if (in_array($key, $required)) {
         array_push($this->constructArgs, $property);
-      } else {
-        array_push($this->properties, $property);
       }
+      array_push($this->properties, $property);
     }
   }
 
@@ -124,24 +128,19 @@ class TypeParser
     $code .= "/**\n* @template-extends Builder<\\" . $this->model .  ">\n*/\n";
     $code .= "abstract class " . $this->className . "Base extends Builder {\n";
 
-    $componentType = array_reduce(["properties", "_type", "const"], function ($o, $key) {
-      if (isset($o) && isset($o[$key])) return $o[$key];
-      return Null;
-    });
-    $componentType = isset($componentType) ? "'" . $componentType . "'" : 'Null';
+    $componentType = isset($this->type) ? "'" . $this->type . "'" : 'Null';
     $code .= "  public function __construct(" . join(" ,", array_map(function ($arg) {
       return $arg->arg();
     }, $this->constructArgs)) . ")\n  {\n";
-    $code .= "    parent::__construct(" . $componentType . ", \\" . $this->model . "::class, " . $this->normalizer . "::class);\n";
+    $code .= "    parent::__construct(" . $componentType . ", \\" . $this->model . "::class, \\" . $this->normalizer . "::class);\n";
     $code .= join("", array_map(function ($arg) {
-      return '    $this->data->' . $arg->setter . "(" . $arg->var . ");\n";
+      return '    $this->' . $arg->name . "(" . $arg->var . ");\n";
     }, $this->constructArgs));
     $code .= "  }\n\n";
 
     foreach ($this->properties as $prop) {
       $code .= "  public function " . $prop->name . "(" . $prop->arg() . "): " . $this->className . "Base {\n";
-      $code .= "    if (" . $prop->var . " instanceof Builder) " . $prop->var . " = " . $prop->var . "->data;\n";
-      $code .= "    \$this->data->" . $prop->setter . "(" . $prop->var . ");\n";
+      $code .= "    \$this->data->" . $prop->setter . "(Builder::convert(" . $prop->var . "));\n";
       $code .= "    return \$this;\n";
       $code .= "  }\n\n";
     }

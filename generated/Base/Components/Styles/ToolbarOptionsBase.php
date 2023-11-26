@@ -11,18 +11,16 @@ use Lenra\App\Components\Base\Builder;
 abstract class ToolbarOptionsBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToolbarOptions::class, Lenra\App\Response\View\Normalizer\ComponentsStylesToolbarOptionsNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToolbarOptions::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesToolbarOptionsNormalizer::class);
   }
 
   public function decimal(bool $decimal): ToolbarOptionsBase {
-    if ($decimal instanceof Builder) $decimal = $decimal->data;
-    $this->data->setDecimal($decimal);
+    $this->data->setDecimal(Builder::convert($decimal));
     return $this;
   }
 
   public function signed(bool $signed): ToolbarOptionsBase {
-    if ($signed instanceof Builder) $signed = $signed->data;
-    $this->data->setSigned($signed);
+    $this->data->setSigned(Builder::convert($signed));
     return $this;
   }
 

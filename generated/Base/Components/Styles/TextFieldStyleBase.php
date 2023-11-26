@@ -11,90 +11,76 @@ use Lenra\App\Components\Base\Builder;
 abstract class TextFieldStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextFieldStyle::class, Lenra\App\Response\View\Normalizer\ComponentsStylesTextFieldStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextFieldStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesTextFieldStyleNormalizer::class);
   }
 
   public function cursorColor(int $cursorColor): TextFieldStyleBase {
-    if ($cursorColor instanceof Builder) $cursorColor = $cursorColor->data;
-    $this->data->setCursorColor($cursorColor);
+    $this->data->setCursorColor(Builder::convert($cursorColor));
     return $this;
   }
 
   public function cursorHeight(float $cursorHeight): TextFieldStyleBase {
-    if ($cursorHeight instanceof Builder) $cursorHeight = $cursorHeight->data;
-    $this->data->setCursorHeight($cursorHeight);
+    $this->data->setCursorHeight(Builder::convert($cursorHeight));
     return $this;
   }
 
   public function cursorRadius(\Lenra\App\Components\Styles\Radius $cursorRadius): TextFieldStyleBase {
-    if ($cursorRadius instanceof Builder) $cursorRadius = $cursorRadius->data;
-    $this->data->setCursorRadius($cursorRadius);
+    $this->data->setCursorRadius(Builder::convert($cursorRadius));
     return $this;
   }
 
   public function cursorWidth(float $cursorWidth): TextFieldStyleBase {
-    if ($cursorWidth instanceof Builder) $cursorWidth = $cursorWidth->data;
-    $this->data->setCursorWidth($cursorWidth);
+    $this->data->setCursorWidth(Builder::convert($cursorWidth));
     return $this;
   }
 
   public function decoration(\Lenra\App\Components\Styles\InputDecoration $decoration): TextFieldStyleBase {
-    if ($decoration instanceof Builder) $decoration = $decoration->data;
-    $this->data->setDecoration($decoration);
+    $this->data->setDecoration(Builder::convert($decoration));
     return $this;
   }
 
   public function keyboardAppearance(string $keyboardAppearance): TextFieldStyleBase {
-    if ($keyboardAppearance instanceof Builder) $keyboardAppearance = $keyboardAppearance->data;
-    $this->data->setKeyboardAppearance($keyboardAppearance);
+    $this->data->setKeyboardAppearance(Builder::convert($keyboardAppearance));
     return $this;
   }
 
   public function obscuringCharacter(string $obscuringCharacter): TextFieldStyleBase {
-    if ($obscuringCharacter instanceof Builder) $obscuringCharacter = $obscuringCharacter->data;
-    $this->data->setObscuringCharacter($obscuringCharacter);
+    $this->data->setObscuringCharacter(Builder::convert($obscuringCharacter));
     return $this;
   }
 
   public function scrollPadding(\Lenra\App\Components\Styles\Padding $scrollPadding): TextFieldStyleBase {
-    if ($scrollPadding instanceof Builder) $scrollPadding = $scrollPadding->data;
-    $this->data->setScrollPadding($scrollPadding);
+    $this->data->setScrollPadding(Builder::convert($scrollPadding));
     return $this;
   }
 
   public function selectionHeightStyle(string $selectionHeightStyle): TextFieldStyleBase {
-    if ($selectionHeightStyle instanceof Builder) $selectionHeightStyle = $selectionHeightStyle->data;
-    $this->data->setSelectionHeightStyle($selectionHeightStyle);
+    $this->data->setSelectionHeightStyle(Builder::convert($selectionHeightStyle));
     return $this;
   }
 
   public function selectionWidthStyle(string $selectionWidthStyle): TextFieldStyleBase {
-    if ($selectionWidthStyle instanceof Builder) $selectionWidthStyle = $selectionWidthStyle->data;
-    $this->data->setSelectionWidthStyle($selectionWidthStyle);
+    $this->data->setSelectionWidthStyle(Builder::convert($selectionWidthStyle));
     return $this;
   }
 
   public function strutStyle(\Lenra\App\Components\Styles\StrutStyle $strutStyle): TextFieldStyleBase {
-    if ($strutStyle instanceof Builder) $strutStyle = $strutStyle->data;
-    $this->data->setStrutStyle($strutStyle);
+    $this->data->setStrutStyle(Builder::convert($strutStyle));
     return $this;
   }
 
   public function textStyle(\Lenra\App\Components\Styles\TextStyle $textStyle): TextFieldStyleBase {
-    if ($textStyle instanceof Builder) $textStyle = $textStyle->data;
-    $this->data->setTextStyle($textStyle);
+    $this->data->setTextStyle(Builder::convert($textStyle));
     return $this;
   }
 
   public function textAlign(string $textAlign): TextFieldStyleBase {
-    if ($textAlign instanceof Builder) $textAlign = $textAlign->data;
-    $this->data->setTextAlign($textAlign);
+    $this->data->setTextAlign(Builder::convert($textAlign));
     return $this;
   }
 
   public function textAlignVertical(string $textAlignVertical): TextFieldStyleBase {
-    if ($textAlignVertical instanceof Builder) $textAlignVertical = $textAlignVertical->data;
-    $this->data->setTextAlignVertical($textAlignVertical);
+    $this->data->setTextAlignVertical(Builder::convert($textAlignVertical));
     return $this;
   }
 

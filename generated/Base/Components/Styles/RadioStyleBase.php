@@ -11,42 +11,36 @@ use Lenra\App\Components\Base\Builder;
 abstract class RadioStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadioStyle::class, Lenra\App\Response\View\Normalizer\ComponentsStylesRadioStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadioStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesRadioStyleNormalizer::class);
   }
 
   public function activeColor(int $activeColor): RadioStyleBase {
-    if ($activeColor instanceof Builder) $activeColor = $activeColor->data;
-    $this->data->setActiveColor($activeColor);
+    $this->data->setActiveColor(Builder::convert($activeColor));
     return $this;
   }
 
   public function focusColor(int $focusColor): RadioStyleBase {
-    if ($focusColor instanceof Builder) $focusColor = $focusColor->data;
-    $this->data->setFocusColor($focusColor);
+    $this->data->setFocusColor(Builder::convert($focusColor));
     return $this;
   }
 
   public function hovercolor(int $hovercolor): RadioStyleBase {
-    if ($hovercolor instanceof Builder) $hovercolor = $hovercolor->data;
-    $this->data->setHovercolor($hovercolor);
+    $this->data->setHovercolor(Builder::convert($hovercolor));
     return $this;
   }
 
   public function unselectedColor(int $unselectedColor): RadioStyleBase {
-    if ($unselectedColor instanceof Builder) $unselectedColor = $unselectedColor->data;
-    $this->data->setUnselectedColor($unselectedColor);
+    $this->data->setUnselectedColor(Builder::convert($unselectedColor));
     return $this;
   }
 
   public function splashRadius(float $splashRadius): RadioStyleBase {
-    if ($splashRadius instanceof Builder) $splashRadius = $splashRadius->data;
-    $this->data->setSplashRadius($splashRadius);
+    $this->data->setSplashRadius(Builder::convert($splashRadius));
     return $this;
   }
 
   public function visualDensity(string $visualDensity): RadioStyleBase {
-    if ($visualDensity instanceof Builder) $visualDensity = $visualDensity->data;
-    $this->data->setVisualDensity($visualDensity);
+    $this->data->setVisualDensity(Builder::convert($visualDensity));
     return $this;
   }
 

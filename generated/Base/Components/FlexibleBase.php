@@ -11,19 +11,22 @@ use Lenra\App\Components\Base\Builder;
 abstract class FlexibleBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsFlexible::class, Lenra\App\Response\View\Normalizer\ComponentsFlexibleNormalizer::class);
-    $this->data->setChild($child);
+    parent::__construct('flexible', \Lenra\App\Response\View\Model\ComponentsFlexible::class, \Lenra\App\Response\View\Normalizer\ComponentsFlexibleNormalizer::class);
+    $this->child($child);
   }
 
   public function flex(int $flex): FlexibleBase {
-    if ($flex instanceof Builder) $flex = $flex->data;
-    $this->data->setFlex($flex);
+    $this->data->setFlex(Builder::convert($flex));
     return $this;
   }
 
   public function fit(string $fit): FlexibleBase {
-    if ($fit instanceof Builder) $fit = $fit->data;
-    $this->data->setFit($fit);
+    $this->data->setFit(Builder::convert($fit));
+    return $this;
+  }
+
+  public function child($child): FlexibleBase {
+    $this->data->setChild(Builder::convert($child));
     return $this;
   }
 

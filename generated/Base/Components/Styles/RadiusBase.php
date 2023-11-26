@@ -11,18 +11,16 @@ use Lenra\App\Components\Base\Builder;
 abstract class RadiusBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadius::class, Lenra\App\Response\View\Normalizer\ComponentsStylesRadiusNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadius::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesRadiusNormalizer::class);
   }
 
   public function x(float $x): RadiusBase {
-    if ($x instanceof Builder) $x = $x->data;
-    $this->data->setX($x);
+    $this->data->setX(Builder::convert($x));
     return $this;
   }
 
   public function y(float $y): RadiusBase {
-    if ($y instanceof Builder) $y = $y->data;
-    $this->data->setY($y);
+    $this->data->setY(Builder::convert($y));
     return $this;
   }
 

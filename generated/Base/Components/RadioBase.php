@@ -11,44 +11,48 @@ use Lenra\App\Components\Base\Builder;
 abstract class RadioBase extends Builder {
   public function __construct(string $value ,string $groupValue)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsRadio::class, Lenra\App\Response\View\Normalizer\ComponentsRadioNormalizer::class);
-    $this->data->setValue($value);
-    $this->data->setGroupValue($groupValue);
+    parent::__construct('radio', \Lenra\App\Response\View\Model\ComponentsRadio::class, \Lenra\App\Response\View\Normalizer\ComponentsRadioNormalizer::class);
+    $this->value($value);
+    $this->groupValue($groupValue);
   }
 
   public function autofocus(bool $autofocus): RadioBase {
-    if ($autofocus instanceof Builder) $autofocus = $autofocus->data;
-    $this->data->setAutofocus($autofocus);
+    $this->data->setAutofocus(Builder::convert($autofocus));
+    return $this;
+  }
+
+  public function value(string $value): RadioBase {
+    $this->data->setValue(Builder::convert($value));
+    return $this;
+  }
+
+  public function groupValue(string $groupValue): RadioBase {
+    $this->data->setGroupValue(Builder::convert($groupValue));
     return $this;
   }
 
   public function materialTapTargetSize(string $materialTapTargetSize): RadioBase {
-    if ($materialTapTargetSize instanceof Builder) $materialTapTargetSize = $materialTapTargetSize->data;
-    $this->data->setMaterialTapTargetSize($materialTapTargetSize);
+    $this->data->setMaterialTapTargetSize(Builder::convert($materialTapTargetSize));
     return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): RadioBase {
-    if ($onPressed instanceof Builder) $onPressed = $onPressed->data;
-    $this->data->setOnPressed($onPressed);
+    $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }
 
   public function toggleable(bool $toggleable): RadioBase {
-    if ($toggleable instanceof Builder) $toggleable = $toggleable->data;
-    $this->data->setToggleable($toggleable);
+    $this->data->setToggleable(Builder::convert($toggleable));
     return $this;
   }
 
   public function style(\Lenra\App\Components\Styles\RadioStyle $style): RadioBase {
-    if ($style instanceof Builder) $style = $style->data;
-    $this->data->setStyle($style);
+    $this->data->setStyle(Builder::convert($style));
     return $this;
   }
 
   public function name(string $name): RadioBase {
-    if ($name instanceof Builder) $name = $name->data;
-    $this->data->setName($name);
+    $this->data->setName(Builder::convert($name));
     return $this;
   }
 

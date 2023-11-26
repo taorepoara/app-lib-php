@@ -11,30 +11,26 @@ use Lenra\App\Components\Base\Builder;
 abstract class PaddingBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesPadding::class, Lenra\App\Response\View\Normalizer\ComponentsStylesPaddingNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesPadding::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesPaddingNormalizer::class);
   }
 
   public function top(float $top): PaddingBase {
-    if ($top instanceof Builder) $top = $top->data;
-    $this->data->setTop($top);
+    $this->data->setTop(Builder::convert($top));
     return $this;
   }
 
   public function left(float $left): PaddingBase {
-    if ($left instanceof Builder) $left = $left->data;
-    $this->data->setLeft($left);
+    $this->data->setLeft(Builder::convert($left));
     return $this;
   }
 
   public function bottom(float $bottom): PaddingBase {
-    if ($bottom instanceof Builder) $bottom = $bottom->data;
-    $this->data->setBottom($bottom);
+    $this->data->setBottom(Builder::convert($bottom));
     return $this;
   }
 
   public function right(float $right): PaddingBase {
-    if ($right instanceof Builder) $right = $right->data;
-    $this->data->setRight($right);
+    $this->data->setRight(Builder::convert($right));
     return $this;
   }
 

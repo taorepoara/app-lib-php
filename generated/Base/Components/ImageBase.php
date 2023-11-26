@@ -11,91 +11,82 @@ use Lenra\App\Components\Base\Builder;
 abstract class ImageBase extends Builder {
   public function __construct(string $src)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsImage::class, Lenra\App\Response\View\Normalizer\ComponentsImageNormalizer::class);
-    $this->data->setSrc($src);
+    parent::__construct('image', \Lenra\App\Response\View\Model\ComponentsImage::class, \Lenra\App\Response\View\Normalizer\ComponentsImageNormalizer::class);
+    $this->src($src);
+  }
+
+  public function src(string $src): ImageBase {
+    $this->data->setSrc(Builder::convert($src));
+    return $this;
   }
 
   public function width(float $width): ImageBase {
-    if ($width instanceof Builder) $width = $width->data;
-    $this->data->setWidth($width);
+    $this->data->setWidth(Builder::convert($width));
     return $this;
   }
 
   public function height(float $height): ImageBase {
-    if ($height instanceof Builder) $height = $height->data;
-    $this->data->setHeight($height);
+    $this->data->setHeight(Builder::convert($height));
     return $this;
   }
 
   public function alignment(string $alignment): ImageBase {
-    if ($alignment instanceof Builder) $alignment = $alignment->data;
-    $this->data->setAlignment($alignment);
+    $this->data->setAlignment(Builder::convert($alignment));
     return $this;
   }
 
   public function centerSlice(\Lenra\App\Components\Styles\Rect $centerSlice): ImageBase {
-    if ($centerSlice instanceof Builder) $centerSlice = $centerSlice->data;
-    $this->data->setCenterSlice($centerSlice);
+    $this->data->setCenterSlice(Builder::convert($centerSlice));
     return $this;
   }
 
   public function errorPlaceholder($errorPlaceholder): ImageBase {
-    if ($errorPlaceholder instanceof Builder) $errorPlaceholder = $errorPlaceholder->data;
-    $this->data->setErrorPlaceholder($errorPlaceholder);
+    $this->data->setErrorPlaceholder(Builder::convert($errorPlaceholder));
     return $this;
   }
 
   public function excludeFromSemantics(bool $excludeFromSemantics): ImageBase {
-    if ($excludeFromSemantics instanceof Builder) $excludeFromSemantics = $excludeFromSemantics->data;
-    $this->data->setExcludeFromSemantics($excludeFromSemantics);
+    $this->data->setExcludeFromSemantics(Builder::convert($excludeFromSemantics));
     return $this;
   }
 
   public function filterQuality(string $filterQuality): ImageBase {
-    if ($filterQuality instanceof Builder) $filterQuality = $filterQuality->data;
-    $this->data->setFilterQuality($filterQuality);
+    $this->data->setFilterQuality(Builder::convert($filterQuality));
     return $this;
   }
 
   public function fit(string $fit): ImageBase {
-    if ($fit instanceof Builder) $fit = $fit->data;
-    $this->data->setFit($fit);
+    $this->data->setFit(Builder::convert($fit));
     return $this;
   }
 
   public function framePlaceholder($framePlaceholder): ImageBase {
-    if ($framePlaceholder instanceof Builder) $framePlaceholder = $framePlaceholder->data;
-    $this->data->setFramePlaceholder($framePlaceholder);
+    $this->data->setFramePlaceholder(Builder::convert($framePlaceholder));
     return $this;
   }
 
   public function gaplessPlayback(bool $gaplessPlayback): ImageBase {
-    if ($gaplessPlayback instanceof Builder) $gaplessPlayback = $gaplessPlayback->data;
-    $this->data->setGaplessPlayback($gaplessPlayback);
+    $this->data->setGaplessPlayback(Builder::convert($gaplessPlayback));
     return $this;
   }
 
   public function isAntiAlias(bool $isAntiAlias): ImageBase {
-    if ($isAntiAlias instanceof Builder) $isAntiAlias = $isAntiAlias->data;
-    $this->data->setIsAntiAlias($isAntiAlias);
+    $this->data->setIsAntiAlias(Builder::convert($isAntiAlias));
     return $this;
   }
 
   public function loadingPlaceholder($loadingPlaceholder): ImageBase {
-    if ($loadingPlaceholder instanceof Builder) $loadingPlaceholder = $loadingPlaceholder->data;
-    $this->data->setLoadingPlaceholder($loadingPlaceholder);
+    $this->data->setLoadingPlaceholder(Builder::convert($loadingPlaceholder));
     return $this;
   }
 
   public function repeat(string $repeat): ImageBase {
-    if ($repeat instanceof Builder) $repeat = $repeat->data;
-    $this->data->setRepeat($repeat);
+    $this->data->setRepeat(Builder::convert($repeat));
     return $this;
   }
 
   public function semanticLabel(string $semanticLabel): ImageBase {
-    if ($semanticLabel instanceof Builder) $semanticLabel = $semanticLabel->data;
-    $this->data->setSemanticLabel($semanticLabel);
+    $this->data->setSemanticLabel(Builder::convert($semanticLabel));
     return $this;
   }
 

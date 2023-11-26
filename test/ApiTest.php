@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+namespace Lenra\App\Test;
+
 use Lenra\App\Api;
 use PHPUnit\Framework\TestCase;
 

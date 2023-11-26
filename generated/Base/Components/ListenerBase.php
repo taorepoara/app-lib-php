@@ -11,13 +11,17 @@ use Lenra\App\Components\Base\Builder;
 abstract class ListenerBase extends Builder {
   public function __construct(string $name)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsListener::class, Lenra\App\Response\View\Normalizer\ComponentsListenerNormalizer::class);
-    $this->data->setName($name);
+    parent::__construct('listener', \Lenra\App\Response\View\Model\ComponentsListener::class, \Lenra\App\Response\View\Normalizer\ComponentsListenerNormalizer::class);
+    $this->name($name);
+  }
+
+  public function name(string $name): ListenerBase {
+    $this->data->setName(Builder::convert($name));
+    return $this;
   }
 
   public function props($props): ListenerBase {
-    if ($props instanceof Builder) $props = $props->data;
-    $this->data->setProps($props);
+    $this->data->setProps(Builder::convert($props));
     return $this;
   }
 

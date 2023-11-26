@@ -11,300 +11,251 @@ use Lenra\App\Components\Base\Builder;
 abstract class InputDecorationBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesInputDecoration::class, Lenra\App\Response\View\Normalizer\ComponentsStylesInputDecorationNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesInputDecoration::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesInputDecorationNormalizer::class);
   }
 
   public function alignLabelWithHint(bool $alignLabelWithHint): InputDecorationBase {
-    if ($alignLabelWithHint instanceof Builder) $alignLabelWithHint = $alignLabelWithHint->data;
-    $this->data->setAlignLabelWithHint($alignLabelWithHint);
+    $this->data->setAlignLabelWithHint(Builder::convert($alignLabelWithHint));
     return $this;
   }
 
   public function border(\Lenra\App\Components\Styles\InputBorder $border): InputDecorationBase {
-    if ($border instanceof Builder) $border = $border->data;
-    $this->data->setBorder($border);
+    $this->data->setBorder(Builder::convert($border));
     return $this;
   }
 
   public function constraints(\Lenra\App\Components\Styles\BoxConstraints $constraints): InputDecorationBase {
-    if ($constraints instanceof Builder) $constraints = $constraints->data;
-    $this->data->setConstraints($constraints);
+    $this->data->setConstraints(Builder::convert($constraints));
     return $this;
   }
 
   public function contentPadding(\Lenra\App\Components\Styles\Padding $contentPadding): InputDecorationBase {
-    if ($contentPadding instanceof Builder) $contentPadding = $contentPadding->data;
-    $this->data->setContentPadding($contentPadding);
+    $this->data->setContentPadding(Builder::convert($contentPadding));
     return $this;
   }
 
   public function counter($counter): InputDecorationBase {
-    if ($counter instanceof Builder) $counter = $counter->data;
-    $this->data->setCounter($counter);
+    $this->data->setCounter(Builder::convert($counter));
     return $this;
   }
 
   public function counterStyle(\Lenra\App\Components\Styles\TextStyle $counterStyle): InputDecorationBase {
-    if ($counterStyle instanceof Builder) $counterStyle = $counterStyle->data;
-    $this->data->setCounterStyle($counterStyle);
+    $this->data->setCounterStyle(Builder::convert($counterStyle));
     return $this;
   }
 
   public function counterText(string $counterText): InputDecorationBase {
-    if ($counterText instanceof Builder) $counterText = $counterText->data;
-    $this->data->setCounterText($counterText);
+    $this->data->setCounterText(Builder::convert($counterText));
     return $this;
   }
 
   public function disabledBorder(\Lenra\App\Components\Styles\InputBorder $disabledBorder): InputDecorationBase {
-    if ($disabledBorder instanceof Builder) $disabledBorder = $disabledBorder->data;
-    $this->data->setDisabledBorder($disabledBorder);
+    $this->data->setDisabledBorder(Builder::convert($disabledBorder));
     return $this;
   }
 
   public function enabled(bool $enabled): InputDecorationBase {
-    if ($enabled instanceof Builder) $enabled = $enabled->data;
-    $this->data->setEnabled($enabled);
+    $this->data->setEnabled(Builder::convert($enabled));
     return $this;
   }
 
   public function enabledBorder(\Lenra\App\Components\Styles\InputBorder $enabledBorder): InputDecorationBase {
-    if ($enabledBorder instanceof Builder) $enabledBorder = $enabledBorder->data;
-    $this->data->setEnabledBorder($enabledBorder);
+    $this->data->setEnabledBorder(Builder::convert($enabledBorder));
     return $this;
   }
 
   public function errorBorder(\Lenra\App\Components\Styles\InputBorder $errorBorder): InputDecorationBase {
-    if ($errorBorder instanceof Builder) $errorBorder = $errorBorder->data;
-    $this->data->setErrorBorder($errorBorder);
+    $this->data->setErrorBorder(Builder::convert($errorBorder));
     return $this;
   }
 
   public function errorMaxLines(int $errorMaxLines): InputDecorationBase {
-    if ($errorMaxLines instanceof Builder) $errorMaxLines = $errorMaxLines->data;
-    $this->data->setErrorMaxLines($errorMaxLines);
+    $this->data->setErrorMaxLines(Builder::convert($errorMaxLines));
     return $this;
   }
 
   public function errorStyle(\Lenra\App\Components\Styles\TextStyle $errorStyle): InputDecorationBase {
-    if ($errorStyle instanceof Builder) $errorStyle = $errorStyle->data;
-    $this->data->setErrorStyle($errorStyle);
+    $this->data->setErrorStyle(Builder::convert($errorStyle));
     return $this;
   }
 
   public function errorText(string $errorText): InputDecorationBase {
-    if ($errorText instanceof Builder) $errorText = $errorText->data;
-    $this->data->setErrorText($errorText);
+    $this->data->setErrorText(Builder::convert($errorText));
     return $this;
   }
 
   public function fillColor(int $fillColor): InputDecorationBase {
-    if ($fillColor instanceof Builder) $fillColor = $fillColor->data;
-    $this->data->setFillColor($fillColor);
+    $this->data->setFillColor(Builder::convert($fillColor));
     return $this;
   }
 
   public function filled(bool $filled): InputDecorationBase {
-    if ($filled instanceof Builder) $filled = $filled->data;
-    $this->data->setFilled($filled);
+    $this->data->setFilled(Builder::convert($filled));
     return $this;
   }
 
   public function floatingLabelBehavior(string $floatingLabelBehavior): InputDecorationBase {
-    if ($floatingLabelBehavior instanceof Builder) $floatingLabelBehavior = $floatingLabelBehavior->data;
-    $this->data->setFloatingLabelBehavior($floatingLabelBehavior);
+    $this->data->setFloatingLabelBehavior(Builder::convert($floatingLabelBehavior));
     return $this;
   }
 
   public function floatingLabelStyle(\Lenra\App\Components\Styles\TextStyle $floatingLabelStyle): InputDecorationBase {
-    if ($floatingLabelStyle instanceof Builder) $floatingLabelStyle = $floatingLabelStyle->data;
-    $this->data->setFloatingLabelStyle($floatingLabelStyle);
+    $this->data->setFloatingLabelStyle(Builder::convert($floatingLabelStyle));
     return $this;
   }
 
   public function focusColor(int $focusColor): InputDecorationBase {
-    if ($focusColor instanceof Builder) $focusColor = $focusColor->data;
-    $this->data->setFocusColor($focusColor);
+    $this->data->setFocusColor(Builder::convert($focusColor));
     return $this;
   }
 
   public function focusedBorder(\Lenra\App\Components\Styles\InputBorder $focusedBorder): InputDecorationBase {
-    if ($focusedBorder instanceof Builder) $focusedBorder = $focusedBorder->data;
-    $this->data->setFocusedBorder($focusedBorder);
+    $this->data->setFocusedBorder(Builder::convert($focusedBorder));
     return $this;
   }
 
   public function focusedErrorBorder(\Lenra\App\Components\Styles\InputBorder $focusedErrorBorder): InputDecorationBase {
-    if ($focusedErrorBorder instanceof Builder) $focusedErrorBorder = $focusedErrorBorder->data;
-    $this->data->setFocusedErrorBorder($focusedErrorBorder);
+    $this->data->setFocusedErrorBorder(Builder::convert($focusedErrorBorder));
     return $this;
   }
 
   public function helperMaxLines(int $helperMaxLines): InputDecorationBase {
-    if ($helperMaxLines instanceof Builder) $helperMaxLines = $helperMaxLines->data;
-    $this->data->setHelperMaxLines($helperMaxLines);
+    $this->data->setHelperMaxLines(Builder::convert($helperMaxLines));
     return $this;
   }
 
   public function helperStyle(\Lenra\App\Components\Styles\TextStyle $helperStyle): InputDecorationBase {
-    if ($helperStyle instanceof Builder) $helperStyle = $helperStyle->data;
-    $this->data->setHelperStyle($helperStyle);
+    $this->data->setHelperStyle(Builder::convert($helperStyle));
     return $this;
   }
 
   public function helperText(string $helperText): InputDecorationBase {
-    if ($helperText instanceof Builder) $helperText = $helperText->data;
-    $this->data->setHelperText($helperText);
+    $this->data->setHelperText(Builder::convert($helperText));
     return $this;
   }
 
   public function hintMaxLines(int $hintMaxLines): InputDecorationBase {
-    if ($hintMaxLines instanceof Builder) $hintMaxLines = $hintMaxLines->data;
-    $this->data->setHintMaxLines($hintMaxLines);
+    $this->data->setHintMaxLines(Builder::convert($hintMaxLines));
     return $this;
   }
 
   public function hintStyle(\Lenra\App\Components\Styles\TextStyle $hintStyle): InputDecorationBase {
-    if ($hintStyle instanceof Builder) $hintStyle = $hintStyle->data;
-    $this->data->setHintStyle($hintStyle);
+    $this->data->setHintStyle(Builder::convert($hintStyle));
     return $this;
   }
 
   public function hintText(string $hintText): InputDecorationBase {
-    if ($hintText instanceof Builder) $hintText = $hintText->data;
-    $this->data->setHintText($hintText);
+    $this->data->setHintText(Builder::convert($hintText));
     return $this;
   }
 
   public function hintTextDirection(string $hintTextDirection): InputDecorationBase {
-    if ($hintTextDirection instanceof Builder) $hintTextDirection = $hintTextDirection->data;
-    $this->data->setHintTextDirection($hintTextDirection);
+    $this->data->setHintTextDirection(Builder::convert($hintTextDirection));
     return $this;
   }
 
   public function hoverColor(int $hoverColor): InputDecorationBase {
-    if ($hoverColor instanceof Builder) $hoverColor = $hoverColor->data;
-    $this->data->setHoverColor($hoverColor);
+    $this->data->setHoverColor(Builder::convert($hoverColor));
     return $this;
   }
 
   public function icon(\Lenra\App\Components\Icon $icon): InputDecorationBase {
-    if ($icon instanceof Builder) $icon = $icon->data;
-    $this->data->setIcon($icon);
+    $this->data->setIcon(Builder::convert($icon));
     return $this;
   }
 
   public function iconColor(int $iconColor): InputDecorationBase {
-    if ($iconColor instanceof Builder) $iconColor = $iconColor->data;
-    $this->data->setIconColor($iconColor);
+    $this->data->setIconColor(Builder::convert($iconColor));
     return $this;
   }
 
   public function isCollapsed(bool $isCollapsed): InputDecorationBase {
-    if ($isCollapsed instanceof Builder) $isCollapsed = $isCollapsed->data;
-    $this->data->setIsCollapsed($isCollapsed);
+    $this->data->setIsCollapsed(Builder::convert($isCollapsed));
     return $this;
   }
 
   public function isDense(bool $isDense): InputDecorationBase {
-    if ($isDense instanceof Builder) $isDense = $isDense->data;
-    $this->data->setIsDense($isDense);
+    $this->data->setIsDense(Builder::convert($isDense));
     return $this;
   }
 
   public function label($label): InputDecorationBase {
-    if ($label instanceof Builder) $label = $label->data;
-    $this->data->setLabel($label);
+    $this->data->setLabel(Builder::convert($label));
     return $this;
   }
 
   public function labelStyle(\Lenra\App\Components\Styles\TextStyle $labelStyle): InputDecorationBase {
-    if ($labelStyle instanceof Builder) $labelStyle = $labelStyle->data;
-    $this->data->setLabelStyle($labelStyle);
+    $this->data->setLabelStyle(Builder::convert($labelStyle));
     return $this;
   }
 
   public function labelText(string $labelText): InputDecorationBase {
-    if ($labelText instanceof Builder) $labelText = $labelText->data;
-    $this->data->setLabelText($labelText);
+    $this->data->setLabelText(Builder::convert($labelText));
     return $this;
   }
 
   public function prefix($prefix): InputDecorationBase {
-    if ($prefix instanceof Builder) $prefix = $prefix->data;
-    $this->data->setPrefix($prefix);
+    $this->data->setPrefix(Builder::convert($prefix));
     return $this;
   }
 
   public function prefixIcon(\Lenra\App\Components\Icon $prefixIcon): InputDecorationBase {
-    if ($prefixIcon instanceof Builder) $prefixIcon = $prefixIcon->data;
-    $this->data->setPrefixIcon($prefixIcon);
+    $this->data->setPrefixIcon(Builder::convert($prefixIcon));
     return $this;
   }
 
   public function prefixIconColor(int $prefixIconColor): InputDecorationBase {
-    if ($prefixIconColor instanceof Builder) $prefixIconColor = $prefixIconColor->data;
-    $this->data->setPrefixIconColor($prefixIconColor);
+    $this->data->setPrefixIconColor(Builder::convert($prefixIconColor));
     return $this;
   }
 
   public function prefixIconConstraints(\Lenra\App\Components\Styles\BoxConstraints $prefixIconConstraints): InputDecorationBase {
-    if ($prefixIconConstraints instanceof Builder) $prefixIconConstraints = $prefixIconConstraints->data;
-    $this->data->setPrefixIconConstraints($prefixIconConstraints);
+    $this->data->setPrefixIconConstraints(Builder::convert($prefixIconConstraints));
     return $this;
   }
 
   public function prefixStyle(\Lenra\App\Components\Styles\TextStyle $prefixStyle): InputDecorationBase {
-    if ($prefixStyle instanceof Builder) $prefixStyle = $prefixStyle->data;
-    $this->data->setPrefixStyle($prefixStyle);
+    $this->data->setPrefixStyle(Builder::convert($prefixStyle));
     return $this;
   }
 
   public function prefixText(string $prefixText): InputDecorationBase {
-    if ($prefixText instanceof Builder) $prefixText = $prefixText->data;
-    $this->data->setPrefixText($prefixText);
+    $this->data->setPrefixText(Builder::convert($prefixText));
     return $this;
   }
 
   public function semanticCounterText(string $semanticCounterText): InputDecorationBase {
-    if ($semanticCounterText instanceof Builder) $semanticCounterText = $semanticCounterText->data;
-    $this->data->setSemanticCounterText($semanticCounterText);
+    $this->data->setSemanticCounterText(Builder::convert($semanticCounterText));
     return $this;
   }
 
   public function suffix($suffix): InputDecorationBase {
-    if ($suffix instanceof Builder) $suffix = $suffix->data;
-    $this->data->setSuffix($suffix);
+    $this->data->setSuffix(Builder::convert($suffix));
     return $this;
   }
 
   public function suffixIcon(\Lenra\App\Components\Icon $suffixIcon): InputDecorationBase {
-    if ($suffixIcon instanceof Builder) $suffixIcon = $suffixIcon->data;
-    $this->data->setSuffixIcon($suffixIcon);
+    $this->data->setSuffixIcon(Builder::convert($suffixIcon));
     return $this;
   }
 
   public function suffixIconColor(int $suffixIconColor): InputDecorationBase {
-    if ($suffixIconColor instanceof Builder) $suffixIconColor = $suffixIconColor->data;
-    $this->data->setSuffixIconColor($suffixIconColor);
+    $this->data->setSuffixIconColor(Builder::convert($suffixIconColor));
     return $this;
   }
 
   public function suffixIconConstraints(\Lenra\App\Components\Styles\BoxConstraints $suffixIconConstraints): InputDecorationBase {
-    if ($suffixIconConstraints instanceof Builder) $suffixIconConstraints = $suffixIconConstraints->data;
-    $this->data->setSuffixIconConstraints($suffixIconConstraints);
+    $this->data->setSuffixIconConstraints(Builder::convert($suffixIconConstraints));
     return $this;
   }
 
   public function suffixStyle(\Lenra\App\Components\Styles\TextStyle $suffixStyle): InputDecorationBase {
-    if ($suffixStyle instanceof Builder) $suffixStyle = $suffixStyle->data;
-    $this->data->setSuffixStyle($suffixStyle);
+    $this->data->setSuffixStyle(Builder::convert($suffixStyle));
     return $this;
   }
 
   public function suffixText(string $suffixText): InputDecorationBase {
-    if ($suffixText instanceof Builder) $suffixText = $suffixText->data;
-    $this->data->setSuffixText($suffixText);
+    $this->data->setSuffixText(Builder::convert($suffixText));
     return $this;
   }
 
