@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class RadiusBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadius::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesRadiusNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadius::class);
   }
 
   public function x(float $x): RadiusBase {

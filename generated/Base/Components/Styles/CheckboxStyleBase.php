@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class CheckboxStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCheckboxStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesCheckboxStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCheckboxStyle::class);
   }
 
   public function activeColor(int $activeColor): CheckboxStyleBase {

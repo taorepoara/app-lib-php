@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class FindBase extends Builder {
   public function __construct(string $coll ,iterable $query)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsViewDefinitionsFind::class, \Lenra\App\Response\View\Normalizer\ComponentsViewDefinitionsFindNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsViewDefinitionsFind::class);
     $this->coll($coll);
     $this->query($query);
   }

@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class DurationBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesDuration::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesDurationNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesDuration::class);
   }
 
   public function days(int $days): DurationBase {

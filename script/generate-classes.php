@@ -132,7 +132,7 @@ class TypeParser
     $code .= "  public function __construct(" . join(" ,", array_map(function ($arg) {
       return $arg->arg();
     }, $this->constructArgs)) . ")\n  {\n";
-    $code .= "    parent::__construct(" . $componentType . ", \\" . $this->model . "::class, \\" . $this->normalizer . "::class);\n";
+    $code .= "    parent::__construct(" . $componentType . ", \\" . $this->model . "::class);\n";
     $code .= join("", array_map(function ($arg) {
       return '    $this->' . $arg->name . "(" . $arg->var . ");\n";
     }, $this->constructArgs));

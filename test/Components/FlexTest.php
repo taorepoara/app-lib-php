@@ -11,35 +11,35 @@ use Lenra\App\Components\Text;
 
 final class FlexTest extends ComponentTest
 {
-    // public function testEmpty(): void
-    // {
-    //     $this->checkComponent(Flex::builder([]), [
-    //         "_type" => "flex",
-    //         "children" => [],
-    //     ]);
-    // }
+    public function testEmpty(): void
+    {
+        $this->checkComponent(Flex::builder([]), [
+            "_type" => "flex",
+            "children" => [],
+        ]);
+    }
 
-    // public function testChildren(): void
-    // {
-    //     $this->checkComponent(Flex::builder([
-    //         Text::builder("My text"),
-    //         Button::builder("Test")->onPressed(Listener::builder("test")),
-    //     ]), [
-    //         "_type" => "flex",
-    //         "children" => [
-    //             [
-    //                 "_type" => "text",
-    //                 "value" => "My text",
-    //             ],
-    //             [
-    //                 "_type" => "button",
-    //                 "text" => "Test",
-    //                 "onPressed" => [
-    //                     "_type" => "listener",
-    //                     "name" => "test",
-    //                 ],
-    //             ],
-    //         ],
-    //     ]);
-    // }
+    public function testChildren(): void
+    {
+        $this->checkComponent(Flex::builder([
+            Text::builder("My text"),
+            Button::builder("Test")->onPressed(Listener::builder("test")),
+        ]), [
+            "_type" => "flex",
+            "children" => [
+                [
+                    "_type" => "text",
+                    "value" => "My text",
+                ],
+                [
+                    "_type" => "button",
+                    "text" => "Test",
+                    "onPressed" => [
+                        "_type" => "listener",
+                        "name" => "test",
+                    ],
+                ],
+            ],
+        ]);
+    }
 }

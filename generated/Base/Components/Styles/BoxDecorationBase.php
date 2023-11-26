@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class BoxDecorationBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxDecoration::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBoxDecorationNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxDecoration::class);
   }
 
   public function borderRadius(\Lenra\App\Components\Styles\BorderRadius $borderRadius): BoxDecorationBase {

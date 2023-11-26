@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class SliderStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesSliderStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesSliderStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesSliderStyle::class);
   }
 
   public function activeColor(int $activeColor): SliderStyleBase {

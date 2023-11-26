@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class ImageBase extends Builder {
   public function __construct(string $src)
   {
-    parent::__construct('image', \Lenra\App\Response\View\Model\ComponentsImage::class, \Lenra\App\Response\View\Normalizer\ComponentsImageNormalizer::class);
+    parent::__construct('image', \Lenra\App\Response\View\Model\ComponentsImage::class);
     $this->src($src);
   }
 

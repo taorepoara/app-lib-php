@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class FormBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct('form', \Lenra\App\Response\View\Model\ComponentsForm::class, \Lenra\App\Response\View\Normalizer\ComponentsFormNormalizer::class);
+    parent::__construct('form', \Lenra\App\Response\View\Model\ComponentsForm::class);
     $this->child($child);
   }
 

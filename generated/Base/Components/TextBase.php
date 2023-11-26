@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class TextBase extends Builder {
   public function __construct(string $value)
   {
-    parent::__construct('text', \Lenra\App\Response\View\Model\ComponentsText::class, \Lenra\App\Response\View\Normalizer\ComponentsTextNormalizer::class);
+    parent::__construct('text', \Lenra\App\Response\View\Model\ComponentsText::class);
     $this->value($value);
   }
 

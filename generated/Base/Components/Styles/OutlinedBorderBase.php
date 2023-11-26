@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class OutlinedBorderBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesOutlinedBorder::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesOutlinedBorderNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesOutlinedBorder::class);
   }
 
   public function side(\Lenra\App\Components\Styles\BorderSide $side): OutlinedBorderBase {

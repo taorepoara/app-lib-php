@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class OverlayEntryBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct('overlayEntry', \Lenra\App\Response\View\Model\ComponentsOverlayEntry::class, \Lenra\App\Response\View\Normalizer\ComponentsOverlayEntryNormalizer::class);
+    parent::__construct('overlayEntry', \Lenra\App\Response\View\Model\ComponentsOverlayEntry::class);
     $this->child($child);
   }
 

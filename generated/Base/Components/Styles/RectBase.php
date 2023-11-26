@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class RectBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRect::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesRectNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRect::class);
   }
 
   public function left(float $left): RectBase {

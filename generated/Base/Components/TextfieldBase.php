@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class TextfieldBase extends Builder {
   public function __construct(string $value)
   {
-    parent::__construct('textfield', \Lenra\App\Response\View\Model\ComponentsTextfield::class, \Lenra\App\Response\View\Normalizer\ComponentsTextfieldNormalizer::class);
+    parent::__construct('textfield', \Lenra\App\Response\View\Model\ComponentsTextfield::class);
     $this->value($value);
   }
 

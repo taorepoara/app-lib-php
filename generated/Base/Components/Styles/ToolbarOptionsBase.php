@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class ToolbarOptionsBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToolbarOptions::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesToolbarOptionsNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToolbarOptions::class);
   }
 
   public function decimal(bool $decimal): ToolbarOptionsBase {

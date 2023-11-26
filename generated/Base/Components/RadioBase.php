@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class RadioBase extends Builder {
   public function __construct(string $value ,string $groupValue)
   {
-    parent::__construct('radio', \Lenra\App\Response\View\Model\ComponentsRadio::class, \Lenra\App\Response\View\Normalizer\ComponentsRadioNormalizer::class);
+    parent::__construct('radio', \Lenra\App\Response\View\Model\ComponentsRadio::class);
     $this->value($value);
     $this->groupValue($groupValue);
   }

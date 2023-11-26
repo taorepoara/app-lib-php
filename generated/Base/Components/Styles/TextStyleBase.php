@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class TextStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesTextStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextStyle::class);
   }
 
   public function color(int $color): TextStyleBase {

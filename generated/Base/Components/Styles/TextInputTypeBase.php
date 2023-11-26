@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class TextInputTypeBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextInputType::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesTextInputTypeNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextInputType::class);
   }
 
   public function copy(bool $copy): TextInputTypeBase {

@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class PaddingBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesPadding::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesPaddingNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesPadding::class);
   }
 
   public function top(float $top): PaddingBase {

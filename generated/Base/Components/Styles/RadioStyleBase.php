@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class RadioStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadioStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesRadioStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadioStyle::class);
   }
 
   public function activeColor(int $activeColor): RadioStyleBase {

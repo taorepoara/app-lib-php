@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class InputBorderBase extends Builder {
   public function __construct(\Lenra\App\Components\Styles\BorderSide $borderSide)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesInputBorder::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesInputBorderNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesInputBorder::class);
     $this->borderSide($borderSide);
   }
 

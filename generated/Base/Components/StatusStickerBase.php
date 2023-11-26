@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class StatusStickerBase extends Builder {
   public function __construct(string $status)
   {
-    parent::__construct('statusSticker', \Lenra\App\Response\View\Model\ComponentsStatusSticker::class, \Lenra\App\Response\View\Normalizer\ComponentsStatusStickerNormalizer::class);
+    parent::__construct('statusSticker', \Lenra\App\Response\View\Model\ComponentsStatusSticker::class);
     $this->status($status);
   }
 

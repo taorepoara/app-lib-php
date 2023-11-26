@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class FlexBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct('flex', \Lenra\App\Response\View\Model\ComponentsFlex::class, \Lenra\App\Response\View\Normalizer\ComponentsFlexNormalizer::class);
+    parent::__construct('flex', \Lenra\App\Response\View\Model\ComponentsFlex::class);
     $this->children($children);
   }
 

@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class ViewBase extends Builder {
   public function __construct(string $name)
   {
-    parent::__construct('view', \Lenra\App\Response\View\Model\ComponentsView::class, \Lenra\App\Response\View\Normalizer\ComponentsViewNormalizer::class);
+    parent::__construct('view', \Lenra\App\Response\View\Model\ComponentsView::class);
     $this->name($name);
   }
 

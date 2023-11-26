@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class StackBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct('stack', \Lenra\App\Response\View\Model\ComponentsStack::class, \Lenra\App\Response\View\Normalizer\ComponentsStackNormalizer::class);
+    parent::__construct('stack', \Lenra\App\Response\View\Model\ComponentsStack::class);
     $this->children($children);
   }
 

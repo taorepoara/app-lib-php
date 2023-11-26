@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class ToggleStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToggleStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesToggleStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToggleStyle::class);
   }
 
   public function activeColor(int $activeColor): ToggleStyleBase {

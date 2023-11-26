@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class BoxConstraintsBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxConstraints::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBoxConstraintsNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxConstraints::class);
   }
 
   public function minWidth(float $minWidth): BoxConstraintsBase {

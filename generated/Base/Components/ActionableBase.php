@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class ActionableBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct('actionable', \Lenra\App\Response\View\Model\ComponentsActionable::class, \Lenra\App\Response\View\Normalizer\ComponentsActionableNormalizer::class);
+    parent::__construct('actionable', \Lenra\App\Response\View\Model\ComponentsActionable::class);
     $this->child($child);
   }
 

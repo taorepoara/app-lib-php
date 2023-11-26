@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class MenuItemBase extends Builder {
   public function __construct(string $text)
   {
-    parent::__construct('menuItem', \Lenra\App\Response\View\Model\ComponentsMenuItem::class, \Lenra\App\Response\View\Normalizer\ComponentsMenuItemNormalizer::class);
+    parent::__construct('menuItem', \Lenra\App\Response\View\Model\ComponentsMenuItem::class);
     $this->text($text);
   }
 

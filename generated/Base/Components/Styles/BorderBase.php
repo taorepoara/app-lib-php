@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class BorderBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorder::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBorderNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorder::class);
   }
 
   public function top(\Lenra\App\Components\Styles\BorderSide $top): BorderBase {

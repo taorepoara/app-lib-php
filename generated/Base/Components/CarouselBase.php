@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class CarouselBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct('carousel', \Lenra\App\Response\View\Model\ComponentsCarousel::class, \Lenra\App\Response\View\Normalizer\ComponentsCarouselNormalizer::class);
+    parent::__construct('carousel', \Lenra\App\Response\View\Model\ComponentsCarousel::class);
     $this->children($children);
   }
 

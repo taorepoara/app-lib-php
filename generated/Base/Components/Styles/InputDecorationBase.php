@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class InputDecorationBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesInputDecoration::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesInputDecorationNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesInputDecoration::class);
   }
 
   public function alignLabelWithHint(bool $alignLabelWithHint): InputDecorationBase {

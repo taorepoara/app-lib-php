@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class MenuBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct('menu', \Lenra\App\Response\View\Model\ComponentsMenu::class, \Lenra\App\Response\View\Normalizer\ComponentsMenuNormalizer::class);
+    parent::__construct('menu', \Lenra\App\Response\View\Model\ComponentsMenu::class);
     $this->children($children);
   }
 

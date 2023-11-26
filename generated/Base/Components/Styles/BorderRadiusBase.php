@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class BorderRadiusBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderRadius::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBorderRadiusNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderRadius::class);
   }
 
   public function topLeft(\Lenra\App\Components\Styles\BorderRadius\Definitions\RadiusType $topLeft): BorderRadiusBase {

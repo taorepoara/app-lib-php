@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class ButtonBase extends Builder {
   public function __construct(string $text)
   {
-    parent::__construct('button', \Lenra\App\Response\View\Model\ComponentsButton::class, \Lenra\App\Response\View\Normalizer\ComponentsButtonNormalizer::class);
+    parent::__construct('button', \Lenra\App\Response\View\Model\ComponentsButton::class);
     $this->text($text);
   }
 

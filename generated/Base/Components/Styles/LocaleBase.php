@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class LocaleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesLocale::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesLocaleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesLocale::class);
   }
 
   public function countryCode(string $countryCode): LocaleBase {

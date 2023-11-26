@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class BoxShadowBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxShadow::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBoxShadowNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxShadow::class);
   }
 
   public function color(int $color): BoxShadowBase {

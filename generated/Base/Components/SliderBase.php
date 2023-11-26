@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class SliderBase extends Builder {
   public function __construct()
   {
-    parent::__construct('slider', \Lenra\App\Response\View\Model\ComponentsSlider::class, \Lenra\App\Response\View\Normalizer\ComponentsSliderNormalizer::class);
+    parent::__construct('slider', \Lenra\App\Response\View\Model\ComponentsSlider::class);
   }
 
   public function style(\Lenra\App\Components\Styles\SliderStyle $style): SliderBase {

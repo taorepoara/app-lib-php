@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class ListenerBase extends Builder {
   public function __construct(string $name)
   {
-    parent::__construct('listener', \Lenra\App\Response\View\Model\ComponentsListener::class, \Lenra\App\Response\View\Normalizer\ComponentsListenerNormalizer::class);
+    parent::__construct('listener', \Lenra\App\Response\View\Model\ComponentsListener::class);
     $this->name($name);
   }
 

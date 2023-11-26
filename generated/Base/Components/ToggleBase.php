@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class ToggleBase extends Builder {
   public function __construct(bool $value)
   {
-    parent::__construct('toggle', \Lenra\App\Response\View\Model\ComponentsToggle::class, \Lenra\App\Response\View\Normalizer\ComponentsToggleNormalizer::class);
+    parent::__construct('toggle', \Lenra\App\Response\View\Model\ComponentsToggle::class);
     $this->value($value);
   }
 

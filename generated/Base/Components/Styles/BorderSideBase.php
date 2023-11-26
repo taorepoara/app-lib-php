@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class BorderSideBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderSide::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesBorderSideNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderSide::class);
   }
 
   public function width(float $width): BorderSideBase {

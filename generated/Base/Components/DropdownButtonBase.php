@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class DropdownButtonBase extends Builder {
   public function __construct(string $text ,$child)
   {
-    parent::__construct('dropdownButton', \Lenra\App\Response\View\Model\ComponentsDropdownButton::class, \Lenra\App\Response\View\Normalizer\ComponentsDropdownButtonNormalizer::class);
+    parent::__construct('dropdownButton', \Lenra\App\Response\View\Model\ComponentsDropdownButton::class);
     $this->text($text);
     $this->child($child);
   }

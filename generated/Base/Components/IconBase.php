@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class IconBase extends Builder {
   public function __construct(string $value)
   {
-    parent::__construct('icon', \Lenra\App\Response\View\Model\ComponentsIcon::class, \Lenra\App\Response\View\Normalizer\ComponentsIconNormalizer::class);
+    parent::__construct('icon', \Lenra\App\Response\View\Model\ComponentsIcon::class);
     $this->value($value);
   }
 

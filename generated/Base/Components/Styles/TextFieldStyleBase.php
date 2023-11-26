@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class TextFieldStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextFieldStyle::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesTextFieldStyleNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextFieldStyle::class);
   }
 
   public function cursorColor(int $cursorColor): TextFieldStyleBase {

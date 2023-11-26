@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class CheckboxBase extends Builder {
   public function __construct(bool $value)
   {
-    parent::__construct('checkbox', \Lenra\App\Response\View\Model\ComponentsCheckbox::class, \Lenra\App\Response\View\Normalizer\ComponentsCheckboxNormalizer::class);
+    parent::__construct('checkbox', \Lenra\App\Response\View\Model\ComponentsCheckbox::class);
     $this->value($value);
   }
 

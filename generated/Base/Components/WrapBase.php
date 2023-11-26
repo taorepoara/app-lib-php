@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class WrapBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct('wrap', \Lenra\App\Response\View\Model\ComponentsWrap::class, \Lenra\App\Response\View\Normalizer\ComponentsWrapNormalizer::class);
+    parent::__construct('wrap', \Lenra\App\Response\View\Model\ComponentsWrap::class);
     $this->children($children);
   }
 

@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class OffsetBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesOffset::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesOffsetNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesOffset::class);
   }
 
   public function dx(float $dx): OffsetBase {

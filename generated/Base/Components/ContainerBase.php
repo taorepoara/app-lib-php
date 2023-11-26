@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class ContainerBase extends Builder {
   public function __construct()
   {
-    parent::__construct('container', \Lenra\App\Response\View\Model\ComponentsContainer::class, \Lenra\App\Response\View\Normalizer\ComponentsContainerNormalizer::class);
+    parent::__construct('container', \Lenra\App\Response\View\Model\ComponentsContainer::class);
   }
 
   public function child($child): ContainerBase {

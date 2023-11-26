@@ -11,7 +11,7 @@ use Lenra\App\Components\Base\Builder;
 abstract class CarouselOptionsBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCarouselOptions::class, \Lenra\App\Response\View\Normalizer\ComponentsStylesCarouselOptionsNormalizer::class);
+    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCarouselOptions::class);
   }
 
   public function height(float $height): CarouselOptionsBase {
