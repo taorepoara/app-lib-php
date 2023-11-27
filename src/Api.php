@@ -2,7 +2,6 @@
 
 namespace Lenra\App;
 
-use ArrayObject;
 use GuzzleHttp\Client;
 use JsonMapper\JsonMapperInterface;
 use OpenAPI\Client\Api\DataApi as ApiDataApi;
@@ -69,7 +68,7 @@ class Collection
     }
 
     // Mongo functions
-    public function find($query, $projection = new ArrayObject())
+    public function find($query, $projection = new \ArrayObject())
     {
         // TODO: use this when server and devtool are fixed
         // $payload = [
