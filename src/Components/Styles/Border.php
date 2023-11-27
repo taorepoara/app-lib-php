@@ -17,4 +17,12 @@ class Border extends \Lenra\App\Base\Components\Styles\BorderBase {
       ->bottom($side)
       ->right($side);
   }
+
+  public static function symmetric(BorderSide $horizontal, BorderSide $vertical): Border {
+    return Border::builder()
+      ->top($vertical)
+      ->left($horizontal)
+      ->bottom($vertical)
+      ->right($horizontal);
+  }
 }

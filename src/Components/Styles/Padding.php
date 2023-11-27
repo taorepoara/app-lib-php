@@ -17,4 +17,12 @@ class Padding extends \Lenra\App\Base\Components\Styles\PaddingBase {
       ->bottom($value)
       ->right($value);
   }
+
+  public static function symmetric(int $horizontal, int $vertical): Padding {
+    return Padding::builder()
+      ->top($vertical)
+      ->left($horizontal)
+      ->bottom($vertical)
+      ->right($horizontal);
+  }
 }
