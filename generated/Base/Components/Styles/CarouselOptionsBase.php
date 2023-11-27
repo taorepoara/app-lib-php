@@ -14,67 +14,67 @@ abstract class CarouselOptionsBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCarouselOptions::class);
   }
 
-  public function height(float $height): CarouselOptionsBase {
+  public function height(float $height): self {
     $this->data->setHeight(Builder::convert($height));
     return $this;
   }
 
-  public function enlargeCenterPage(bool $enlargeCenterPage): CarouselOptionsBase {
+  public function enlargeCenterPage(bool $enlargeCenterPage): self {
     $this->data->setEnlargeCenterPage(Builder::convert($enlargeCenterPage));
     return $this;
   }
 
-  public function autoPlay(bool $autoPlay): CarouselOptionsBase {
+  public function autoPlay(bool $autoPlay): self {
     $this->data->setAutoPlay(Builder::convert($autoPlay));
     return $this;
   }
 
-  public function autoPlayInterval(\Lenra\App\Components\Styles\Duration $autoPlayInterval): CarouselOptionsBase {
+  public function autoPlayInterval(\Lenra\App\Components\Styles\Duration $autoPlayInterval): self {
     $this->data->setAutoPlayInterval(Builder::convert($autoPlayInterval));
     return $this;
   }
 
-  public function autoPlayAnimationDuration(\Lenra\App\Components\Styles\Duration $autoPlayAnimationDuration): CarouselOptionsBase {
+  public function autoPlayAnimationDuration(\Lenra\App\Components\Styles\Duration $autoPlayAnimationDuration): self {
     $this->data->setAutoPlayAnimationDuration(Builder::convert($autoPlayAnimationDuration));
     return $this;
   }
 
-  public function pauseAutoPlayOnTouch(bool $pauseAutoPlayOnTouch): CarouselOptionsBase {
+  public function pauseAutoPlayOnTouch(bool $pauseAutoPlayOnTouch): self {
     $this->data->setPauseAutoPlayOnTouch(Builder::convert($pauseAutoPlayOnTouch));
     return $this;
   }
 
-  public function aspectRatio(float $aspectRatio): CarouselOptionsBase {
+  public function aspectRatio(float $aspectRatio): self {
     $this->data->setAspectRatio(Builder::convert($aspectRatio));
     return $this;
   }
 
-  public function initialPage(int $initialPage): CarouselOptionsBase {
+  public function initialPage(int $initialPage): self {
     $this->data->setInitialPage(Builder::convert($initialPage));
     return $this;
   }
 
-  public function enableInfiniteScroll(bool $enableInfiniteScroll): CarouselOptionsBase {
+  public function enableInfiniteScroll(bool $enableInfiniteScroll): self {
     $this->data->setEnableInfiniteScroll(Builder::convert($enableInfiniteScroll));
     return $this;
   }
 
-  public function reverse(bool $reverse): CarouselOptionsBase {
+  public function reverse(bool $reverse): self {
     $this->data->setReverse(Builder::convert($reverse));
     return $this;
   }
 
-  public function scrollDirection(string $scrollDirection): CarouselOptionsBase {
+  public function scrollDirection(string $scrollDirection): self {
     $this->data->setScrollDirection(Builder::convert($scrollDirection));
     return $this;
   }
 
-  public function viewportFraction(float $viewportFraction): CarouselOptionsBase {
+  public function viewportFraction(float $viewportFraction): self {
     $this->data->setViewportFraction(Builder::convert($viewportFraction));
     return $this;
   }
 
-  public function enlargeStrategy(string $enlargeStrategy): CarouselOptionsBase {
+  public function enlargeStrategy(string $enlargeStrategy): self {
     $this->data->setEnlargeStrategy(Builder::convert($enlargeStrategy));
     return $this;
   }

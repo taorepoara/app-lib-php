@@ -8,18 +8,18 @@ use Lenra\App\Components\Base\Builder;
 /**
 * @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesBorderRadiusDefinitionsRadiusType>
 */
-abstract class RadiusTypeBase extends Builder {
+abstract class RadiusBase extends Builder {
   public function __construct()
   {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderRadiusDefinitionsRadiusType::class);
   }
 
-  public function x(float $x): RadiusTypeBase {
+  public function x(float $x): self {
     $this->data->setX(Builder::convert($x));
     return $this;
   }
 
-  public function y(float $y): RadiusTypeBase {
+  public function y(float $y): self {
     $this->data->setY(Builder::convert($y));
     return $this;
   }

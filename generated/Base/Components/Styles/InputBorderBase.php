@@ -15,17 +15,17 @@ abstract class InputBorderBase extends Builder {
     $this->borderSide($borderSide);
   }
 
-  public function type(string $type): InputBorderBase {
+  public function type(string $type): self {
     $this->data->setType(Builder::convert($type));
     return $this;
   }
 
-  public function borderRadius(\Lenra\App\Components\Styles\BorderRadius $borderRadius): InputBorderBase {
+  public function borderRadius(\Lenra\App\Components\Styles\BorderRadius $borderRadius): self {
     $this->data->setBorderRadius(Builder::convert($borderRadius));
     return $this;
   }
 
-  public function borderSide(\Lenra\App\Components\Styles\BorderSide $borderSide): InputBorderBase {
+  public function borderSide(\Lenra\App\Components\Styles\BorderSide $borderSide): self {
     $this->data->setBorderSide(Builder::convert($borderSide));
     return $this;
   }

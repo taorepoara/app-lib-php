@@ -14,7 +14,7 @@ abstract class OutlinedBorderBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesOutlinedBorder::class);
   }
 
-  public function side(\Lenra\App\Components\Styles\BorderSide $side): OutlinedBorderBase {
+  public function side(\Lenra\App\Components\Styles\BorderSide $side): self {
     $this->data->setSide(Builder::convert($side));
     return $this;
   }

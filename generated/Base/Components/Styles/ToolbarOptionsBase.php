@@ -14,12 +14,12 @@ abstract class ToolbarOptionsBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToolbarOptions::class);
   }
 
-  public function decimal(bool $decimal): ToolbarOptionsBase {
+  public function decimal(bool $decimal): self {
     $this->data->setDecimal(Builder::convert($decimal));
     return $this;
   }
 
-  public function signed(bool $signed): ToolbarOptionsBase {
+  public function signed(bool $signed): self {
     $this->data->setSigned(Builder::convert($signed));
     return $this;
   }

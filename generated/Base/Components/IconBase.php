@@ -15,27 +15,27 @@ abstract class IconBase extends Builder {
     $this->value($value);
   }
 
-  public function size(float $size): IconBase {
+  public function size(float $size): self {
     $this->data->setSize(Builder::convert($size));
     return $this;
   }
 
-  public function color(int $color): IconBase {
+  public function color(int $color): self {
     $this->data->setColor(Builder::convert($color));
     return $this;
   }
 
-  public function semanticLabel(string $semanticLabel): IconBase {
+  public function semanticLabel(string $semanticLabel): self {
     $this->data->setSemanticLabel(Builder::convert($semanticLabel));
     return $this;
   }
 
-  public function value(string $value): IconBase {
+  public function value(string $value): self {
     $this->data->setValue(Builder::convert($value));
     return $this;
   }
 
-  public function style(string $style): IconBase {
+  public function style(string $style): self {
     $this->data->setStyle(Builder::convert($style));
     return $this;
   }

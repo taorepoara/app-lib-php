@@ -14,82 +14,82 @@ abstract class TextStyleBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextStyle::class);
   }
 
-  public function color(int $color): TextStyleBase {
+  public function color(int $color): self {
     $this->data->setColor(Builder::convert($color));
     return $this;
   }
 
-  public function decoration(string $decoration): TextStyleBase {
+  public function decoration(string $decoration): self {
     $this->data->setDecoration(Builder::convert($decoration));
     return $this;
   }
 
-  public function decorationColor(int $decorationColor): TextStyleBase {
+  public function decorationColor(int $decorationColor): self {
     $this->data->setDecorationColor(Builder::convert($decorationColor));
     return $this;
   }
 
-  public function decorationStyle(string $decorationStyle): TextStyleBase {
+  public function decorationStyle(string $decorationStyle): self {
     $this->data->setDecorationStyle(Builder::convert($decorationStyle));
     return $this;
   }
 
-  public function decorationThickness(float $decorationThickness): TextStyleBase {
+  public function decorationThickness(float $decorationThickness): self {
     $this->data->setDecorationThickness(Builder::convert($decorationThickness));
     return $this;
   }
 
-  public function fontFamily(string $fontFamily): TextStyleBase {
+  public function fontFamily(string $fontFamily): self {
     $this->data->setFontFamily(Builder::convert($fontFamily));
     return $this;
   }
 
-  public function fontFamilyFallback(array $fontFamilyFallback): TextStyleBase {
+  public function fontFamilyFallback(array $fontFamilyFallback): self {
     $this->data->setFontFamilyFallback(Builder::convert($fontFamilyFallback));
     return $this;
   }
 
-  public function fontSize(float $fontSize): TextStyleBase {
+  public function fontSize(float $fontSize): self {
     $this->data->setFontSize(Builder::convert($fontSize));
     return $this;
   }
 
-  public function fontStyle(string $fontStyle): TextStyleBase {
+  public function fontStyle(string $fontStyle): self {
     $this->data->setFontStyle(Builder::convert($fontStyle));
     return $this;
   }
 
-  public function fontWeight(string $fontWeight): TextStyleBase {
+  public function fontWeight(string $fontWeight): self {
     $this->data->setFontWeight(Builder::convert($fontWeight));
     return $this;
   }
 
-  public function height(float $height): TextStyleBase {
+  public function height(float $height): self {
     $this->data->setHeight(Builder::convert($height));
     return $this;
   }
 
-  public function letterSpacing(float $letterSpacing): TextStyleBase {
+  public function letterSpacing(float $letterSpacing): self {
     $this->data->setLetterSpacing(Builder::convert($letterSpacing));
     return $this;
   }
 
-  public function overflow(string $overflow): TextStyleBase {
+  public function overflow(string $overflow): self {
     $this->data->setOverflow(Builder::convert($overflow));
     return $this;
   }
 
-  public function shadows(array $shadows): TextStyleBase {
+  public function shadows(array $shadows): self {
     $this->data->setShadows(Builder::convert($shadows));
     return $this;
   }
 
-  public function textBaseline(string $textBaseline): TextStyleBase {
+  public function textBaseline(string $textBaseline): self {
     $this->data->setTextBaseline(Builder::convert($textBaseline));
     return $this;
   }
 
-  public function wordSpacing(float $wordSpacing): TextStyleBase {
+  public function wordSpacing(float $wordSpacing): self {
     $this->data->setWordSpacing(Builder::convert($wordSpacing));
     return $this;
   }

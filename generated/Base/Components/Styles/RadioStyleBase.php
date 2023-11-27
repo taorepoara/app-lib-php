@@ -14,32 +14,32 @@ abstract class RadioStyleBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadioStyle::class);
   }
 
-  public function activeColor(int $activeColor): RadioStyleBase {
+  public function activeColor(int $activeColor): self {
     $this->data->setActiveColor(Builder::convert($activeColor));
     return $this;
   }
 
-  public function focusColor(int $focusColor): RadioStyleBase {
+  public function focusColor(int $focusColor): self {
     $this->data->setFocusColor(Builder::convert($focusColor));
     return $this;
   }
 
-  public function hovercolor(int $hovercolor): RadioStyleBase {
+  public function hovercolor(int $hovercolor): self {
     $this->data->setHovercolor(Builder::convert($hovercolor));
     return $this;
   }
 
-  public function unselectedColor(int $unselectedColor): RadioStyleBase {
+  public function unselectedColor(int $unselectedColor): self {
     $this->data->setUnselectedColor(Builder::convert($unselectedColor));
     return $this;
   }
 
-  public function splashRadius(float $splashRadius): RadioStyleBase {
+  public function splashRadius(float $splashRadius): self {
     $this->data->setSplashRadius(Builder::convert($splashRadius));
     return $this;
   }
 
-  public function visualDensity(string $visualDensity): RadioStyleBase {
+  public function visualDensity(string $visualDensity): self {
     $this->data->setVisualDensity(Builder::convert($visualDensity));
     return $this;
   }

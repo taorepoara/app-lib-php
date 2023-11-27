@@ -14,17 +14,17 @@ abstract class LocaleBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesLocale::class);
   }
 
-  public function countryCode(string $countryCode): LocaleBase {
+  public function countryCode(string $countryCode): self {
     $this->data->setCountryCode(Builder::convert($countryCode));
     return $this;
   }
 
-  public function languageCode(string $languageCode): LocaleBase {
+  public function languageCode(string $languageCode): self {
     $this->data->setLanguageCode(Builder::convert($languageCode));
     return $this;
   }
 
-  public function scriptCode(string $scriptCode): LocaleBase {
+  public function scriptCode(string $scriptCode): self {
     $this->data->setScriptCode(Builder::convert($scriptCode));
     return $this;
   }

@@ -6,7 +6,7 @@ use Lenra\App\Components\Base\Builder;
 use PHPUnit\Framework\TestCase;
 
 
-class ComponentTest extends TestCase
+class ComponentTestCase extends TestCase
 {
     function checkComponent(Builder $component, mixed $expected)
     {

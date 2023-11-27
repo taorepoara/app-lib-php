@@ -15,7 +15,7 @@ abstract class StatusStickerBase extends Builder {
     $this->status($status);
   }
 
-  public function status(string $status): StatusStickerBase {
+  public function status(string $status): self {
     $this->data->setStatus(Builder::convert($status));
     return $this;
   }

@@ -14,47 +14,47 @@ abstract class ToggleStyleBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToggleStyle::class);
   }
 
-  public function activeColor(int $activeColor): ToggleStyleBase {
+  public function activeColor(int $activeColor): self {
     $this->data->setActiveColor(Builder::convert($activeColor));
     return $this;
   }
 
-  public function activeTrackColor(int $activeTrackColor): ToggleStyleBase {
+  public function activeTrackColor(int $activeTrackColor): self {
     $this->data->setActiveTrackColor(Builder::convert($activeTrackColor));
     return $this;
   }
 
-  public function inactiveTrackColor(int $inactiveTrackColor): ToggleStyleBase {
+  public function inactiveTrackColor(int $inactiveTrackColor): self {
     $this->data->setInactiveTrackColor(Builder::convert($inactiveTrackColor));
     return $this;
   }
 
-  public function inactiveThumbColor(int $inactiveThumbColor): ToggleStyleBase {
+  public function inactiveThumbColor(int $inactiveThumbColor): self {
     $this->data->setInactiveThumbColor(Builder::convert($inactiveThumbColor));
     return $this;
   }
 
-  public function hoverColor(int $hoverColor): ToggleStyleBase {
+  public function hoverColor(int $hoverColor): self {
     $this->data->setHoverColor(Builder::convert($hoverColor));
     return $this;
   }
 
-  public function focusColor(int $focusColor): ToggleStyleBase {
+  public function focusColor(int $focusColor): self {
     $this->data->setFocusColor(Builder::convert($focusColor));
     return $this;
   }
 
-  public function activeThumbImage(\Lenra\App\Components\Image $activeThumbImage): ToggleStyleBase {
+  public function activeThumbImage(\Lenra\App\Components\Image $activeThumbImage): self {
     $this->data->setActiveThumbImage(Builder::convert($activeThumbImage));
     return $this;
   }
 
-  public function inactiveThumbImage(\Lenra\App\Components\Image $inactiveThumbImage): ToggleStyleBase {
+  public function inactiveThumbImage(\Lenra\App\Components\Image $inactiveThumbImage): self {
     $this->data->setInactiveThumbImage(Builder::convert($inactiveThumbImage));
     return $this;
   }
 
-  public function materialTapTargetSize(string $materialTapTargetSize): ToggleStyleBase {
+  public function materialTapTargetSize(string $materialTapTargetSize): self {
     $this->data->setMaterialTapTargetSize(Builder::convert($materialTapTargetSize));
     return $this;
   }

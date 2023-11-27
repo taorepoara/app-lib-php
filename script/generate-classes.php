@@ -69,7 +69,8 @@ class TypeParser
     $genClassName = join("", $defPathParts);
     $this->model = "Lenra\\App\\Response\\View\\Model\\" . $genClassName;
     $this->normalizer = "Lenra\\App\\Response\\View\\Normalizer\\" . $genClassName . "Normalizer";
-    $this->className = array_pop($defPathParts);
+    $lastPart = array_pop($defPathParts);
+    $this->className = $schema["title"] ?? $lastPart;
     $this->type = array_reduce(["properties", "_type", "const"], function ($o, $key) {
       if (isset($o) && isset($o[$key])) return $o[$key];
       return Null;
@@ -139,7 +140,7 @@ class TypeParser
     $code .= "  }\n\n";
 
     foreach ($this->properties as $prop) {
-      $code .= "  public function " . $prop->name . "(" . $prop->arg() . "): " . $this->className . "Base {\n";
+      $code .= "  public function " . $prop->name . "(" . $prop->arg() . "): self {\n";
       $code .= "    \$this->data->" . $prop->setter . "(Builder::convert(" . $prop->var . "));\n";
       $code .= "    return \$this;\n";
       $code .= "  }\n\n";

@@ -9,4 +9,12 @@ class Border extends \Lenra\App\Base\Components\Styles\BorderBase {
   public static function builder(): Border {
     return new Border();
   }
+
+  public static function all(BorderSide $side): Border {
+    return Border::builder()
+      ->top($side)
+      ->left($side)
+      ->bottom($side)
+      ->right($side);
+  }
 }

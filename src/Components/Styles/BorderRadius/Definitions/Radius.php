@@ -3,10 +3,10 @@
 
 namespace Lenra\App\Components\Styles\BorderRadius\Definitions;
 
-class RadiusType extends \Lenra\App\Base\Components\Styles\BorderRadius\Definitions\RadiusTypeBase {
+class Radius extends \Lenra\App\Base\Components\Styles\BorderRadius\Definitions\RadiusBase {
   // Add here custom implementations
 
-  public static function builder(): RadiusType {
-    return new RadiusType();
+  public static function builder(): Radius {
+    return new Radius();
   }
 }

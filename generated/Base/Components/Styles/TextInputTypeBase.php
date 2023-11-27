@@ -14,22 +14,22 @@ abstract class TextInputTypeBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextInputType::class);
   }
 
-  public function copy(bool $copy): TextInputTypeBase {
+  public function copy(bool $copy): self {
     $this->data->setCopy(Builder::convert($copy));
     return $this;
   }
 
-  public function cut(bool $cut): TextInputTypeBase {
+  public function cut(bool $cut): self {
     $this->data->setCut(Builder::convert($cut));
     return $this;
   }
 
-  public function paste(bool $paste): TextInputTypeBase {
+  public function paste(bool $paste): self {
     $this->data->setPaste(Builder::convert($paste));
     return $this;
   }
 
-  public function selectAll(bool $selectAll): TextInputTypeBase {
+  public function selectAll(bool $selectAll): self {
     $this->data->setSelectAll(Builder::convert($selectAll));
     return $this;
   }

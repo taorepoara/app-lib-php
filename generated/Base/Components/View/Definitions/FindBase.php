@@ -16,17 +16,17 @@ abstract class FindBase extends Builder {
     $this->query($query);
   }
 
-  public function coll(string $coll): FindBase {
+  public function coll(string $coll): self {
     $this->data->setColl(Builder::convert($coll));
     return $this;
   }
 
-  public function query(iterable $query): FindBase {
+  public function query(iterable $query): self {
     $this->data->setQuery(Builder::convert($query));
     return $this;
   }
 
-  public function projection(iterable $projection): FindBase {
+  public function projection(iterable $projection): self {
     $this->data->setProjection(Builder::convert($projection));
     return $this;
   }

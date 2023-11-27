@@ -15,22 +15,22 @@ abstract class ViewBase extends Builder {
     $this->name($name);
   }
 
-  public function name(string $name): ViewBase {
+  public function name(string $name): self {
     $this->data->setName(Builder::convert($name));
     return $this;
   }
 
-  public function props($props): ViewBase {
+  public function props($props): self {
     $this->data->setProps(Builder::convert($props));
     return $this;
   }
 
-  public function find(\Lenra\App\Components\View\Definitions\Find $find): ViewBase {
+  public function find(\Lenra\App\Components\View\Definitions\Find $find): self {
     $this->data->setFind(Builder::convert($find));
     return $this;
   }
 
-  public function context($context): ViewBase {
+  public function context($context): self {
     $this->data->setContext(Builder::convert($context));
     return $this;
   }

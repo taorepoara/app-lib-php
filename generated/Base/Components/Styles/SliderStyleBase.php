@@ -14,17 +14,17 @@ abstract class SliderStyleBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesSliderStyle::class);
   }
 
-  public function activeColor(int $activeColor): SliderStyleBase {
+  public function activeColor(int $activeColor): self {
     $this->data->setActiveColor(Builder::convert($activeColor));
     return $this;
   }
 
-  public function inactiveColor(int $inactiveColor): SliderStyleBase {
+  public function inactiveColor(int $inactiveColor): self {
     $this->data->setInactiveColor(Builder::convert($inactiveColor));
     return $this;
   }
 
-  public function thumbColor(int $thumbColor): SliderStyleBase {
+  public function thumbColor(int $thumbColor): self {
     $this->data->setThumbColor(Builder::convert($thumbColor));
     return $this;
   }

@@ -14,12 +14,12 @@ abstract class RadiusBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadius::class);
   }
 
-  public function x(float $x): RadiusBase {
+  public function x(float $x): self {
     $this->data->setX(Builder::convert($x));
     return $this;
   }
 
-  public function y(float $y): RadiusBase {
+  public function y(float $y): self {
     $this->data->setY(Builder::convert($y));
     return $this;
   }

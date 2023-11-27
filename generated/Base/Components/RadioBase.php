@@ -16,42 +16,42 @@ abstract class RadioBase extends Builder {
     $this->groupValue($groupValue);
   }
 
-  public function autofocus(bool $autofocus): RadioBase {
+  public function autofocus(bool $autofocus): self {
     $this->data->setAutofocus(Builder::convert($autofocus));
     return $this;
   }
 
-  public function value(string $value): RadioBase {
+  public function value(string $value): self {
     $this->data->setValue(Builder::convert($value));
     return $this;
   }
 
-  public function groupValue(string $groupValue): RadioBase {
+  public function groupValue(string $groupValue): self {
     $this->data->setGroupValue(Builder::convert($groupValue));
     return $this;
   }
 
-  public function materialTapTargetSize(string $materialTapTargetSize): RadioBase {
+  public function materialTapTargetSize(string $materialTapTargetSize): self {
     $this->data->setMaterialTapTargetSize(Builder::convert($materialTapTargetSize));
     return $this;
   }
 
-  public function onPressed(\Lenra\App\Components\Listener $onPressed): RadioBase {
+  public function onPressed(\Lenra\App\Components\Listener $onPressed): self {
     $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }
 
-  public function toggleable(bool $toggleable): RadioBase {
+  public function toggleable(bool $toggleable): self {
     $this->data->setToggleable(Builder::convert($toggleable));
     return $this;
   }
 
-  public function style(\Lenra\App\Components\Styles\RadioStyle $style): RadioBase {
+  public function style(\Lenra\App\Components\Styles\RadioStyle $style): self {
     $this->data->setStyle(Builder::convert($style));
     return $this;
   }
 
-  public function name(string $name): RadioBase {
+  public function name(string $name): self {
     $this->data->setName(Builder::convert($name));
     return $this;
   }

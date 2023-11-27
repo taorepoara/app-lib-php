@@ -14,22 +14,22 @@ abstract class BorderBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorder::class);
   }
 
-  public function top(\Lenra\App\Components\Styles\BorderSide $top): BorderBase {
+  public function top(\Lenra\App\Components\Styles\BorderSide $top): self {
     $this->data->setTop(Builder::convert($top));
     return $this;
   }
 
-  public function left(\Lenra\App\Components\Styles\BorderSide $left): BorderBase {
+  public function left(\Lenra\App\Components\Styles\BorderSide $left): self {
     $this->data->setLeft(Builder::convert($left));
     return $this;
   }
 
-  public function bottom(\Lenra\App\Components\Styles\BorderSide $bottom): BorderBase {
+  public function bottom(\Lenra\App\Components\Styles\BorderSide $bottom): self {
     $this->data->setBottom(Builder::convert($bottom));
     return $this;
   }
 
-  public function right(\Lenra\App\Components\Styles\BorderSide $right): BorderBase {
+  public function right(\Lenra\App\Components\Styles\BorderSide $right): self {
     $this->data->setRight(Builder::convert($right));
     return $this;
   }

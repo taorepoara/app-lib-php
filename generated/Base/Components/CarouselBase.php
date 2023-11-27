@@ -15,12 +15,12 @@ abstract class CarouselBase extends Builder {
     $this->children($children);
   }
 
-  public function children(array $children): CarouselBase {
+  public function children(array $children): self {
     $this->data->setChildren(Builder::convert($children));
     return $this;
   }
 
-  public function options(\Lenra\App\Components\Styles\CarouselOptions $options): CarouselBase {
+  public function options(\Lenra\App\Components\Styles\CarouselOptions $options): self {
     $this->data->setOptions(Builder::convert($options));
     return $this;
   }

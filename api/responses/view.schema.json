@@ -164,7 +164,7 @@
           "$ref": "#/definitions/components.text"
         },
         {
-          "$ref": "#/definitions/components.textfield"
+          "$ref": "#/definitions/components.textField"
         },
         {
           "$ref": "#/definitions/components.toggle"
@@ -960,7 +960,7 @@
       ],
       "additionalProperties": false
     },
-    "components.textfield": {
+    "components.textField": {
       "title": "TextField",
       "description": "Element of type TextField",
       "type": "object",
@@ -2295,7 +2295,7 @@
       ]
     },
     "components.styles.radioStyle": {
-      "title": "Radio Style",
+      "title": "RadioStyle",
       "description": "Element of type RadioStyle",
       "type": "object",
       "properties": {

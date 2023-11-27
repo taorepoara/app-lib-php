@@ -15,22 +15,22 @@ abstract class OverlayEntryBase extends Builder {
     $this->child($child);
   }
 
-  public function child($child): OverlayEntryBase {
+  public function child($child): self {
     $this->data->setChild(Builder::convert($child));
     return $this;
   }
 
-  public function maintainState(bool $maintainState): OverlayEntryBase {
+  public function maintainState(bool $maintainState): self {
     $this->data->setMaintainState(Builder::convert($maintainState));
     return $this;
   }
 
-  public function opaque(bool $opaque): OverlayEntryBase {
+  public function opaque(bool $opaque): self {
     $this->data->setOpaque(Builder::convert($opaque));
     return $this;
   }
 
-  public function showOverlay(bool $showOverlay): OverlayEntryBase {
+  public function showOverlay(bool $showOverlay): self {
     $this->data->setShowOverlay(Builder::convert($showOverlay));
     return $this;
   }

@@ -14,22 +14,22 @@ abstract class PaddingBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesPadding::class);
   }
 
-  public function top(float $top): PaddingBase {
+  public function top(float $top): self {
     $this->data->setTop(Builder::convert($top));
     return $this;
   }
 
-  public function left(float $left): PaddingBase {
+  public function left(float $left): self {
     $this->data->setLeft(Builder::convert($left));
     return $this;
   }
 
-  public function bottom(float $bottom): PaddingBase {
+  public function bottom(float $bottom): self {
     $this->data->setBottom(Builder::convert($bottom));
     return $this;
   }
 
-  public function right(float $right): PaddingBase {
+  public function right(float $right): self {
     $this->data->setRight(Builder::convert($right));
     return $this;
   }

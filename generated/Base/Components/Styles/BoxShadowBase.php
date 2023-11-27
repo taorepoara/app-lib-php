@@ -14,22 +14,22 @@ abstract class BoxShadowBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxShadow::class);
   }
 
-  public function color(int $color): BoxShadowBase {
+  public function color(int $color): self {
     $this->data->setColor(Builder::convert($color));
     return $this;
   }
 
-  public function blurRadius(float $blurRadius): BoxShadowBase {
+  public function blurRadius(float $blurRadius): self {
     $this->data->setBlurRadius(Builder::convert($blurRadius));
     return $this;
   }
 
-  public function spreadRadius(float $spreadRadius): BoxShadowBase {
+  public function spreadRadius(float $spreadRadius): self {
     $this->data->setSpreadRadius(Builder::convert($spreadRadius));
     return $this;
   }
 
-  public function offset(\Lenra\App\Components\Styles\Offset $offset): BoxShadowBase {
+  public function offset(\Lenra\App\Components\Styles\Offset $offset): self {
     $this->data->setOffset(Builder::convert($offset));
     return $this;
   }

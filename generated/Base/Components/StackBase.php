@@ -15,17 +15,17 @@ abstract class StackBase extends Builder {
     $this->children($children);
   }
 
-  public function children(array $children): StackBase {
+  public function children(array $children): self {
     $this->data->setChildren(Builder::convert($children));
     return $this;
   }
 
-  public function alignment(string $alignment): StackBase {
+  public function alignment(string $alignment): self {
     $this->data->setAlignment(Builder::convert($alignment));
     return $this;
   }
 
-  public function fit(string $fit): StackBase {
+  public function fit(string $fit): self {
     $this->data->setFit(Builder::convert($fit));
     return $this;
   }

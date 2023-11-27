@@ -6,7 +6,7 @@ namespace Lenra\App\Test\Components;
 use Lenra\App\Components\Button;
 use Lenra\App\Components\Listener;
 
-final class ButtonTest extends ComponentTest
+final class ButtonTest extends ComponentTestCase
 {
     public function testBasic(): void
     {

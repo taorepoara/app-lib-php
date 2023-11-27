@@ -14,22 +14,22 @@ abstract class BoxConstraintsBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxConstraints::class);
   }
 
-  public function minWidth(float $minWidth): BoxConstraintsBase {
+  public function minWidth(float $minWidth): self {
     $this->data->setMinWidth(Builder::convert($minWidth));
     return $this;
   }
 
-  public function maxWidth(float $maxWidth): BoxConstraintsBase {
+  public function maxWidth(float $maxWidth): self {
     $this->data->setMaxWidth(Builder::convert($maxWidth));
     return $this;
   }
 
-  public function minHeight(float $minHeight): BoxConstraintsBase {
+  public function minHeight(float $minHeight): self {
     $this->data->setMinHeight(Builder::convert($minHeight));
     return $this;
   }
 
-  public function maxHeight(float $maxHeight): BoxConstraintsBase {
+  public function maxHeight(float $maxHeight): self {
     $this->data->setMaxHeight(Builder::convert($maxHeight));
     return $this;
   }

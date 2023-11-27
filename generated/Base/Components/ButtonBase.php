@@ -15,42 +15,42 @@ abstract class ButtonBase extends Builder {
     $this->text($text);
   }
 
-  public function text(string $text): ButtonBase {
+  public function text(string $text): self {
     $this->data->setText(Builder::convert($text));
     return $this;
   }
 
-  public function disabled(bool $disabled): ButtonBase {
+  public function disabled(bool $disabled): self {
     $this->data->setDisabled(Builder::convert($disabled));
     return $this;
   }
 
-  public function size(string $size): ButtonBase {
+  public function size(string $size): self {
     $this->data->setSize(Builder::convert($size));
     return $this;
   }
 
-  public function mainStyle(string $mainStyle): ButtonBase {
+  public function mainStyle(string $mainStyle): self {
     $this->data->setMainStyle(Builder::convert($mainStyle));
     return $this;
   }
 
-  public function onPressed(\Lenra\App\Components\Listener $onPressed): ButtonBase {
+  public function onPressed(\Lenra\App\Components\Listener $onPressed): self {
     $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }
 
-  public function leftIcon(\Lenra\App\Components\Icon $leftIcon): ButtonBase {
+  public function leftIcon(\Lenra\App\Components\Icon $leftIcon): self {
     $this->data->setLeftIcon(Builder::convert($leftIcon));
     return $this;
   }
 
-  public function rightIcon(\Lenra\App\Components\Icon $rightIcon): ButtonBase {
+  public function rightIcon(\Lenra\App\Components\Icon $rightIcon): self {
     $this->data->setRightIcon(Builder::convert($rightIcon));
     return $this;
   }
 
-  public function submit(bool $submit): ButtonBase {
+  public function submit(bool $submit): self {
     $this->data->setSubmit(Builder::convert($submit));
     return $this;
   }

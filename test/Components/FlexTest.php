@@ -9,7 +9,7 @@ use Lenra\App\Components\Flex;
 use Lenra\App\Components\Listener;
 use Lenra\App\Components\Text;
 
-final class FlexTest extends ComponentTest
+final class FlexTest extends ComponentTestCase
 {
     public function testEmpty(): void
     {

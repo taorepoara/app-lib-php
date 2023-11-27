@@ -15,12 +15,12 @@ abstract class FormBase extends Builder {
     $this->child($child);
   }
 
-  public function child($child): FormBase {
+  public function child($child): self {
     $this->data->setChild(Builder::convert($child));
     return $this;
   }
 
-  public function onSubmit(\Lenra\App\Components\Listener $onSubmit): FormBase {
+  public function onSubmit(\Lenra\App\Components\Listener $onSubmit): self {
     $this->data->setOnSubmit(Builder::convert($onSubmit));
     return $this;
   }

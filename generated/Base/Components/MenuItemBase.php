@@ -15,27 +15,27 @@ abstract class MenuItemBase extends Builder {
     $this->text($text);
   }
 
-  public function text(string $text): MenuItemBase {
+  public function text(string $text): self {
     $this->data->setText(Builder::convert($text));
     return $this;
   }
 
-  public function isSelected(bool $isSelected): MenuItemBase {
+  public function isSelected(bool $isSelected): self {
     $this->data->setIsSelected(Builder::convert($isSelected));
     return $this;
   }
 
-  public function disabled(bool $disabled): MenuItemBase {
+  public function disabled(bool $disabled): self {
     $this->data->setDisabled(Builder::convert($disabled));
     return $this;
   }
 
-  public function icon(\Lenra\App\Components\Icon $icon): MenuItemBase {
+  public function icon(\Lenra\App\Components\Icon $icon): self {
     $this->data->setIcon(Builder::convert($icon));
     return $this;
   }
 
-  public function onPressed(\Lenra\App\Components\Listener $onPressed): MenuItemBase {
+  public function onPressed(\Lenra\App\Components\Listener $onPressed): self {
     $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }

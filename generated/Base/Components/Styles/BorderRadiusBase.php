@@ -14,22 +14,22 @@ abstract class BorderRadiusBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderRadius::class);
   }
 
-  public function topLeft(\Lenra\App\Components\Styles\BorderRadius\Definitions\RadiusType $topLeft): BorderRadiusBase {
+  public function topLeft(\Lenra\App\Components\Styles\BorderRadius\Definitions\Radius $topLeft): self {
     $this->data->setTopLeft(Builder::convert($topLeft));
     return $this;
   }
 
-  public function topRight(\Lenra\App\Components\Styles\BorderRadius\Definitions\RadiusType $topRight): BorderRadiusBase {
+  public function topRight(\Lenra\App\Components\Styles\BorderRadius\Definitions\Radius $topRight): self {
     $this->data->setTopRight(Builder::convert($topRight));
     return $this;
   }
 
-  public function bottomLeft(\Lenra\App\Components\Styles\BorderRadius\Definitions\RadiusType $bottomLeft): BorderRadiusBase {
+  public function bottomLeft(\Lenra\App\Components\Styles\BorderRadius\Definitions\Radius $bottomLeft): self {
     $this->data->setBottomLeft(Builder::convert($bottomLeft));
     return $this;
   }
 
-  public function bottomRight(\Lenra\App\Components\Styles\BorderRadius\Definitions\RadiusType $bottomRight): BorderRadiusBase {
+  public function bottomRight(\Lenra\App\Components\Styles\BorderRadius\Definitions\Radius $bottomRight): self {
     $this->data->setBottomRight(Builder::convert($bottomRight));
     return $this;
   }

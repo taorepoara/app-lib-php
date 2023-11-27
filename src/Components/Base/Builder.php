@@ -26,6 +26,8 @@ class Builder implements \JsonSerializable
     {
         if (!isset(Builder::$normalizer)) {
             Builder::$normalizer = new JaneObjectNormalizer();
+            Builder::$normalizer->setNormalizer(Builder::$normalizer);
+            Builder::$normalizer->setDenormalizer(Builder::$normalizer);
         }
         return Builder::$normalizer->normalize($this->data);
     }

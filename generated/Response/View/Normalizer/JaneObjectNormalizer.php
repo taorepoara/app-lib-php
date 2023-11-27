@@ -50,8 +50,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     private function initNormalizer(string $normalizerClass)
     {
         $normalizer = new $normalizerClass();
-        $normalizer->setNormalizer($this);
-        $normalizer->setDenormalizer($this);
+        $normalizer->setNormalizer($this->normalizer);
+        $normalizer->setDenormalizer($this->denormalizer);
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
     }

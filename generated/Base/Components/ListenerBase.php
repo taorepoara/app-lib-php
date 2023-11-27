@@ -15,12 +15,12 @@ abstract class ListenerBase extends Builder {
     $this->name($name);
   }
 
-  public function name(string $name): ListenerBase {
+  public function name(string $name): self {
     $this->data->setName(Builder::convert($name));
     return $this;
   }
 
-  public function props($props): ListenerBase {
+  public function props($props): self {
     $this->data->setProps(Builder::convert($props));
     return $this;
   }

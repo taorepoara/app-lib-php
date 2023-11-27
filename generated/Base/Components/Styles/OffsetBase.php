@@ -14,12 +14,12 @@ abstract class OffsetBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesOffset::class);
   }
 
-  public function dx(float $dx): OffsetBase {
+  public function dx(float $dx): self {
     $this->data->setDx(Builder::convert($dx));
     return $this;
   }
 
-  public function dy(float $dy): OffsetBase {
+  public function dy(float $dy): self {
     $this->data->setDy(Builder::convert($dy));
     return $this;
   }

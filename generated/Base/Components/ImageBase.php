@@ -15,77 +15,77 @@ abstract class ImageBase extends Builder {
     $this->src($src);
   }
 
-  public function src(string $src): ImageBase {
+  public function src(string $src): self {
     $this->data->setSrc(Builder::convert($src));
     return $this;
   }
 
-  public function width(float $width): ImageBase {
+  public function width(float $width): self {
     $this->data->setWidth(Builder::convert($width));
     return $this;
   }
 
-  public function height(float $height): ImageBase {
+  public function height(float $height): self {
     $this->data->setHeight(Builder::convert($height));
     return $this;
   }
 
-  public function alignment(string $alignment): ImageBase {
+  public function alignment(string $alignment): self {
     $this->data->setAlignment(Builder::convert($alignment));
     return $this;
   }
 
-  public function centerSlice(\Lenra\App\Components\Styles\Rect $centerSlice): ImageBase {
+  public function centerSlice(\Lenra\App\Components\Styles\Rect $centerSlice): self {
     $this->data->setCenterSlice(Builder::convert($centerSlice));
     return $this;
   }
 
-  public function errorPlaceholder($errorPlaceholder): ImageBase {
+  public function errorPlaceholder($errorPlaceholder): self {
     $this->data->setErrorPlaceholder(Builder::convert($errorPlaceholder));
     return $this;
   }
 
-  public function excludeFromSemantics(bool $excludeFromSemantics): ImageBase {
+  public function excludeFromSemantics(bool $excludeFromSemantics): self {
     $this->data->setExcludeFromSemantics(Builder::convert($excludeFromSemantics));
     return $this;
   }
 
-  public function filterQuality(string $filterQuality): ImageBase {
+  public function filterQuality(string $filterQuality): self {
     $this->data->setFilterQuality(Builder::convert($filterQuality));
     return $this;
   }
 
-  public function fit(string $fit): ImageBase {
+  public function fit(string $fit): self {
     $this->data->setFit(Builder::convert($fit));
     return $this;
   }
 
-  public function framePlaceholder($framePlaceholder): ImageBase {
+  public function framePlaceholder($framePlaceholder): self {
     $this->data->setFramePlaceholder(Builder::convert($framePlaceholder));
     return $this;
   }
 
-  public function gaplessPlayback(bool $gaplessPlayback): ImageBase {
+  public function gaplessPlayback(bool $gaplessPlayback): self {
     $this->data->setGaplessPlayback(Builder::convert($gaplessPlayback));
     return $this;
   }
 
-  public function isAntiAlias(bool $isAntiAlias): ImageBase {
+  public function isAntiAlias(bool $isAntiAlias): self {
     $this->data->setIsAntiAlias(Builder::convert($isAntiAlias));
     return $this;
   }
 
-  public function loadingPlaceholder($loadingPlaceholder): ImageBase {
+  public function loadingPlaceholder($loadingPlaceholder): self {
     $this->data->setLoadingPlaceholder(Builder::convert($loadingPlaceholder));
     return $this;
   }
 
-  public function repeat(string $repeat): ImageBase {
+  public function repeat(string $repeat): self {
     $this->data->setRepeat(Builder::convert($repeat));
     return $this;
   }
 
-  public function semanticLabel(string $semanticLabel): ImageBase {
+  public function semanticLabel(string $semanticLabel): self {
     $this->data->setSemanticLabel(Builder::convert($semanticLabel));
     return $this;
   }

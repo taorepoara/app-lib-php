@@ -15,42 +15,42 @@ abstract class ToggleBase extends Builder {
     $this->value($value);
   }
 
-  public function value(bool $value): ToggleBase {
+  public function value(bool $value): self {
     $this->data->setValue(Builder::convert($value));
     return $this;
   }
 
-  public function splashRadius(float $splashRadius): ToggleBase {
+  public function splashRadius(float $splashRadius): self {
     $this->data->setSplashRadius(Builder::convert($splashRadius));
     return $this;
   }
 
-  public function autofocus(bool $autofocus): ToggleBase {
+  public function autofocus(bool $autofocus): self {
     $this->data->setAutofocus(Builder::convert($autofocus));
     return $this;
   }
 
-  public function dragStartBehavior(string $dragStartBehavior): ToggleBase {
+  public function dragStartBehavior(string $dragStartBehavior): self {
     $this->data->setDragStartBehavior(Builder::convert($dragStartBehavior));
     return $this;
   }
 
-  public function onPressed(\Lenra\App\Components\Listener $onPressed): ToggleBase {
+  public function onPressed(\Lenra\App\Components\Listener $onPressed): self {
     $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }
 
-  public function style(\Lenra\App\Components\Styles\ToggleStyle $style): ToggleBase {
+  public function style(\Lenra\App\Components\Styles\ToggleStyle $style): self {
     $this->data->setStyle(Builder::convert($style));
     return $this;
   }
 
-  public function name(string $name): ToggleBase {
+  public function name(string $name): self {
     $this->data->setName(Builder::convert($name));
     return $this;
   }
 
-  public function disabled(bool $disabled): ToggleBase {
+  public function disabled(bool $disabled): self {
     $this->data->setDisabled(Builder::convert($disabled));
     return $this;
   }

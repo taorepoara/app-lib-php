@@ -15,7 +15,7 @@ abstract class MenuBase extends Builder {
     $this->children($children);
   }
 
-  public function children(array $children): MenuBase {
+  public function children(array $children): self {
     $this->data->setChildren(Builder::convert($children));
     return $this;
   }

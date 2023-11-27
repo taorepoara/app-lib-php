@@ -14,22 +14,22 @@ abstract class RectBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRect::class);
   }
 
-  public function left(float $left): RectBase {
+  public function left(float $left): self {
     $this->data->setLeft(Builder::convert($left));
     return $this;
   }
 
-  public function top(float $top): RectBase {
+  public function top(float $top): self {
     $this->data->setTop(Builder::convert($top));
     return $this;
   }
 
-  public function width(float $width): RectBase {
+  public function width(float $width): self {
     $this->data->setWidth(Builder::convert($width));
     return $this;
   }
 
-  public function height(float $height): RectBase {
+  public function height(float $height): self {
     $this->data->setHeight(Builder::convert($height));
     return $this;
   }

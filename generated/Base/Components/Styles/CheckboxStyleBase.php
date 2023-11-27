@@ -14,42 +14,42 @@ abstract class CheckboxStyleBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCheckboxStyle::class);
   }
 
-  public function activeColor(int $activeColor): CheckboxStyleBase {
+  public function activeColor(int $activeColor): self {
     $this->data->setActiveColor(Builder::convert($activeColor));
     return $this;
   }
 
-  public function checkColor(int $checkColor): CheckboxStyleBase {
+  public function checkColor(int $checkColor): self {
     $this->data->setCheckColor(Builder::convert($checkColor));
     return $this;
   }
 
-  public function focusColor(int $focusColor): CheckboxStyleBase {
+  public function focusColor(int $focusColor): self {
     $this->data->setFocusColor(Builder::convert($focusColor));
     return $this;
   }
 
-  public function hoverColor(int $hoverColor): CheckboxStyleBase {
+  public function hoverColor(int $hoverColor): self {
     $this->data->setHoverColor(Builder::convert($hoverColor));
     return $this;
   }
 
-  public function splashRadius(float $splashRadius): CheckboxStyleBase {
+  public function splashRadius(float $splashRadius): self {
     $this->data->setSplashRadius(Builder::convert($splashRadius));
     return $this;
   }
 
-  public function visualDensity(string $visualDensity): CheckboxStyleBase {
+  public function visualDensity(string $visualDensity): self {
     $this->data->setVisualDensity(Builder::convert($visualDensity));
     return $this;
   }
 
-  public function shape(\Lenra\App\Components\Styles\OutlinedBorder $shape): CheckboxStyleBase {
+  public function shape(\Lenra\App\Components\Styles\OutlinedBorder $shape): self {
     $this->data->setShape(Builder::convert($shape));
     return $this;
   }
 
-  public function side(\Lenra\App\Components\Styles\BorderSide $side): CheckboxStyleBase {
+  public function side(\Lenra\App\Components\Styles\BorderSide $side): self {
     $this->data->setSide(Builder::convert($side));
     return $this;
   }

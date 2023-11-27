@@ -15,17 +15,17 @@ abstract class FlexibleBase extends Builder {
     $this->child($child);
   }
 
-  public function flex(int $flex): FlexibleBase {
+  public function flex(int $flex): self {
     $this->data->setFlex(Builder::convert($flex));
     return $this;
   }
 
-  public function fit(string $fit): FlexibleBase {
+  public function fit(string $fit): self {
     $this->data->setFit(Builder::convert($fit));
     return $this;
   }
 
-  public function child($child): FlexibleBase {
+  public function child($child): self {
     $this->data->setChild(Builder::convert($child));
     return $this;
   }

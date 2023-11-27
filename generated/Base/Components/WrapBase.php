@@ -15,47 +15,47 @@ abstract class WrapBase extends Builder {
     $this->children($children);
   }
 
-  public function children(array $children): WrapBase {
+  public function children(array $children): self {
     $this->data->setChildren(Builder::convert($children));
     return $this;
   }
 
-  public function direction(string $direction): WrapBase {
+  public function direction(string $direction): self {
     $this->data->setDirection(Builder::convert($direction));
     return $this;
   }
 
-  public function crossAxisAlignment(string $crossAxisAlignment): WrapBase {
+  public function crossAxisAlignment(string $crossAxisAlignment): self {
     $this->data->setCrossAxisAlignment(Builder::convert($crossAxisAlignment));
     return $this;
   }
 
-  public function spacing(float $spacing): WrapBase {
+  public function spacing(float $spacing): self {
     $this->data->setSpacing(Builder::convert($spacing));
     return $this;
   }
 
-  public function runSpacing(float $runSpacing): WrapBase {
+  public function runSpacing(float $runSpacing): self {
     $this->data->setRunSpacing(Builder::convert($runSpacing));
     return $this;
   }
 
-  public function alignment(string $alignment): WrapBase {
+  public function alignment(string $alignment): self {
     $this->data->setAlignment(Builder::convert($alignment));
     return $this;
   }
 
-  public function runAlignment(string $runAlignment): WrapBase {
+  public function runAlignment(string $runAlignment): self {
     $this->data->setRunAlignment(Builder::convert($runAlignment));
     return $this;
   }
 
-  public function horizontalDirection(string $horizontalDirection): WrapBase {
+  public function horizontalDirection(string $horizontalDirection): self {
     $this->data->setHorizontalDirection(Builder::convert($horizontalDirection));
     return $this;
   }
 
-  public function verticalDirection(string $verticalDirection): WrapBase {
+  public function verticalDirection(string $verticalDirection): self {
     $this->data->setVerticalDirection(Builder::convert($verticalDirection));
     return $this;
   }

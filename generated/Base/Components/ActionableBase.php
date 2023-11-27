@@ -15,37 +15,37 @@ abstract class ActionableBase extends Builder {
     $this->child($child);
   }
 
-  public function child($child): ActionableBase {
+  public function child($child): self {
     $this->data->setChild(Builder::convert($child));
     return $this;
   }
 
-  public function onPressed(\Lenra\App\Components\Listener $onPressed): ActionableBase {
+  public function onPressed(\Lenra\App\Components\Listener $onPressed): self {
     $this->data->setOnPressed(Builder::convert($onPressed));
     return $this;
   }
 
-  public function onDoublePressed(\Lenra\App\Components\Listener $onDoublePressed): ActionableBase {
+  public function onDoublePressed(\Lenra\App\Components\Listener $onDoublePressed): self {
     $this->data->setOnDoublePressed(Builder::convert($onDoublePressed));
     return $this;
   }
 
-  public function onLongPressed(\Lenra\App\Components\Listener $onLongPressed): ActionableBase {
+  public function onLongPressed(\Lenra\App\Components\Listener $onLongPressed): self {
     $this->data->setOnLongPressed(Builder::convert($onLongPressed));
     return $this;
   }
 
-  public function onPressedCancel(\Lenra\App\Components\Listener $onPressedCancel): ActionableBase {
+  public function onPressedCancel(\Lenra\App\Components\Listener $onPressedCancel): self {
     $this->data->setOnPressedCancel(Builder::convert($onPressedCancel));
     return $this;
   }
 
-  public function onHovered(\Lenra\App\Components\Listener $onHovered): ActionableBase {
+  public function onHovered(\Lenra\App\Components\Listener $onHovered): self {
     $this->data->setOnHovered(Builder::convert($onHovered));
     return $this;
   }
 
-  public function submit(bool $submit): ActionableBase {
+  public function submit(bool $submit): self {
     $this->data->setSubmit(Builder::convert($submit));
     return $this;
   }

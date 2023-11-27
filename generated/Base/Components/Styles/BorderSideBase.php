@@ -14,12 +14,12 @@ abstract class BorderSideBase extends Builder {
     parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderSide::class);
   }
 
-  public function width(float $width): BorderSideBase {
+  public function width(float $width): self {
     $this->data->setWidth(Builder::convert($width));
     return $this;
   }
 
-  public function color(int $color): BorderSideBase {
+  public function color(int $color): self {
     $this->data->setColor(Builder::convert($color));
     return $this;
   }

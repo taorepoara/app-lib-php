@@ -9,4 +9,12 @@ class Padding extends \Lenra\App\Base\Components\Styles\PaddingBase {
   public static function builder(): Padding {
     return new Padding();
   }
+
+  public static function all(int $value): Padding {
+    return Padding::builder()
+      ->top($value)
+      ->left($value)
+      ->bottom($value)
+      ->right($value);
+  }
 }
