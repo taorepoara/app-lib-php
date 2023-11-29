@@ -3,32 +3,26 @@
 namespace Lenra\App;
 
 use Lenra\App\Components\Route;
+use Lenra\App\Manifest\Exposer;
 
 class Manifest implements \JsonSerializable {
-    protected string $version;
-    /** 
-    * @var Route[] 
-    */
-    protected array $routes;
+    protected Exposer $json;
+    protected Exposer $lenra;
 
-    /** 
-    * @param string 
-    * @param Route[] 
-    */
-    public function __construct(
-        string $version,
-        array $routes
-    ) {
-        $this->version = $version;
-        $this->routes = $routes;
+    public function json(Exposer $exposer): Manifest {
+        $this->json = $exposer;
+        return $this;
+    }
+
+    public function lenra(Exposer $exposer): Manifest {
+        $this->lenra = $exposer;
+        return $this;
     }
 
     public function jsonSerialize() {
         return [
-            'version' => $this->version,
-            'routes' => array_map(function ($route) {
-                return $route->jsonSerialize();
-            }, $this->routes),
+            'json' => $this->json->jsonSerialize(),
+            'lenra' => $this->lenra->jsonSerialize(),
         ];
     }
 }
