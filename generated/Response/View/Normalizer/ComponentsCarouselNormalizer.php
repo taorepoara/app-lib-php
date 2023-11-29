@@ -87,7 +87,7 @@ class ComponentsCarouselNormalizer implements DenormalizerInterface, NormalizerI
                 } elseif (is_array($value) and isset($value['_type']) and isset($value['value'])) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Lenra\\App\\Response\\View\\Model\\ComponentsText', 'json', $context);
                 } elseif (is_array($value) and isset($value['_type']) and isset($value['value'])) {
-                    $value_1 = $this->denormalizer->denormalize($value, 'Lenra\\App\\Response\\View\\Model\\ComponentsTextfield', 'json', $context);
+                    $value_1 = $this->denormalizer->denormalize($value, 'Lenra\\App\\Response\\View\\Model\\ComponentsTextField', 'json', $context);
                 } elseif (is_array($value) and isset($value['_type']) and isset($value['value'])) {
                     $value_1 = $this->denormalizer->denormalize($value, 'Lenra\\App\\Response\\View\\Model\\ComponentsToggle', 'json', $context);
                 } elseif (is_array($value) and isset($value['_type']) and isset($value['name'])) {

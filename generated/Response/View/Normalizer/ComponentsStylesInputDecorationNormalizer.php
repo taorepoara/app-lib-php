@@ -181,7 +181,7 @@ class ComponentsStylesInputDecorationNormalizer implements DenormalizerInterface
             } elseif (is_array($data['label']) and isset($data['label']['_type']) and isset($data['label']['value'])) {
                 $value = $this->denormalizer->denormalize($data['label'], 'Lenra\\App\\Response\\View\\Model\\ComponentsText', 'json', $context);
             } elseif (is_array($data['label']) and isset($data['label']['_type']) and isset($data['label']['value'])) {
-                $value = $this->denormalizer->denormalize($data['label'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextfield', 'json', $context);
+                $value = $this->denormalizer->denormalize($data['label'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextField', 'json', $context);
             } elseif (is_array($data['label']) and isset($data['label']['_type']) and isset($data['label']['value'])) {
                 $value = $this->denormalizer->denormalize($data['label'], 'Lenra\\App\\Response\\View\\Model\\ComponentsToggle', 'json', $context);
             } elseif (is_array($data['label']) and isset($data['label']['_type']) and isset($data['label']['name'])) {
@@ -238,7 +238,7 @@ class ComponentsStylesInputDecorationNormalizer implements DenormalizerInterface
             } elseif (is_array($data['prefix']) and isset($data['prefix']['_type']) and isset($data['prefix']['value'])) {
                 $value_1 = $this->denormalizer->denormalize($data['prefix'], 'Lenra\\App\\Response\\View\\Model\\ComponentsText', 'json', $context);
             } elseif (is_array($data['prefix']) and isset($data['prefix']['_type']) and isset($data['prefix']['value'])) {
-                $value_1 = $this->denormalizer->denormalize($data['prefix'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextfield', 'json', $context);
+                $value_1 = $this->denormalizer->denormalize($data['prefix'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextField', 'json', $context);
             } elseif (is_array($data['prefix']) and isset($data['prefix']['_type']) and isset($data['prefix']['value'])) {
                 $value_1 = $this->denormalizer->denormalize($data['prefix'], 'Lenra\\App\\Response\\View\\Model\\ComponentsToggle', 'json', $context);
             } elseif (is_array($data['prefix']) and isset($data['prefix']['_type']) and isset($data['prefix']['name'])) {
