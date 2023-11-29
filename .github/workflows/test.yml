@@ -14,12 +14,13 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-      - uses: php-actions/composer@v6
-        with:
-          php-version: '8.2'
+      # - uses: php-actions/composer@v6
+      #   with:
+      #     php-version: '8.2'
       - run: composer install
       - run: composer dump-autoload
-      - uses: php-actions/phpunit@v3
-        with:
-          php-version: '8.2'
-          args: test
+      - run: ./vendor/bin/phpunit test
+      # - uses: php-actions/phpunit@v3
+      #   with:
+      #     php-version: '8.2'
+      #     args: test
