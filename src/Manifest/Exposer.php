@@ -27,11 +27,14 @@ class Exposer implements \JsonSerializable {
     }
 
     public function jsonSerialize() {
-        return [
-            'version' => $this->version,
+        $ret = [
             'routes' => array_map(function ($route) {
                 return $route->jsonSerialize();
             }, $this->routes),
         ];
+        if (isset($this->version)) {
+            $ret['version'] = $this->version;
+        }
+        return $ret;
     }
 }

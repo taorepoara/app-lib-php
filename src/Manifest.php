@@ -20,9 +20,13 @@ class Manifest implements \JsonSerializable {
     }
 
     public function jsonSerialize() {
-        return [
-            'json' => $this->json->jsonSerialize(),
-            'lenra' => $this->lenra->jsonSerialize(),
-        ];
+        $ret = [];
+        if (isset($this->json)) {
+            $ret['json'] = $this->json->jsonSerialize();
+        }
+        if (isset($this->lenra)) {
+            $ret['lenra'] = $this->lenra->jsonSerialize();
+        }
+        return $ret;
     }
 }
