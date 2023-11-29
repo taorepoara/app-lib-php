@@ -12,8 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: php-actions/composer@v6
+        with:
+          php-version: '8.2'
       - run: composer install
       - run: composer dump-autoload
       - uses: php-actions/phpunit@v3
         with:
+          php-version: '8.2'
           args: test
