@@ -16,11 +16,14 @@ class Exposer implements \JsonSerializable {
     * @param Route[] 
     */
     public function __construct(
-        string $version,
         array $routes
     ) {
-        $this->version = $version;
         $this->routes = $routes;
+    }
+
+    public function version(string $version): Exposer {
+        $this->version = $version;
+        return $this;
     }
 
     public function jsonSerialize() {
