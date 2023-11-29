@@ -3,11 +3,10 @@
     "description": "Lenra's app server lib",
     "type": "library",
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/lenra-io/internal-api-client-lib-php.git"
-        }
+    "keywords": [    
+        "app",
+        "server",
+        "lenra"
     ],
     "autoload": {
         "psr-4": {
@@ -27,7 +26,7 @@
         }
     ],
     "require": {
-        "lenra/internal-api-client": "@dev",
+        "lenra/internal-api-client": "^1",
         "json-mapper/json-mapper": "^2.20",
         "jane-php/json-schema-runtime": "^7.5"
     },
