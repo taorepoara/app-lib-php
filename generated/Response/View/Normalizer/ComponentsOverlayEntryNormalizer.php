@@ -85,7 +85,7 @@ class ComponentsOverlayEntryNormalizer implements DenormalizerInterface, Normali
             } elseif (is_array($data['child']) and isset($data['child']['_type']) and isset($data['child']['value'])) {
                 $value = $this->denormalizer->denormalize($data['child'], 'Lenra\\App\\Response\\View\\Model\\ComponentsText', 'json', $context);
             } elseif (is_array($data['child']) and isset($data['child']['_type']) and isset($data['child']['value'])) {
-                $value = $this->denormalizer->denormalize($data['child'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextfield', 'json', $context);
+                $value = $this->denormalizer->denormalize($data['child'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextField', 'json', $context);
             } elseif (is_array($data['child']) and isset($data['child']['_type']) and isset($data['child']['value'])) {
                 $value = $this->denormalizer->denormalize($data['child'], 'Lenra\\App\\Response\\View\\Model\\ComponentsToggle', 'json', $context);
             } elseif (is_array($data['child']) and isset($data['child']['_type']) and isset($data['child']['name'])) {

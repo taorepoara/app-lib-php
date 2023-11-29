@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ComponentsTextfieldNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ComponentsTextFieldNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class ComponentsTextfieldNormalizer implements DenormalizerInterface, Normalizer
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
-        return $type === 'Lenra\\App\\Response\\View\\Model\\ComponentsTextfield';
+        return $type === 'Lenra\\App\\Response\\View\\Model\\ComponentsTextField';
     }
     public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return $data instanceof \Lenra\App\Response\View\Model\ComponentsTextfield;
+        return $data instanceof \Lenra\App\Response\View\Model\ComponentsTextField;
     }
     /**
      * @return mixed
@@ -37,7 +37,7 @@ class ComponentsTextfieldNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Lenra\App\Response\View\Model\ComponentsTextfield();
+        $object = new \Lenra\App\Response\View\Model\ComponentsTextField();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -231,6 +231,6 @@ class ComponentsTextfieldNormalizer implements DenormalizerInterface, Normalizer
     }
     public function getSupportedTypes(?string $format = null) : array
     {
-        return array('Lenra\\App\\Response\\View\\Model\\ComponentsTextfield' => false);
+        return array('Lenra\\App\\Response\\View\\Model\\ComponentsTextField' => false);
     }
 }

@@ -106,7 +106,7 @@ class ComponentsImageNormalizer implements DenormalizerInterface, NormalizerInte
             } elseif (is_array($data['errorPlaceholder']) and isset($data['errorPlaceholder']['_type']) and isset($data['errorPlaceholder']['value'])) {
                 $value = $this->denormalizer->denormalize($data['errorPlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsText', 'json', $context);
             } elseif (is_array($data['errorPlaceholder']) and isset($data['errorPlaceholder']['_type']) and isset($data['errorPlaceholder']['value'])) {
-                $value = $this->denormalizer->denormalize($data['errorPlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextfield', 'json', $context);
+                $value = $this->denormalizer->denormalize($data['errorPlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextField', 'json', $context);
             } elseif (is_array($data['errorPlaceholder']) and isset($data['errorPlaceholder']['_type']) and isset($data['errorPlaceholder']['value'])) {
                 $value = $this->denormalizer->denormalize($data['errorPlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsToggle', 'json', $context);
             } elseif (is_array($data['errorPlaceholder']) and isset($data['errorPlaceholder']['_type']) and isset($data['errorPlaceholder']['name'])) {
@@ -166,7 +166,7 @@ class ComponentsImageNormalizer implements DenormalizerInterface, NormalizerInte
             } elseif (is_array($data['framePlaceholder']) and isset($data['framePlaceholder']['_type']) and isset($data['framePlaceholder']['value'])) {
                 $value_1 = $this->denormalizer->denormalize($data['framePlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsText', 'json', $context);
             } elseif (is_array($data['framePlaceholder']) and isset($data['framePlaceholder']['_type']) and isset($data['framePlaceholder']['value'])) {
-                $value_1 = $this->denormalizer->denormalize($data['framePlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextfield', 'json', $context);
+                $value_1 = $this->denormalizer->denormalize($data['framePlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextField', 'json', $context);
             } elseif (is_array($data['framePlaceholder']) and isset($data['framePlaceholder']['_type']) and isset($data['framePlaceholder']['value'])) {
                 $value_1 = $this->denormalizer->denormalize($data['framePlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsToggle', 'json', $context);
             } elseif (is_array($data['framePlaceholder']) and isset($data['framePlaceholder']['_type']) and isset($data['framePlaceholder']['name'])) {
@@ -223,7 +223,7 @@ class ComponentsImageNormalizer implements DenormalizerInterface, NormalizerInte
             } elseif (is_array($data['loadingPlaceholder']) and isset($data['loadingPlaceholder']['_type']) and isset($data['loadingPlaceholder']['value'])) {
                 $value_2 = $this->denormalizer->denormalize($data['loadingPlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsText', 'json', $context);
             } elseif (is_array($data['loadingPlaceholder']) and isset($data['loadingPlaceholder']['_type']) and isset($data['loadingPlaceholder']['value'])) {
-                $value_2 = $this->denormalizer->denormalize($data['loadingPlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextfield', 'json', $context);
+                $value_2 = $this->denormalizer->denormalize($data['loadingPlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsTextField', 'json', $context);
             } elseif (is_array($data['loadingPlaceholder']) and isset($data['loadingPlaceholder']['_type']) and isset($data['loadingPlaceholder']['value'])) {
                 $value_2 = $this->denormalizer->denormalize($data['loadingPlaceholder'], 'Lenra\\App\\Response\\View\\Model\\ComponentsToggle', 'json', $context);
             } elseif (is_array($data['loadingPlaceholder']) and isset($data['loadingPlaceholder']['_type']) and isset($data['loadingPlaceholder']['name'])) {

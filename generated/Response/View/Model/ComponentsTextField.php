@@ -2,7 +2,7 @@
 
 namespace Lenra\App\Response\View\Model;
 
-class ComponentsTextfield
+class ComponentsTextField
 {
     /**
      * @var array
