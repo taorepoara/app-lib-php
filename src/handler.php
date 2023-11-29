@@ -2,8 +2,7 @@
 
 use Lenra\App\Api;
 
-function var_error_log($object = null)
-{
+function var_error_log($object = null) {
     ob_start();
     var_dump($object);
     $contents = ob_get_contents();
@@ -11,8 +10,7 @@ function var_error_log($object = null)
     error_log($contents);
 }
 
-class ViewRequest
-{
+class ViewRequest {
     public function __construct(
         public $data,
         public $props,
@@ -21,8 +19,7 @@ class ViewRequest
     }
 }
 
-class ListenerRequest
-{
+class ListenerRequest {
     public function __construct(
         public $props,
         public $event,
@@ -31,8 +28,7 @@ class ListenerRequest
     }
 }
 
-function handleRequest($request)
-{
+function handleRequest($request) {
     // Check if data matches one of the expected queries
     if (isset($request->view)) {
         error_log("View: $request->view");
@@ -62,8 +58,7 @@ function handleRequest($request)
     }
 }
 
-function includeFile($type, $name = null, $request = null)
-{
+function includeFile($type, $name = null, $request = null) {
     if (isset($name)) {
         $path = $type . '/' . str_replace(".", "/", $name) . '.php';
     } else {
@@ -71,13 +66,12 @@ function includeFile($type, $name = null, $request = null)
     }
     error_log("include file $path");
     if (include $path) {
-        if (isset($response)) {
-            echo json_encode($response);
+        $fn = 'handle';
+        if (function_exists($fn) && is_callable($fn)) {
+            echo json_encode(($fn)($request));
         } else {
-            error_log("no response defined");
-            // headers_send(500);
-            $GLOBALS['http_response_code'] = 500;
-            throw new Exception('No response was generated');
+            error_log("function $fn does not exist");
+            throw new Exception("function $fn does not exist");
         }
     } else {
         error_log("include failed");
