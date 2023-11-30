@@ -3,7 +3,12 @@
 namespace Lenra\App;
 
 class Logger {
+    private static $STDOUT;
+
     public static function log(string $message): void {
-        fwrite(\STDOUT, microtime() . " - " . $message . "\n");
+        if (!isset(self::$STDOUT)) {
+            self::$STDOUT = fopen('/dev/stdout', 'w');
+        }
+        fwrite(self::$STDOUT, microtime() . " - " . $message . "\n");
     }
 }
