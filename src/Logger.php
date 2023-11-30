@@ -7,7 +7,7 @@ class Logger {
 
     public static function log(string $message): void {
         if (!isset(self::$STDOUT)) {
-            self::$STDOUT = fopen('/dev/stdout', 'w');
+            self::$STDOUT = fopen('php://stdout', 'w');
         }
         fwrite(self::$STDOUT, microtime() . " - " . $message . "\n");
     }
