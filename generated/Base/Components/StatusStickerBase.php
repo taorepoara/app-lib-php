@@ -5,18 +5,15 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStatusSticker>
-*/
 abstract class StatusStickerBase extends Builder {
   public function __construct(string $status)
   {
-    parent::__construct('statusSticker', \Lenra\App\Response\View\Model\ComponentsStatusSticker::class);
+    parent::__construct('statusSticker');
     $this->status($status);
   }
 
   public function status(string $status): self {
-    $this->data->setStatus(Builder::convert($status));
+    $this->data['status'] = $status;
     return $this;
   }
 

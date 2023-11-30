@@ -5,52 +5,49 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesCheckboxStyle>
-*/
 abstract class CheckboxStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCheckboxStyle::class);
+    parent::__construct();
   }
 
   public function activeColor(int $activeColor): self {
-    $this->data->setActiveColor(Builder::convert($activeColor));
+    $this->data['activeColor'] = $activeColor;
     return $this;
   }
 
   public function checkColor(int $checkColor): self {
-    $this->data->setCheckColor(Builder::convert($checkColor));
+    $this->data['checkColor'] = $checkColor;
     return $this;
   }
 
   public function focusColor(int $focusColor): self {
-    $this->data->setFocusColor(Builder::convert($focusColor));
+    $this->data['focusColor'] = $focusColor;
     return $this;
   }
 
   public function hoverColor(int $hoverColor): self {
-    $this->data->setHoverColor(Builder::convert($hoverColor));
+    $this->data['hoverColor'] = $hoverColor;
     return $this;
   }
 
   public function splashRadius(float $splashRadius): self {
-    $this->data->setSplashRadius(Builder::convert($splashRadius));
+    $this->data['splashRadius'] = $splashRadius;
     return $this;
   }
 
   public function visualDensity(string $visualDensity): self {
-    $this->data->setVisualDensity(Builder::convert($visualDensity));
+    $this->data['visualDensity'] = $visualDensity;
     return $this;
   }
 
   public function shape(\Lenra\App\Components\Styles\OutlinedBorder $shape): self {
-    $this->data->setShape(Builder::convert($shape));
+    $this->data['shape'] = $shape;
     return $this;
   }
 
   public function side(\Lenra\App\Components\Styles\BorderSide $side): self {
-    $this->data->setSide(Builder::convert($side));
+    $this->data['side'] = $side;
     return $this;
   }
 

@@ -5,32 +5,29 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesRect>
-*/
 abstract class RectBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRect::class);
+    parent::__construct();
   }
 
   public function left(float $left): self {
-    $this->data->setLeft(Builder::convert($left));
+    $this->data['left'] = $left;
     return $this;
   }
 
   public function top(float $top): self {
-    $this->data->setTop(Builder::convert($top));
+    $this->data['top'] = $top;
     return $this;
   }
 
   public function width(float $width): self {
-    $this->data->setWidth(Builder::convert($width));
+    $this->data['width'] = $width;
     return $this;
   }
 
   public function height(float $height): self {
-    $this->data->setHeight(Builder::convert($height));
+    $this->data['height'] = $height;
     return $this;
   }
 

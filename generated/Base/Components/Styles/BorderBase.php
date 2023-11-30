@@ -5,32 +5,29 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesBorder>
-*/
 abstract class BorderBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorder::class);
+    parent::__construct();
   }
 
   public function top(\Lenra\App\Components\Styles\BorderSide $top): self {
-    $this->data->setTop(Builder::convert($top));
+    $this->data['top'] = $top;
     return $this;
   }
 
   public function left(\Lenra\App\Components\Styles\BorderSide $left): self {
-    $this->data->setLeft(Builder::convert($left));
+    $this->data['left'] = $left;
     return $this;
   }
 
   public function bottom(\Lenra\App\Components\Styles\BorderSide $bottom): self {
-    $this->data->setBottom(Builder::convert($bottom));
+    $this->data['bottom'] = $bottom;
     return $this;
   }
 
   public function right(\Lenra\App\Components\Styles\BorderSide $right): self {
-    $this->data->setRight(Builder::convert($right));
+    $this->data['right'] = $right;
     return $this;
   }
 

@@ -5,32 +5,29 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesBoxConstraints>
-*/
 abstract class BoxConstraintsBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxConstraints::class);
+    parent::__construct();
   }
 
   public function minWidth(float $minWidth): self {
-    $this->data->setMinWidth(Builder::convert($minWidth));
+    $this->data['minWidth'] = $minWidth;
     return $this;
   }
 
   public function maxWidth(float $maxWidth): self {
-    $this->data->setMaxWidth(Builder::convert($maxWidth));
+    $this->data['maxWidth'] = $maxWidth;
     return $this;
   }
 
   public function minHeight(float $minHeight): self {
-    $this->data->setMinHeight(Builder::convert($minHeight));
+    $this->data['minHeight'] = $minHeight;
     return $this;
   }
 
   public function maxHeight(float $maxHeight): self {
-    $this->data->setMaxHeight(Builder::convert($maxHeight));
+    $this->data['maxHeight'] = $maxHeight;
     return $this;
   }
 

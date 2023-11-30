@@ -5,38 +5,35 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsIcon>
-*/
 abstract class IconBase extends Builder {
   public function __construct(string $value)
   {
-    parent::__construct('icon', \Lenra\App\Response\View\Model\ComponentsIcon::class);
+    parent::__construct('icon');
     $this->value($value);
   }
 
   public function size(float $size): self {
-    $this->data->setSize(Builder::convert($size));
+    $this->data['size'] = $size;
     return $this;
   }
 
   public function color(int $color): self {
-    $this->data->setColor(Builder::convert($color));
+    $this->data['color'] = $color;
     return $this;
   }
 
   public function semanticLabel(string $semanticLabel): self {
-    $this->data->setSemanticLabel(Builder::convert($semanticLabel));
+    $this->data['semanticLabel'] = $semanticLabel;
     return $this;
   }
 
   public function value(string $value): self {
-    $this->data->setValue(Builder::convert($value));
+    $this->data['value'] = $value;
     return $this;
   }
 
   public function style(string $style): self {
-    $this->data->setStyle(Builder::convert($style));
+    $this->data['style'] = $style;
     return $this;
   }
 

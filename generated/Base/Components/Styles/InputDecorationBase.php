@@ -5,257 +5,254 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesInputDecoration>
-*/
 abstract class InputDecorationBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesInputDecoration::class);
+    parent::__construct();
   }
 
   public function alignLabelWithHint(bool $alignLabelWithHint): self {
-    $this->data->setAlignLabelWithHint(Builder::convert($alignLabelWithHint));
+    $this->data['alignLabelWithHint'] = $alignLabelWithHint;
     return $this;
   }
 
   public function border(\Lenra\App\Components\Styles\InputBorder $border): self {
-    $this->data->setBorder(Builder::convert($border));
+    $this->data['border'] = $border;
     return $this;
   }
 
   public function constraints(\Lenra\App\Components\Styles\BoxConstraints $constraints): self {
-    $this->data->setConstraints(Builder::convert($constraints));
+    $this->data['constraints'] = $constraints;
     return $this;
   }
 
   public function contentPadding(\Lenra\App\Components\Styles\Padding $contentPadding): self {
-    $this->data->setContentPadding(Builder::convert($contentPadding));
+    $this->data['contentPadding'] = $contentPadding;
     return $this;
   }
 
   public function counter($counter): self {
-    $this->data->setCounter(Builder::convert($counter));
+    $this->data['counter'] = $counter;
     return $this;
   }
 
   public function counterStyle(\Lenra\App\Components\Styles\TextStyle $counterStyle): self {
-    $this->data->setCounterStyle(Builder::convert($counterStyle));
+    $this->data['counterStyle'] = $counterStyle;
     return $this;
   }
 
   public function counterText(string $counterText): self {
-    $this->data->setCounterText(Builder::convert($counterText));
+    $this->data['counterText'] = $counterText;
     return $this;
   }
 
   public function disabledBorder(\Lenra\App\Components\Styles\InputBorder $disabledBorder): self {
-    $this->data->setDisabledBorder(Builder::convert($disabledBorder));
+    $this->data['disabledBorder'] = $disabledBorder;
     return $this;
   }
 
   public function enabled(bool $enabled): self {
-    $this->data->setEnabled(Builder::convert($enabled));
+    $this->data['enabled'] = $enabled;
     return $this;
   }
 
   public function enabledBorder(\Lenra\App\Components\Styles\InputBorder $enabledBorder): self {
-    $this->data->setEnabledBorder(Builder::convert($enabledBorder));
+    $this->data['enabledBorder'] = $enabledBorder;
     return $this;
   }
 
   public function errorBorder(\Lenra\App\Components\Styles\InputBorder $errorBorder): self {
-    $this->data->setErrorBorder(Builder::convert($errorBorder));
+    $this->data['errorBorder'] = $errorBorder;
     return $this;
   }
 
   public function errorMaxLines(int $errorMaxLines): self {
-    $this->data->setErrorMaxLines(Builder::convert($errorMaxLines));
+    $this->data['errorMaxLines'] = $errorMaxLines;
     return $this;
   }
 
   public function errorStyle(\Lenra\App\Components\Styles\TextStyle $errorStyle): self {
-    $this->data->setErrorStyle(Builder::convert($errorStyle));
+    $this->data['errorStyle'] = $errorStyle;
     return $this;
   }
 
   public function errorText(string $errorText): self {
-    $this->data->setErrorText(Builder::convert($errorText));
+    $this->data['errorText'] = $errorText;
     return $this;
   }
 
   public function fillColor(int $fillColor): self {
-    $this->data->setFillColor(Builder::convert($fillColor));
+    $this->data['fillColor'] = $fillColor;
     return $this;
   }
 
   public function filled(bool $filled): self {
-    $this->data->setFilled(Builder::convert($filled));
+    $this->data['filled'] = $filled;
     return $this;
   }
 
   public function floatingLabelBehavior(string $floatingLabelBehavior): self {
-    $this->data->setFloatingLabelBehavior(Builder::convert($floatingLabelBehavior));
+    $this->data['floatingLabelBehavior'] = $floatingLabelBehavior;
     return $this;
   }
 
   public function floatingLabelStyle(\Lenra\App\Components\Styles\TextStyle $floatingLabelStyle): self {
-    $this->data->setFloatingLabelStyle(Builder::convert($floatingLabelStyle));
+    $this->data['floatingLabelStyle'] = $floatingLabelStyle;
     return $this;
   }
 
   public function focusColor(int $focusColor): self {
-    $this->data->setFocusColor(Builder::convert($focusColor));
+    $this->data['focusColor'] = $focusColor;
     return $this;
   }
 
   public function focusedBorder(\Lenra\App\Components\Styles\InputBorder $focusedBorder): self {
-    $this->data->setFocusedBorder(Builder::convert($focusedBorder));
+    $this->data['focusedBorder'] = $focusedBorder;
     return $this;
   }
 
   public function focusedErrorBorder(\Lenra\App\Components\Styles\InputBorder $focusedErrorBorder): self {
-    $this->data->setFocusedErrorBorder(Builder::convert($focusedErrorBorder));
+    $this->data['focusedErrorBorder'] = $focusedErrorBorder;
     return $this;
   }
 
   public function helperMaxLines(int $helperMaxLines): self {
-    $this->data->setHelperMaxLines(Builder::convert($helperMaxLines));
+    $this->data['helperMaxLines'] = $helperMaxLines;
     return $this;
   }
 
   public function helperStyle(\Lenra\App\Components\Styles\TextStyle $helperStyle): self {
-    $this->data->setHelperStyle(Builder::convert($helperStyle));
+    $this->data['helperStyle'] = $helperStyle;
     return $this;
   }
 
   public function helperText(string $helperText): self {
-    $this->data->setHelperText(Builder::convert($helperText));
+    $this->data['helperText'] = $helperText;
     return $this;
   }
 
   public function hintMaxLines(int $hintMaxLines): self {
-    $this->data->setHintMaxLines(Builder::convert($hintMaxLines));
+    $this->data['hintMaxLines'] = $hintMaxLines;
     return $this;
   }
 
   public function hintStyle(\Lenra\App\Components\Styles\TextStyle $hintStyle): self {
-    $this->data->setHintStyle(Builder::convert($hintStyle));
+    $this->data['hintStyle'] = $hintStyle;
     return $this;
   }
 
   public function hintText(string $hintText): self {
-    $this->data->setHintText(Builder::convert($hintText));
+    $this->data['hintText'] = $hintText;
     return $this;
   }
 
   public function hintTextDirection(string $hintTextDirection): self {
-    $this->data->setHintTextDirection(Builder::convert($hintTextDirection));
+    $this->data['hintTextDirection'] = $hintTextDirection;
     return $this;
   }
 
   public function hoverColor(int $hoverColor): self {
-    $this->data->setHoverColor(Builder::convert($hoverColor));
+    $this->data['hoverColor'] = $hoverColor;
     return $this;
   }
 
   public function icon(\Lenra\App\Components\Icon $icon): self {
-    $this->data->setIcon(Builder::convert($icon));
+    $this->data['icon'] = $icon;
     return $this;
   }
 
   public function iconColor(int $iconColor): self {
-    $this->data->setIconColor(Builder::convert($iconColor));
+    $this->data['iconColor'] = $iconColor;
     return $this;
   }
 
   public function isCollapsed(bool $isCollapsed): self {
-    $this->data->setIsCollapsed(Builder::convert($isCollapsed));
+    $this->data['isCollapsed'] = $isCollapsed;
     return $this;
   }
 
   public function isDense(bool $isDense): self {
-    $this->data->setIsDense(Builder::convert($isDense));
+    $this->data['isDense'] = $isDense;
     return $this;
   }
 
   public function label($label): self {
-    $this->data->setLabel(Builder::convert($label));
+    $this->data['label'] = $label;
     return $this;
   }
 
   public function labelStyle(\Lenra\App\Components\Styles\TextStyle $labelStyle): self {
-    $this->data->setLabelStyle(Builder::convert($labelStyle));
+    $this->data['labelStyle'] = $labelStyle;
     return $this;
   }
 
   public function labelText(string $labelText): self {
-    $this->data->setLabelText(Builder::convert($labelText));
+    $this->data['labelText'] = $labelText;
     return $this;
   }
 
   public function prefix($prefix): self {
-    $this->data->setPrefix(Builder::convert($prefix));
+    $this->data['prefix'] = $prefix;
     return $this;
   }
 
   public function prefixIcon(\Lenra\App\Components\Icon $prefixIcon): self {
-    $this->data->setPrefixIcon(Builder::convert($prefixIcon));
+    $this->data['prefixIcon'] = $prefixIcon;
     return $this;
   }
 
   public function prefixIconColor(int $prefixIconColor): self {
-    $this->data->setPrefixIconColor(Builder::convert($prefixIconColor));
+    $this->data['prefixIconColor'] = $prefixIconColor;
     return $this;
   }
 
   public function prefixIconConstraints(\Lenra\App\Components\Styles\BoxConstraints $prefixIconConstraints): self {
-    $this->data->setPrefixIconConstraints(Builder::convert($prefixIconConstraints));
+    $this->data['prefixIconConstraints'] = $prefixIconConstraints;
     return $this;
   }
 
   public function prefixStyle(\Lenra\App\Components\Styles\TextStyle $prefixStyle): self {
-    $this->data->setPrefixStyle(Builder::convert($prefixStyle));
+    $this->data['prefixStyle'] = $prefixStyle;
     return $this;
   }
 
   public function prefixText(string $prefixText): self {
-    $this->data->setPrefixText(Builder::convert($prefixText));
+    $this->data['prefixText'] = $prefixText;
     return $this;
   }
 
   public function semanticCounterText(string $semanticCounterText): self {
-    $this->data->setSemanticCounterText(Builder::convert($semanticCounterText));
+    $this->data['semanticCounterText'] = $semanticCounterText;
     return $this;
   }
 
   public function suffix($suffix): self {
-    $this->data->setSuffix(Builder::convert($suffix));
+    $this->data['suffix'] = $suffix;
     return $this;
   }
 
   public function suffixIcon(\Lenra\App\Components\Icon $suffixIcon): self {
-    $this->data->setSuffixIcon(Builder::convert($suffixIcon));
+    $this->data['suffixIcon'] = $suffixIcon;
     return $this;
   }
 
   public function suffixIconColor(int $suffixIconColor): self {
-    $this->data->setSuffixIconColor(Builder::convert($suffixIconColor));
+    $this->data['suffixIconColor'] = $suffixIconColor;
     return $this;
   }
 
   public function suffixIconConstraints(\Lenra\App\Components\Styles\BoxConstraints $suffixIconConstraints): self {
-    $this->data->setSuffixIconConstraints(Builder::convert($suffixIconConstraints));
+    $this->data['suffixIconConstraints'] = $suffixIconConstraints;
     return $this;
   }
 
   public function suffixStyle(\Lenra\App\Components\Styles\TextStyle $suffixStyle): self {
-    $this->data->setSuffixStyle(Builder::convert($suffixStyle));
+    $this->data['suffixStyle'] = $suffixStyle;
     return $this;
   }
 
   public function suffixText(string $suffixText): self {
-    $this->data->setSuffixText(Builder::convert($suffixText));
+    $this->data['suffixText'] = $suffixText;
     return $this;
   }
 

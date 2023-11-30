@@ -5,42 +5,39 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesDuration>
-*/
 abstract class DurationBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesDuration::class);
+    parent::__construct();
   }
 
   public function days(int $days): self {
-    $this->data->setDays(Builder::convert($days));
+    $this->data['days'] = $days;
     return $this;
   }
 
   public function hours(int $hours): self {
-    $this->data->setHours(Builder::convert($hours));
+    $this->data['hours'] = $hours;
     return $this;
   }
 
   public function minutes(int $minutes): self {
-    $this->data->setMinutes(Builder::convert($minutes));
+    $this->data['minutes'] = $minutes;
     return $this;
   }
 
   public function seconds(int $seconds): self {
-    $this->data->setSeconds(Builder::convert($seconds));
+    $this->data['seconds'] = $seconds;
     return $this;
   }
 
   public function milliseconds(int $milliseconds): self {
-    $this->data->setMilliseconds(Builder::convert($milliseconds));
+    $this->data['milliseconds'] = $milliseconds;
     return $this;
   }
 
   public function microseconds(int $microseconds): self {
-    $this->data->setMicroseconds(Builder::convert($microseconds));
+    $this->data['microseconds'] = $microseconds;
     return $this;
   }
 

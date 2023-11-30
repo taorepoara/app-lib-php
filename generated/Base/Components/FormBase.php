@@ -5,23 +5,20 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsForm>
-*/
 abstract class FormBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct('form', \Lenra\App\Response\View\Model\ComponentsForm::class);
+    parent::__construct('form');
     $this->child($child);
   }
 
   public function child($child): self {
-    $this->data->setChild(Builder::convert($child));
+    $this->data['child'] = $child;
     return $this;
   }
 
   public function onSubmit(\Lenra\App\Components\Listener $onSubmit): self {
-    $this->data->setOnSubmit(Builder::convert($onSubmit));
+    $this->data['onSubmit'] = $onSubmit;
     return $this;
   }
 

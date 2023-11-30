@@ -5,53 +5,50 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsButton>
-*/
 abstract class ButtonBase extends Builder {
   public function __construct(string $text)
   {
-    parent::__construct('button', \Lenra\App\Response\View\Model\ComponentsButton::class);
+    parent::__construct('button');
     $this->text($text);
   }
 
   public function text(string $text): self {
-    $this->data->setText(Builder::convert($text));
+    $this->data['text'] = $text;
     return $this;
   }
 
   public function disabled(bool $disabled): self {
-    $this->data->setDisabled(Builder::convert($disabled));
+    $this->data['disabled'] = $disabled;
     return $this;
   }
 
   public function size(string $size): self {
-    $this->data->setSize(Builder::convert($size));
+    $this->data['size'] = $size;
     return $this;
   }
 
   public function mainStyle(string $mainStyle): self {
-    $this->data->setMainStyle(Builder::convert($mainStyle));
+    $this->data['mainStyle'] = $mainStyle;
     return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): self {
-    $this->data->setOnPressed(Builder::convert($onPressed));
+    $this->data['onPressed'] = $onPressed;
     return $this;
   }
 
   public function leftIcon(\Lenra\App\Components\Icon $leftIcon): self {
-    $this->data->setLeftIcon(Builder::convert($leftIcon));
+    $this->data['leftIcon'] = $leftIcon;
     return $this;
   }
 
   public function rightIcon(\Lenra\App\Components\Icon $rightIcon): self {
-    $this->data->setRightIcon(Builder::convert($rightIcon));
+    $this->data['rightIcon'] = $rightIcon;
     return $this;
   }
 
   public function submit(bool $submit): self {
-    $this->data->setSubmit(Builder::convert($submit));
+    $this->data['submit'] = $submit;
     return $this;
   }
 

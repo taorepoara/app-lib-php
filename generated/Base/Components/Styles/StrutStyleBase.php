@@ -5,57 +5,54 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesStrutStyle>
-*/
 abstract class StrutStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesStrutStyle::class);
+    parent::__construct();
   }
 
   public function debugLabel(string $debugLabel): self {
-    $this->data->setDebugLabel(Builder::convert($debugLabel));
+    $this->data['debugLabel'] = $debugLabel;
     return $this;
   }
 
   public function fontFamily(string $fontFamily): self {
-    $this->data->setFontFamily(Builder::convert($fontFamily));
+    $this->data['fontFamily'] = $fontFamily;
     return $this;
   }
 
   public function fontFamilyFallback(array $fontFamilyFallback): self {
-    $this->data->setFontFamilyFallback(Builder::convert($fontFamilyFallback));
+    $this->data['fontFamilyFallback'] = $fontFamilyFallback;
     return $this;
   }
 
   public function fontSize(float $fontSize): self {
-    $this->data->setFontSize(Builder::convert($fontSize));
+    $this->data['fontSize'] = $fontSize;
     return $this;
   }
 
   public function fontWeight(string $fontWeight): self {
-    $this->data->setFontWeight(Builder::convert($fontWeight));
+    $this->data['fontWeight'] = $fontWeight;
     return $this;
   }
 
   public function forceStrutHeight(bool $forceStrutHeight): self {
-    $this->data->setForceStrutHeight(Builder::convert($forceStrutHeight));
+    $this->data['forceStrutHeight'] = $forceStrutHeight;
     return $this;
   }
 
   public function height(float $height): self {
-    $this->data->setHeight(Builder::convert($height));
+    $this->data['height'] = $height;
     return $this;
   }
 
   public function leading(float $leading): self {
-    $this->data->setLeading(Builder::convert($leading));
+    $this->data['leading'] = $leading;
     return $this;
   }
 
   public function leadingDistribution(string $leadingDistribution): self {
-    $this->data->setLeadingDistribution(Builder::convert($leadingDistribution));
+    $this->data['leadingDistribution'] = $leadingDistribution;
     return $this;
   }
 

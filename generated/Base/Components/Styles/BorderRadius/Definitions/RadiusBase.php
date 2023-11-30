@@ -5,22 +5,19 @@ namespace Lenra\App\Base\Components\Styles\BorderRadius\Definitions;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesBorderRadiusDefinitionsRadiusType>
-*/
 abstract class RadiusBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderRadiusDefinitionsRadiusType::class);
+    parent::__construct();
   }
 
   public function x(float $x): self {
-    $this->data->setX(Builder::convert($x));
+    $this->data['x'] = $x;
     return $this;
   }
 
   public function y(float $y): self {
-    $this->data->setY(Builder::convert($y));
+    $this->data['y'] = $y;
     return $this;
   }
 

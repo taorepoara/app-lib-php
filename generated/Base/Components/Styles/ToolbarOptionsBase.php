@@ -5,22 +5,19 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesToolbarOptions>
-*/
 abstract class ToolbarOptionsBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToolbarOptions::class);
+    parent::__construct();
   }
 
   public function decimal(bool $decimal): self {
-    $this->data->setDecimal(Builder::convert($decimal));
+    $this->data['decimal'] = $decimal;
     return $this;
   }
 
   public function signed(bool $signed): self {
-    $this->data->setSigned(Builder::convert($signed));
+    $this->data['signed'] = $signed;
     return $this;
   }
 

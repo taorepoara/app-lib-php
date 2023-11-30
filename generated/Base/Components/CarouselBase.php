@@ -5,23 +5,20 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsCarousel>
-*/
 abstract class CarouselBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct('carousel', \Lenra\App\Response\View\Model\ComponentsCarousel::class);
+    parent::__construct('carousel');
     $this->children($children);
   }
 
   public function children(array $children): self {
-    $this->data->setChildren(Builder::convert($children));
+    $this->data['children'] = $children;
     return $this;
   }
 
   public function options(\Lenra\App\Components\Styles\CarouselOptions $options): self {
-    $this->data->setOptions(Builder::convert($options));
+    $this->data['options'] = $options;
     return $this;
   }
 

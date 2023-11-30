@@ -5,27 +5,24 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesSliderStyle>
-*/
 abstract class SliderStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesSliderStyle::class);
+    parent::__construct();
   }
 
   public function activeColor(int $activeColor): self {
-    $this->data->setActiveColor(Builder::convert($activeColor));
+    $this->data['activeColor'] = $activeColor;
     return $this;
   }
 
   public function inactiveColor(int $inactiveColor): self {
-    $this->data->setInactiveColor(Builder::convert($inactiveColor));
+    $this->data['inactiveColor'] = $inactiveColor;
     return $this;
   }
 
   public function thumbColor(int $thumbColor): self {
-    $this->data->setThumbColor(Builder::convert($thumbColor));
+    $this->data['thumbColor'] = $thumbColor;
     return $this;
   }
 

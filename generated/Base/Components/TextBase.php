@@ -5,48 +5,45 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsText>
-*/
 abstract class TextBase extends Builder {
   public function __construct(string $value)
   {
-    parent::__construct('text', \Lenra\App\Response\View\Model\ComponentsText::class);
+    parent::__construct('text');
     $this->value($value);
   }
 
   public function value(string $value): self {
-    $this->data->setValue(Builder::convert($value));
+    $this->data['value'] = $value;
     return $this;
   }
 
   public function style(\Lenra\App\Components\Styles\TextStyle $style): self {
-    $this->data->setStyle(Builder::convert($style));
+    $this->data['style'] = $style;
     return $this;
   }
 
   public function locale(\Lenra\App\Components\Styles\Locale $locale): self {
-    $this->data->setLocale(Builder::convert($locale));
+    $this->data['locale'] = $locale;
     return $this;
   }
 
   public function semanticsLabel(string $semanticsLabel): self {
-    $this->data->setSemanticsLabel(Builder::convert($semanticsLabel));
+    $this->data['semanticsLabel'] = $semanticsLabel;
     return $this;
   }
 
   public function spellOut(bool $spellOut): self {
-    $this->data->setSpellOut(Builder::convert($spellOut));
+    $this->data['spellOut'] = $spellOut;
     return $this;
   }
 
   public function textAlign($textAlign): self {
-    $this->data->setTextAlign(Builder::convert($textAlign));
+    $this->data['textAlign'] = $textAlign;
     return $this;
   }
 
   public function children(array $children): self {
-    $this->data->setChildren(Builder::convert($children));
+    $this->data['children'] = $children;
     return $this;
   }
 
