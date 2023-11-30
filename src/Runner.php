@@ -2,9 +2,10 @@
 
 namespace Lenra\App;
 
-use ArrayObject;
 use Exception;
 use Lenra\App\Manifest\Builder;
+use Lenra\App\View\Request as ViewRequest;
+use Lenra\App\Listener\Request as ListenerRequest;
 
 class Runner {
     private const VIEW = 'View';
