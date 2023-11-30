@@ -5,28 +5,25 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStack>
-*/
 abstract class StackBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct('stack', \Lenra\App\Response\View\Model\ComponentsStack::class);
+    parent::__construct('stack');
     $this->children($children);
   }
 
   public function children(array $children): self {
-    $this->data->setChildren(Builder::convert($children));
+    $this->data['children'] = $children;
     return $this;
   }
 
   public function alignment(string $alignment): self {
-    $this->data->setAlignment(Builder::convert($alignment));
+    $this->data['alignment'] = $alignment;
     return $this;
   }
 
   public function fit(string $fit): self {
-    $this->data->setFit(Builder::convert($fit));
+    $this->data['fit'] = $fit;
     return $this;
   }
 

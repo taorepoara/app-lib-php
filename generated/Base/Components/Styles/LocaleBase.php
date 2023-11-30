@@ -5,27 +5,24 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesLocale>
-*/
 abstract class LocaleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesLocale::class);
+    parent::__construct();
   }
 
   public function countryCode(string $countryCode): self {
-    $this->data->setCountryCode(Builder::convert($countryCode));
+    $this->data['countryCode'] = $countryCode;
     return $this;
   }
 
   public function languageCode(string $languageCode): self {
-    $this->data->setLanguageCode(Builder::convert($languageCode));
+    $this->data['languageCode'] = $languageCode;
     return $this;
   }
 
   public function scriptCode(string $scriptCode): self {
-    $this->data->setScriptCode(Builder::convert($scriptCode));
+    $this->data['scriptCode'] = $scriptCode;
     return $this;
   }
 

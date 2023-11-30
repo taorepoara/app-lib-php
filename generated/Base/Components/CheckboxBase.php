@@ -5,48 +5,45 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsCheckbox>
-*/
 abstract class CheckboxBase extends Builder {
   public function __construct(bool $value)
   {
-    parent::__construct('checkbox', \Lenra\App\Response\View\Model\ComponentsCheckbox::class);
+    parent::__construct('checkbox');
     $this->value($value);
   }
 
   public function value(bool $value): self {
-    $this->data->setValue(Builder::convert($value));
+    $this->data['value'] = $value;
     return $this;
   }
 
   public function tristate(bool $tristate): self {
-    $this->data->setTristate(Builder::convert($tristate));
+    $this->data['tristate'] = $tristate;
     return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): self {
-    $this->data->setOnPressed(Builder::convert($onPressed));
+    $this->data['onPressed'] = $onPressed;
     return $this;
   }
 
   public function style(\Lenra\App\Components\Styles\CheckboxStyle $style): self {
-    $this->data->setStyle(Builder::convert($style));
+    $this->data['style'] = $style;
     return $this;
   }
 
   public function materialTapTargetSize(string $materialTapTargetSize): self {
-    $this->data->setMaterialTapTargetSize(Builder::convert($materialTapTargetSize));
+    $this->data['materialTapTargetSize'] = $materialTapTargetSize;
     return $this;
   }
 
   public function autofocus(bool $autofocus): self {
-    $this->data->setAutofocus(Builder::convert($autofocus));
+    $this->data['autofocus'] = $autofocus;
     return $this;
   }
 
   public function name(string $name): self {
-    $this->data->setName(Builder::convert($name));
+    $this->data['name'] = $name;
     return $this;
   }
 

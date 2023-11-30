@@ -11,12 +11,12 @@
     "autoload": {
         "psr-4": {
             "Lenra\\App\\": "src/",
-            "Lenra\\App\\Response\\View\\": "generated/Response/View",
             "Lenra\\App\\Base\\": "generated/Base"
         }
     },
     "autoload-dev": {
         "psr-4": {
+            "Lenra\\App\\Response\\View\\": "generated/Response/View",
             "Lenra\\App\\Test\\": "test/"
         }
     },

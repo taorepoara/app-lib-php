@@ -5,77 +5,74 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesCarouselOptions>
-*/
 abstract class CarouselOptionsBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesCarouselOptions::class);
+    parent::__construct();
   }
 
   public function height(float $height): self {
-    $this->data->setHeight(Builder::convert($height));
+    $this->data['height'] = $height;
     return $this;
   }
 
   public function enlargeCenterPage(bool $enlargeCenterPage): self {
-    $this->data->setEnlargeCenterPage(Builder::convert($enlargeCenterPage));
+    $this->data['enlargeCenterPage'] = $enlargeCenterPage;
     return $this;
   }
 
   public function autoPlay(bool $autoPlay): self {
-    $this->data->setAutoPlay(Builder::convert($autoPlay));
+    $this->data['autoPlay'] = $autoPlay;
     return $this;
   }
 
   public function autoPlayInterval(\Lenra\App\Components\Styles\Duration $autoPlayInterval): self {
-    $this->data->setAutoPlayInterval(Builder::convert($autoPlayInterval));
+    $this->data['autoPlayInterval'] = $autoPlayInterval;
     return $this;
   }
 
   public function autoPlayAnimationDuration(\Lenra\App\Components\Styles\Duration $autoPlayAnimationDuration): self {
-    $this->data->setAutoPlayAnimationDuration(Builder::convert($autoPlayAnimationDuration));
+    $this->data['autoPlayAnimationDuration'] = $autoPlayAnimationDuration;
     return $this;
   }
 
   public function pauseAutoPlayOnTouch(bool $pauseAutoPlayOnTouch): self {
-    $this->data->setPauseAutoPlayOnTouch(Builder::convert($pauseAutoPlayOnTouch));
+    $this->data['pauseAutoPlayOnTouch'] = $pauseAutoPlayOnTouch;
     return $this;
   }
 
   public function aspectRatio(float $aspectRatio): self {
-    $this->data->setAspectRatio(Builder::convert($aspectRatio));
+    $this->data['aspectRatio'] = $aspectRatio;
     return $this;
   }
 
   public function initialPage(int $initialPage): self {
-    $this->data->setInitialPage(Builder::convert($initialPage));
+    $this->data['initialPage'] = $initialPage;
     return $this;
   }
 
   public function enableInfiniteScroll(bool $enableInfiniteScroll): self {
-    $this->data->setEnableInfiniteScroll(Builder::convert($enableInfiniteScroll));
+    $this->data['enableInfiniteScroll'] = $enableInfiniteScroll;
     return $this;
   }
 
   public function reverse(bool $reverse): self {
-    $this->data->setReverse(Builder::convert($reverse));
+    $this->data['reverse'] = $reverse;
     return $this;
   }
 
   public function scrollDirection(string $scrollDirection): self {
-    $this->data->setScrollDirection(Builder::convert($scrollDirection));
+    $this->data['scrollDirection'] = $scrollDirection;
     return $this;
   }
 
   public function viewportFraction(float $viewportFraction): self {
-    $this->data->setViewportFraction(Builder::convert($viewportFraction));
+    $this->data['viewportFraction'] = $viewportFraction;
     return $this;
   }
 
   public function enlargeStrategy(string $enlargeStrategy): self {
-    $this->data->setEnlargeStrategy(Builder::convert($enlargeStrategy));
+    $this->data['enlargeStrategy'] = $enlargeStrategy;
     return $this;
   }
 

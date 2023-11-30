@@ -5,38 +5,35 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsMenuItem>
-*/
 abstract class MenuItemBase extends Builder {
   public function __construct(string $text)
   {
-    parent::__construct('menuItem', \Lenra\App\Response\View\Model\ComponentsMenuItem::class);
+    parent::__construct('menuItem');
     $this->text($text);
   }
 
   public function text(string $text): self {
-    $this->data->setText(Builder::convert($text));
+    $this->data['text'] = $text;
     return $this;
   }
 
   public function isSelected(bool $isSelected): self {
-    $this->data->setIsSelected(Builder::convert($isSelected));
+    $this->data['isSelected'] = $isSelected;
     return $this;
   }
 
   public function disabled(bool $disabled): self {
-    $this->data->setDisabled(Builder::convert($disabled));
+    $this->data['disabled'] = $disabled;
     return $this;
   }
 
   public function icon(\Lenra\App\Components\Icon $icon): self {
-    $this->data->setIcon(Builder::convert($icon));
+    $this->data['icon'] = $icon;
     return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): self {
-    $this->data->setOnPressed(Builder::convert($onPressed));
+    $this->data['onPressed'] = $onPressed;
     return $this;
   }
 

@@ -5,57 +5,54 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesToggleStyle>
-*/
 abstract class ToggleStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesToggleStyle::class);
+    parent::__construct();
   }
 
   public function activeColor(int $activeColor): self {
-    $this->data->setActiveColor(Builder::convert($activeColor));
+    $this->data['activeColor'] = $activeColor;
     return $this;
   }
 
   public function activeTrackColor(int $activeTrackColor): self {
-    $this->data->setActiveTrackColor(Builder::convert($activeTrackColor));
+    $this->data['activeTrackColor'] = $activeTrackColor;
     return $this;
   }
 
   public function inactiveTrackColor(int $inactiveTrackColor): self {
-    $this->data->setInactiveTrackColor(Builder::convert($inactiveTrackColor));
+    $this->data['inactiveTrackColor'] = $inactiveTrackColor;
     return $this;
   }
 
   public function inactiveThumbColor(int $inactiveThumbColor): self {
-    $this->data->setInactiveThumbColor(Builder::convert($inactiveThumbColor));
+    $this->data['inactiveThumbColor'] = $inactiveThumbColor;
     return $this;
   }
 
   public function hoverColor(int $hoverColor): self {
-    $this->data->setHoverColor(Builder::convert($hoverColor));
+    $this->data['hoverColor'] = $hoverColor;
     return $this;
   }
 
   public function focusColor(int $focusColor): self {
-    $this->data->setFocusColor(Builder::convert($focusColor));
+    $this->data['focusColor'] = $focusColor;
     return $this;
   }
 
   public function activeThumbImage(\Lenra\App\Components\Image $activeThumbImage): self {
-    $this->data->setActiveThumbImage(Builder::convert($activeThumbImage));
+    $this->data['activeThumbImage'] = $activeThumbImage;
     return $this;
   }
 
   public function inactiveThumbImage(\Lenra\App\Components\Image $inactiveThumbImage): self {
-    $this->data->setInactiveThumbImage(Builder::convert($inactiveThumbImage));
+    $this->data['inactiveThumbImage'] = $inactiveThumbImage;
     return $this;
   }
 
   public function materialTapTargetSize(string $materialTapTargetSize): self {
-    $this->data->setMaterialTapTargetSize(Builder::convert($materialTapTargetSize));
+    $this->data['materialTapTargetSize'] = $materialTapTargetSize;
     return $this;
   }
 

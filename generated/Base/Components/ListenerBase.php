@@ -5,23 +5,20 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsListener>
-*/
 abstract class ListenerBase extends Builder {
   public function __construct(string $name)
   {
-    parent::__construct('listener', \Lenra\App\Response\View\Model\ComponentsListener::class);
+    parent::__construct('listener');
     $this->name($name);
   }
 
   public function name(string $name): self {
-    $this->data->setName(Builder::convert($name));
+    $this->data['name'] = $name;
     return $this;
   }
 
   public function props($props): self {
-    $this->data->setProps(Builder::convert($props));
+    $this->data['props'] = $props;
     return $this;
   }
 

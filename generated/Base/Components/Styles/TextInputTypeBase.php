@@ -5,32 +5,29 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesTextInputType>
-*/
 abstract class TextInputTypeBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextInputType::class);
+    parent::__construct();
   }
 
   public function copy(bool $copy): self {
-    $this->data->setCopy(Builder::convert($copy));
+    $this->data['copy'] = $copy;
     return $this;
   }
 
   public function cut(bool $cut): self {
-    $this->data->setCut(Builder::convert($cut));
+    $this->data['cut'] = $cut;
     return $this;
   }
 
   public function paste(bool $paste): self {
-    $this->data->setPaste(Builder::convert($paste));
+    $this->data['paste'] = $paste;
     return $this;
   }
 
   public function selectAll(bool $selectAll): self {
-    $this->data->setSelectAll(Builder::convert($selectAll));
+    $this->data['selectAll'] = $selectAll;
     return $this;
   }
 

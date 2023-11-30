@@ -10,6 +10,11 @@ class ComponentTestCase extends TestCase
 {
     function checkComponent(Builder $component, mixed $expected)
     {
-        $this->assertEquals($component->jsonSerialize(), $expected);
+        $this->assertEquals($this->normalize($component->jsonSerialize()), $this->normalize($expected));
+    }
+
+    private function normalize($value): mixed
+    {
+        return json_decode(json_encode($value), true);
     }
 }

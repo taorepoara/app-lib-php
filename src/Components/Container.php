@@ -6,6 +6,8 @@ namespace Lenra\App\Components;
 use Lenra\App\Components\Styles\Border;
 use Lenra\App\Components\Styles\BorderRadius;
 use Lenra\App\Components\Styles\BorderSide;
+use Lenra\App\Components\Styles\BoxConstraints;
+use Lenra\App\Components\Styles\BoxDecoration;
 use Lenra\App\Components\Styles\BoxShadow;
 use Lenra\App\Components\Styles\Colors;
 use Lenra\App\Components\Styles\Offset;
@@ -14,71 +16,64 @@ use Lenra\App\Components\Styles\Padding;
 class Container extends \Lenra\App\Base\Components\ContainerBase {
   // Add here custom implementations
 
-  // Constraints
-  protected function initConstraints() {
-    if (!$this->data->isInitialized('constraints')) {
-      $this->data->setConstraints(new \Lenra\App\Response\View\Model\ComponentsStylesBoxConstraints());
+  protected function initSubdata(string $className, string $key) {
+    if (!isset($this->data[$key])) {
+      $this->data[$key] = new $className();
     }
-    return $this->data->getConstraints();
+    return $this->data[$key];
+  }
+
+  // Constraints
+  protected function initConstraints(): BoxConstraints {
+    return $this->initSubdata(BoxConstraints::class, 'constraints');
   }
   public function width($width): self {
-    $constraints = $this->initConstraints();
-    $constraints->setMinWidth($width);
-    $constraints->setMaxWidth($width);
+    $this->initConstraints()
+      ->minWidth($width)
+      ->maxWidth($width);
     return $this;
   }
   public function minWidth($width): self {
-    $constraints = $this->initConstraints();
-    $constraints->setMinWidth($width);
+    $this->initConstraints()->minWidth($width);
     return $this;
   }
   public function maxWidth($width): self {
-    $constraints = $this->initConstraints();
-    $constraints->setMaxWidth($width);
+    $this->initConstraints()->maxWidth($width);
     return $this;
   }
   public function height($height): self {
-    $constraints = $this->initConstraints();
-    $constraints->setMinHeight($height);
-    $constraints->setMaxHeight($height);
+    $this->initConstraints()
+      ->minHeight($height)
+      ->maxHeight($height);
     return $this;
   }
   public function minHeight($height): self {
-    $constraints = $this->initConstraints();
-    $constraints->setMinHeight($height);
+    $this->initConstraints()->minHeight($height);
     return $this;
   }
   public function maxHeight($height): self {
-    $constraints = $this->initConstraints();
-    $constraints->setMaxHeight($height);
+    $this->initConstraints()->maxHeight($height);
     return $this;
   }
 
   // Decoration
-  protected function initDecoration() {
-    if (!$this->data->isInitialized('decoration')) {
-      $this->data->setDecoration(new \Lenra\App\Response\View\Model\ComponentsStylesBoxDecoration());
-    }
-    return $this->data->getDecoration();
+  protected function initDecoration(): BoxDecoration {
+    return $this->initSubdata(BoxDecoration::class, 'decoration');
   }
   public function borderRadius(BorderRadius $borderRadius): self {
-    $decoration = $this->initDecoration();
-    $decoration->setBorderRadius($borderRadius->data);
+    $this->initDecoration()->borderRadius($borderRadius);
     return $this;
   }
   public function boxShadow(BoxShadow $boxShadow): self {
-    $decoration = $this->initDecoration();
-    $decoration->setBoxShadow($boxShadow->data);
+    $this->initDecoration()->boxShadow($boxShadow);
     return $this;
   }
   public function color(int $color): self {
-    $decoration = $this->initDecoration();
-    $decoration->setColor($color);
+    $this->initDecoration()->color($color);
     return $this;
   }
   public function shape(string $shape): self {
-    $decoration = $this->initDecoration();
-    $decoration->setShape($shape);
+    $this->initDecoration()->shape($shape);
     return $this;
   }
 

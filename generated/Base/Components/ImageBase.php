@@ -5,88 +5,85 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsImage>
-*/
 abstract class ImageBase extends Builder {
   public function __construct(string $src)
   {
-    parent::__construct('image', \Lenra\App\Response\View\Model\ComponentsImage::class);
+    parent::__construct('image');
     $this->src($src);
   }
 
   public function src(string $src): self {
-    $this->data->setSrc(Builder::convert($src));
+    $this->data['src'] = $src;
     return $this;
   }
 
   public function width(float $width): self {
-    $this->data->setWidth(Builder::convert($width));
+    $this->data['width'] = $width;
     return $this;
   }
 
   public function height(float $height): self {
-    $this->data->setHeight(Builder::convert($height));
+    $this->data['height'] = $height;
     return $this;
   }
 
   public function alignment(string $alignment): self {
-    $this->data->setAlignment(Builder::convert($alignment));
+    $this->data['alignment'] = $alignment;
     return $this;
   }
 
   public function centerSlice(\Lenra\App\Components\Styles\Rect $centerSlice): self {
-    $this->data->setCenterSlice(Builder::convert($centerSlice));
+    $this->data['centerSlice'] = $centerSlice;
     return $this;
   }
 
   public function errorPlaceholder($errorPlaceholder): self {
-    $this->data->setErrorPlaceholder(Builder::convert($errorPlaceholder));
+    $this->data['errorPlaceholder'] = $errorPlaceholder;
     return $this;
   }
 
   public function excludeFromSemantics(bool $excludeFromSemantics): self {
-    $this->data->setExcludeFromSemantics(Builder::convert($excludeFromSemantics));
+    $this->data['excludeFromSemantics'] = $excludeFromSemantics;
     return $this;
   }
 
   public function filterQuality(string $filterQuality): self {
-    $this->data->setFilterQuality(Builder::convert($filterQuality));
+    $this->data['filterQuality'] = $filterQuality;
     return $this;
   }
 
   public function fit(string $fit): self {
-    $this->data->setFit(Builder::convert($fit));
+    $this->data['fit'] = $fit;
     return $this;
   }
 
   public function framePlaceholder($framePlaceholder): self {
-    $this->data->setFramePlaceholder(Builder::convert($framePlaceholder));
+    $this->data['framePlaceholder'] = $framePlaceholder;
     return $this;
   }
 
   public function gaplessPlayback(bool $gaplessPlayback): self {
-    $this->data->setGaplessPlayback(Builder::convert($gaplessPlayback));
+    $this->data['gaplessPlayback'] = $gaplessPlayback;
     return $this;
   }
 
   public function isAntiAlias(bool $isAntiAlias): self {
-    $this->data->setIsAntiAlias(Builder::convert($isAntiAlias));
+    $this->data['isAntiAlias'] = $isAntiAlias;
     return $this;
   }
 
   public function loadingPlaceholder($loadingPlaceholder): self {
-    $this->data->setLoadingPlaceholder(Builder::convert($loadingPlaceholder));
+    $this->data['loadingPlaceholder'] = $loadingPlaceholder;
     return $this;
   }
 
   public function repeat(string $repeat): self {
-    $this->data->setRepeat(Builder::convert($repeat));
+    $this->data['repeat'] = $repeat;
     return $this;
   }
 
   public function semanticLabel(string $semanticLabel): self {
-    $this->data->setSemanticLabel(Builder::convert($semanticLabel));
+    $this->data['semanticLabel'] = $semanticLabel;
     return $this;
   }
 

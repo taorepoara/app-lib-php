@@ -5,48 +5,45 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsActionable>
-*/
 abstract class ActionableBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct('actionable', \Lenra\App\Response\View\Model\ComponentsActionable::class);
+    parent::__construct('actionable');
     $this->child($child);
   }
 
   public function child($child): self {
-    $this->data->setChild(Builder::convert($child));
+    $this->data['child'] = $child;
     return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): self {
-    $this->data->setOnPressed(Builder::convert($onPressed));
+    $this->data['onPressed'] = $onPressed;
     return $this;
   }
 
   public function onDoublePressed(\Lenra\App\Components\Listener $onDoublePressed): self {
-    $this->data->setOnDoublePressed(Builder::convert($onDoublePressed));
+    $this->data['onDoublePressed'] = $onDoublePressed;
     return $this;
   }
 
   public function onLongPressed(\Lenra\App\Components\Listener $onLongPressed): self {
-    $this->data->setOnLongPressed(Builder::convert($onLongPressed));
+    $this->data['onLongPressed'] = $onLongPressed;
     return $this;
   }
 
   public function onPressedCancel(\Lenra\App\Components\Listener $onPressedCancel): self {
-    $this->data->setOnPressedCancel(Builder::convert($onPressedCancel));
+    $this->data['onPressedCancel'] = $onPressedCancel;
     return $this;
   }
 
   public function onHovered(\Lenra\App\Components\Listener $onHovered): self {
-    $this->data->setOnHovered(Builder::convert($onHovered));
+    $this->data['onHovered'] = $onHovered;
     return $this;
   }
 
   public function submit(bool $submit): self {
-    $this->data->setSubmit(Builder::convert($submit));
+    $this->data['submit'] = $submit;
     return $this;
   }
 

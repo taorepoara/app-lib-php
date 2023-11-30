@@ -5,33 +5,30 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsOverlayEntry>
-*/
 abstract class OverlayEntryBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct('overlayEntry', \Lenra\App\Response\View\Model\ComponentsOverlayEntry::class);
+    parent::__construct('overlayEntry');
     $this->child($child);
   }
 
   public function child($child): self {
-    $this->data->setChild(Builder::convert($child));
+    $this->data['child'] = $child;
     return $this;
   }
 
   public function maintainState(bool $maintainState): self {
-    $this->data->setMaintainState(Builder::convert($maintainState));
+    $this->data['maintainState'] = $maintainState;
     return $this;
   }
 
   public function opaque(bool $opaque): self {
-    $this->data->setOpaque(Builder::convert($opaque));
+    $this->data['opaque'] = $opaque;
     return $this;
   }
 
   public function showOverlay(bool $showOverlay): self {
-    $this->data->setShowOverlay(Builder::convert($showOverlay));
+    $this->data['showOverlay'] = $showOverlay;
     return $this;
   }
 

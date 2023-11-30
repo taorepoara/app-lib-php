@@ -5,68 +5,65 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsFlex>
-*/
 abstract class FlexBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct('flex', \Lenra\App\Response\View\Model\ComponentsFlex::class);
+    parent::__construct('flex');
     $this->children($children);
   }
 
   public function children(array $children): self {
-    $this->data->setChildren(Builder::convert($children));
+    $this->data['children'] = $children;
     return $this;
   }
 
   public function direction(string $direction): self {
-    $this->data->setDirection(Builder::convert($direction));
+    $this->data['direction'] = $direction;
     return $this;
   }
 
   public function mainAxisAlignment(string $mainAxisAlignment): self {
-    $this->data->setMainAxisAlignment(Builder::convert($mainAxisAlignment));
+    $this->data['mainAxisAlignment'] = $mainAxisAlignment;
     return $this;
   }
 
   public function crossAxisAlignment(string $crossAxisAlignment): self {
-    $this->data->setCrossAxisAlignment(Builder::convert($crossAxisAlignment));
+    $this->data['crossAxisAlignment'] = $crossAxisAlignment;
     return $this;
   }
 
   public function spacing(float $spacing): self {
-    $this->data->setSpacing(Builder::convert($spacing));
+    $this->data['spacing'] = $spacing;
     return $this;
   }
 
   public function fillParent(bool $fillParent): self {
-    $this->data->setFillParent(Builder::convert($fillParent));
+    $this->data['fillParent'] = $fillParent;
     return $this;
   }
 
   public function scroll(bool $scroll): self {
-    $this->data->setScroll(Builder::convert($scroll));
+    $this->data['scroll'] = $scroll;
     return $this;
   }
 
   public function padding(\Lenra\App\Components\Styles\Padding $padding): self {
-    $this->data->setPadding(Builder::convert($padding));
+    $this->data['padding'] = $padding;
     return $this;
   }
 
   public function horizontalDirection(string $horizontalDirection): self {
-    $this->data->setHorizontalDirection(Builder::convert($horizontalDirection));
+    $this->data['horizontalDirection'] = $horizontalDirection;
     return $this;
   }
 
   public function verticalDirection(string $verticalDirection): self {
-    $this->data->setVerticalDirection(Builder::convert($verticalDirection));
+    $this->data['verticalDirection'] = $verticalDirection;
     return $this;
   }
 
   public function textBaseline(string $textBaseline): self {
-    $this->data->setTextBaseline(Builder::convert($textBaseline));
+    $this->data['textBaseline'] = $textBaseline;
     return $this;
   }
 
