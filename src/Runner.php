@@ -88,7 +88,7 @@ class Runner {
 
         Logger::log("json_decode");
         // Converts it into a PHP object
-        $data = json_decode($json, true);
+        $data = json_decode($json);
         Logger::log("\\json_decode");
 
         try {
