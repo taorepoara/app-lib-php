@@ -12,7 +12,7 @@ class Runner {
         
         Logger::log("Read input");
         // Takes raw data from the request
-        $json = stream_get_contents(\STDIN);
+        $json = file_get_contents('php://input');
         Logger::log("\\Read input");
         
         Logger::log("json_decode");
