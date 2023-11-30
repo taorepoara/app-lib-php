@@ -19,7 +19,6 @@ class Runner {
     }
 
     protected function handleRequest($request) {
-        Logger::logVar($request, "Request");
         // Check if data matches one of the expected queries
         if (isset($request->view)) {
             Logger::log("View: $request->view");
@@ -82,20 +81,14 @@ class Runner {
             throw new Exception('The request must be POST');
         }
 
-        Logger::log("Read input");
         // Takes raw data from the request
         $json = file_get_contents('php://input');
-        Logger::log("\\Read input");
 
-        Logger::log("json_decode");
         // Converts it into a PHP object
         $data = json_decode($json);
-        Logger::log("\\json_decode");
 
         try {
-            Logger::log("handleRequest");
             self::instance()->handleRequest($data);
-            Logger::log("\\handleRequest");
         } catch (\Exception $e) {
             Logger::log("An error occured: " . $e->getMessage());
         }
