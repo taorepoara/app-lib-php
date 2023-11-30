@@ -11,6 +11,6 @@ class ListenerRequest {
     }
 }
 
-abstract class Listener {
+abstract class ListenerHandler {
     abstract public function handle(ListenerRequest $request);
 }

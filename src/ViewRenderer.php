@@ -13,10 +13,10 @@ class ViewRequest {
     }
 }
 
-abstract class View {
+abstract class ViewRenderer {
     abstract public function render(ViewRequest $request);
 }
 
-abstract class LenraView extends View {
+abstract class LenraViewRenderer extends ViewRenderer {
     abstract public function render(ViewRequest $request) : Builder;
 }
