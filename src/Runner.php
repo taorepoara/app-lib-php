@@ -22,13 +22,17 @@ class Runner {
         // Check if data matches one of the expected queries
         if (isset($request->view)) {
             Logger::log("View: $request->view");
-            echo json_encode(
-                $this->runHandler(self::VIEW, $request->view, new ViewRequest(
-                    $request->data ?? [],
-                    $request->props ?? [],
-                    $request->context ?? [],
-                ))
+            $resp = $this->runHandler(self::VIEW, $request->view, new ViewRequest(
+                $request->data ?? [],
+                $request->props ?? [],
+                $request->context ?? [],
+            ));
+            Logger::log("json_encode resp");
+            $resp = json_encode(
+                $resp
             );
+            Logger::log("\\json_encode resp");
+            echo $resp;
         } elseif (isset($request->listener)) {
             Logger::log("Listener: $request->listener");
             $api = new Api($request->api);
@@ -50,17 +54,21 @@ class Runner {
     }
 
     protected function runHandler($type, $name, $request) {
+        Logger::log("runHandler: $type, $name");
         $parts = explode(".", $name);
         foreach ($parts as &$part) {
             $part = ucfirst($part);
         }
         $class = "App\\$type\\" . join("\\", $parts);
         if (!isset($this->handlers[$class])) {
+            Logger::log("new $class");
             if (!class_exists($class)) {
                 Logger::log("class $class does not exist");
                 throw new Exception("class $class does not exist");
             }
             $this->handlers[$class] = new $class();
+
+            Logger::log("\\new $class");
         }
         if ($type === 'View') {
             return $this->handlers[$class]->render($request);
@@ -88,7 +96,9 @@ class Runner {
         $data = json_decode($json);
 
         try {
+            Logger::log("handleRequest");
             self::instance()->handleRequest($data);
+            Logger::log("\\handleRequest");
         } catch (\Exception $e) {
             Logger::log("An error occured: " . $e->getMessage());
         }
