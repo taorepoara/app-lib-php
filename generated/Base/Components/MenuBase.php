@@ -5,18 +5,15 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsMenu>
-*/
 abstract class MenuBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct('menu', \Lenra\App\Response\View\Model\ComponentsMenu::class);
+    parent::__construct('menu');
     $this->children($children);
   }
 
   public function children(array $children): self {
-    $this->data->setChildren(Builder::convert($children));
+    $this->data['children'] = $children;
     return $this;
   }
 

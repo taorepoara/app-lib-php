@@ -5,32 +5,29 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesBorderRadius>
-*/
 abstract class BorderRadiusBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBorderRadius::class);
+    parent::__construct();
   }
 
   public function topLeft(\Lenra\App\Components\Styles\BorderRadius\Definitions\Radius $topLeft): self {
-    $this->data->setTopLeft(Builder::convert($topLeft));
+    $this->data['topLeft'] = $topLeft;
     return $this;
   }
 
   public function topRight(\Lenra\App\Components\Styles\BorderRadius\Definitions\Radius $topRight): self {
-    $this->data->setTopRight(Builder::convert($topRight));
+    $this->data['topRight'] = $topRight;
     return $this;
   }
 
   public function bottomLeft(\Lenra\App\Components\Styles\BorderRadius\Definitions\Radius $bottomLeft): self {
-    $this->data->setBottomLeft(Builder::convert($bottomLeft));
+    $this->data['bottomLeft'] = $bottomLeft;
     return $this;
   }
 
   public function bottomRight(\Lenra\App\Components\Styles\BorderRadius\Definitions\Radius $bottomRight): self {
-    $this->data->setBottomRight(Builder::convert($bottomRight));
+    $this->data['bottomRight'] = $bottomRight;
     return $this;
   }
 

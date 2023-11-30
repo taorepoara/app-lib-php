@@ -5,53 +5,50 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsToggle>
-*/
 abstract class ToggleBase extends Builder {
   public function __construct(bool $value)
   {
-    parent::__construct('toggle', \Lenra\App\Response\View\Model\ComponentsToggle::class);
+    parent::__construct('toggle');
     $this->value($value);
   }
 
   public function value(bool $value): self {
-    $this->data->setValue(Builder::convert($value));
+    $this->data['value'] = $value;
     return $this;
   }
 
   public function splashRadius(float $splashRadius): self {
-    $this->data->setSplashRadius(Builder::convert($splashRadius));
+    $this->data['splashRadius'] = $splashRadius;
     return $this;
   }
 
   public function autofocus(bool $autofocus): self {
-    $this->data->setAutofocus(Builder::convert($autofocus));
+    $this->data['autofocus'] = $autofocus;
     return $this;
   }
 
   public function dragStartBehavior(string $dragStartBehavior): self {
-    $this->data->setDragStartBehavior(Builder::convert($dragStartBehavior));
+    $this->data['dragStartBehavior'] = $dragStartBehavior;
     return $this;
   }
 
   public function onPressed(\Lenra\App\Components\Listener $onPressed): self {
-    $this->data->setOnPressed(Builder::convert($onPressed));
+    $this->data['onPressed'] = $onPressed;
     return $this;
   }
 
   public function style(\Lenra\App\Components\Styles\ToggleStyle $style): self {
-    $this->data->setStyle(Builder::convert($style));
+    $this->data['style'] = $style;
     return $this;
   }
 
   public function name(string $name): self {
-    $this->data->setName(Builder::convert($name));
+    $this->data['name'] = $name;
     return $this;
   }
 
   public function disabled(bool $disabled): self {
-    $this->data->setDisabled(Builder::convert($disabled));
+    $this->data['disabled'] = $disabled;
     return $this;
   }
 

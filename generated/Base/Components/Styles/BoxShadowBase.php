@@ -5,32 +5,29 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesBoxShadow>
-*/
 abstract class BoxShadowBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesBoxShadow::class);
+    parent::__construct();
   }
 
   public function color(int $color): self {
-    $this->data->setColor(Builder::convert($color));
+    $this->data['color'] = $color;
     return $this;
   }
 
   public function blurRadius(float $blurRadius): self {
-    $this->data->setBlurRadius(Builder::convert($blurRadius));
+    $this->data['blurRadius'] = $blurRadius;
     return $this;
   }
 
   public function spreadRadius(float $spreadRadius): self {
-    $this->data->setSpreadRadius(Builder::convert($spreadRadius));
+    $this->data['spreadRadius'] = $spreadRadius;
     return $this;
   }
 
   public function offset(\Lenra\App\Components\Styles\Offset $offset): self {
-    $this->data->setOffset(Builder::convert($offset));
+    $this->data['offset'] = $offset;
     return $this;
   }
 

@@ -5,67 +5,64 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsSlider>
-*/
 abstract class SliderBase extends Builder {
   public function __construct()
   {
-    parent::__construct('slider', \Lenra\App\Response\View\Model\ComponentsSlider::class);
+    parent::__construct('slider');
   }
 
   public function style(\Lenra\App\Components\Styles\SliderStyle $style): self {
-    $this->data->setStyle(Builder::convert($style));
+    $this->data['style'] = $style;
     return $this;
   }
 
   public function autofocus(bool $autofocus): self {
-    $this->data->setAutofocus(Builder::convert($autofocus));
+    $this->data['autofocus'] = $autofocus;
     return $this;
   }
 
   public function divisions(float $divisions): self {
-    $this->data->setDivisions(Builder::convert($divisions));
+    $this->data['divisions'] = $divisions;
     return $this;
   }
 
   public function label(string $label): self {
-    $this->data->setLabel(Builder::convert($label));
+    $this->data['label'] = $label;
     return $this;
   }
 
   public function min(float $min): self {
-    $this->data->setMin(Builder::convert($min));
+    $this->data['min'] = $min;
     return $this;
   }
 
   public function max(float $max): self {
-    $this->data->setMax(Builder::convert($max));
+    $this->data['max'] = $max;
     return $this;
   }
 
   public function onChanged(\Lenra\App\Components\Listener $onChanged): self {
-    $this->data->setOnChanged(Builder::convert($onChanged));
+    $this->data['onChanged'] = $onChanged;
     return $this;
   }
 
   public function onChangeEnd(\Lenra\App\Components\Listener $onChangeEnd): self {
-    $this->data->setOnChangeEnd(Builder::convert($onChangeEnd));
+    $this->data['onChangeEnd'] = $onChangeEnd;
     return $this;
   }
 
   public function onChangeStart(\Lenra\App\Components\Listener $onChangeStart): self {
-    $this->data->setOnChangeStart(Builder::convert($onChangeStart));
+    $this->data['onChangeStart'] = $onChangeStart;
     return $this;
   }
 
   public function value(float $value): self {
-    $this->data->setValue(Builder::convert($value));
+    $this->data['value'] = $value;
     return $this;
   }
 
   public function name(string $name): self {
-    $this->data->setName(Builder::convert($name));
+    $this->data['name'] = $name;
     return $this;
   }
 

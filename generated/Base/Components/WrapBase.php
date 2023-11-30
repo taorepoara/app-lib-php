@@ -5,58 +5,55 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsWrap>
-*/
 abstract class WrapBase extends Builder {
   public function __construct(array $children)
   {
-    parent::__construct('wrap', \Lenra\App\Response\View\Model\ComponentsWrap::class);
+    parent::__construct('wrap');
     $this->children($children);
   }
 
   public function children(array $children): self {
-    $this->data->setChildren(Builder::convert($children));
+    $this->data['children'] = $children;
     return $this;
   }
 
   public function direction(string $direction): self {
-    $this->data->setDirection(Builder::convert($direction));
+    $this->data['direction'] = $direction;
     return $this;
   }
 
   public function crossAxisAlignment(string $crossAxisAlignment): self {
-    $this->data->setCrossAxisAlignment(Builder::convert($crossAxisAlignment));
+    $this->data['crossAxisAlignment'] = $crossAxisAlignment;
     return $this;
   }
 
   public function spacing(float $spacing): self {
-    $this->data->setSpacing(Builder::convert($spacing));
+    $this->data['spacing'] = $spacing;
     return $this;
   }
 
   public function runSpacing(float $runSpacing): self {
-    $this->data->setRunSpacing(Builder::convert($runSpacing));
+    $this->data['runSpacing'] = $runSpacing;
     return $this;
   }
 
   public function alignment(string $alignment): self {
-    $this->data->setAlignment(Builder::convert($alignment));
+    $this->data['alignment'] = $alignment;
     return $this;
   }
 
   public function runAlignment(string $runAlignment): self {
-    $this->data->setRunAlignment(Builder::convert($runAlignment));
+    $this->data['runAlignment'] = $runAlignment;
     return $this;
   }
 
   public function horizontalDirection(string $horizontalDirection): self {
-    $this->data->setHorizontalDirection(Builder::convert($horizontalDirection));
+    $this->data['horizontalDirection'] = $horizontalDirection;
     return $this;
   }
 
   public function verticalDirection(string $verticalDirection): self {
-    $this->data->setVerticalDirection(Builder::convert($verticalDirection));
+    $this->data['verticalDirection'] = $verticalDirection;
     return $this;
   }
 

@@ -5,22 +5,19 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesOffset>
-*/
 abstract class OffsetBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesOffset::class);
+    parent::__construct();
   }
 
   public function dx(float $dx): self {
-    $this->data->setDx(Builder::convert($dx));
+    $this->data['dx'] = $dx;
     return $this;
   }
 
   public function dy(float $dy): self {
-    $this->data->setDy(Builder::convert($dy));
+    $this->data['dy'] = $dy;
     return $this;
   }
 

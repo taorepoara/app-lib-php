@@ -5,29 +5,26 @@ namespace Lenra\App\Base\Components\View\Definitions;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsViewDefinitionsFind>
-*/
 abstract class FindBase extends Builder {
   public function __construct(string $coll ,iterable $query)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsViewDefinitionsFind::class);
+    parent::__construct();
     $this->coll($coll);
     $this->query($query);
   }
 
   public function coll(string $coll): self {
-    $this->data->setColl(Builder::convert($coll));
+    $this->data['coll'] = $coll;
     return $this;
   }
 
   public function query(iterable $query): self {
-    $this->data->setQuery(Builder::convert($query));
+    $this->data['query'] = $query;
     return $this;
   }
 
   public function projection(iterable $projection): self {
-    $this->data->setProjection(Builder::convert($projection));
+    $this->data['projection'] = $projection;
     return $this;
   }
 

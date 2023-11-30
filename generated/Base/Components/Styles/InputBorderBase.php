@@ -5,28 +5,25 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesInputBorder>
-*/
 abstract class InputBorderBase extends Builder {
   public function __construct(\Lenra\App\Components\Styles\BorderSide $borderSide)
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesInputBorder::class);
+    parent::__construct();
     $this->borderSide($borderSide);
   }
 
   public function type(string $type): self {
-    $this->data->setType(Builder::convert($type));
+    $this->data['type'] = $type;
     return $this;
   }
 
   public function borderRadius(\Lenra\App\Components\Styles\BorderRadius $borderRadius): self {
-    $this->data->setBorderRadius(Builder::convert($borderRadius));
+    $this->data['borderRadius'] = $borderRadius;
     return $this;
   }
 
   public function borderSide(\Lenra\App\Components\Styles\BorderSide $borderSide): self {
-    $this->data->setBorderSide(Builder::convert($borderSide));
+    $this->data['borderSide'] = $borderSide;
     return $this;
   }
 

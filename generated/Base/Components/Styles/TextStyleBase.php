@@ -5,92 +5,89 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesTextStyle>
-*/
 abstract class TextStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesTextStyle::class);
+    parent::__construct();
   }
 
   public function color(int $color): self {
-    $this->data->setColor(Builder::convert($color));
+    $this->data['color'] = $color;
     return $this;
   }
 
   public function decoration(string $decoration): self {
-    $this->data->setDecoration(Builder::convert($decoration));
+    $this->data['decoration'] = $decoration;
     return $this;
   }
 
   public function decorationColor(int $decorationColor): self {
-    $this->data->setDecorationColor(Builder::convert($decorationColor));
+    $this->data['decorationColor'] = $decorationColor;
     return $this;
   }
 
   public function decorationStyle(string $decorationStyle): self {
-    $this->data->setDecorationStyle(Builder::convert($decorationStyle));
+    $this->data['decorationStyle'] = $decorationStyle;
     return $this;
   }
 
   public function decorationThickness(float $decorationThickness): self {
-    $this->data->setDecorationThickness(Builder::convert($decorationThickness));
+    $this->data['decorationThickness'] = $decorationThickness;
     return $this;
   }
 
   public function fontFamily(string $fontFamily): self {
-    $this->data->setFontFamily(Builder::convert($fontFamily));
+    $this->data['fontFamily'] = $fontFamily;
     return $this;
   }
 
   public function fontFamilyFallback(array $fontFamilyFallback): self {
-    $this->data->setFontFamilyFallback(Builder::convert($fontFamilyFallback));
+    $this->data['fontFamilyFallback'] = $fontFamilyFallback;
     return $this;
   }
 
   public function fontSize(float $fontSize): self {
-    $this->data->setFontSize(Builder::convert($fontSize));
+    $this->data['fontSize'] = $fontSize;
     return $this;
   }
 
   public function fontStyle(string $fontStyle): self {
-    $this->data->setFontStyle(Builder::convert($fontStyle));
+    $this->data['fontStyle'] = $fontStyle;
     return $this;
   }
 
   public function fontWeight(string $fontWeight): self {
-    $this->data->setFontWeight(Builder::convert($fontWeight));
+    $this->data['fontWeight'] = $fontWeight;
     return $this;
   }
 
   public function height(float $height): self {
-    $this->data->setHeight(Builder::convert($height));
+    $this->data['height'] = $height;
     return $this;
   }
 
   public function letterSpacing(float $letterSpacing): self {
-    $this->data->setLetterSpacing(Builder::convert($letterSpacing));
+    $this->data['letterSpacing'] = $letterSpacing;
     return $this;
   }
 
   public function overflow(string $overflow): self {
-    $this->data->setOverflow(Builder::convert($overflow));
+    $this->data['overflow'] = $overflow;
     return $this;
   }
 
   public function shadows(array $shadows): self {
-    $this->data->setShadows(Builder::convert($shadows));
+    $this->data['shadows'] = $shadows;
     return $this;
   }
 
   public function textBaseline(string $textBaseline): self {
-    $this->data->setTextBaseline(Builder::convert($textBaseline));
+    $this->data['textBaseline'] = $textBaseline;
     return $this;
   }
 
   public function wordSpacing(float $wordSpacing): self {
-    $this->data->setWordSpacing(Builder::convert($wordSpacing));
+    $this->data['wordSpacing'] = $wordSpacing;
     return $this;
   }
 

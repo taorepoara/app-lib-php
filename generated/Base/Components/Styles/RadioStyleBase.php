@@ -5,42 +5,39 @@ namespace Lenra\App\Base\Components\Styles;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsStylesRadioStyle>
-*/
 abstract class RadioStyleBase extends Builder {
   public function __construct()
   {
-    parent::__construct(Null, \Lenra\App\Response\View\Model\ComponentsStylesRadioStyle::class);
+    parent::__construct();
   }
 
   public function activeColor(int $activeColor): self {
-    $this->data->setActiveColor(Builder::convert($activeColor));
+    $this->data['activeColor'] = $activeColor;
     return $this;
   }
 
   public function focusColor(int $focusColor): self {
-    $this->data->setFocusColor(Builder::convert($focusColor));
+    $this->data['focusColor'] = $focusColor;
     return $this;
   }
 
   public function hovercolor(int $hovercolor): self {
-    $this->data->setHovercolor(Builder::convert($hovercolor));
+    $this->data['hovercolor'] = $hovercolor;
     return $this;
   }
 
   public function unselectedColor(int $unselectedColor): self {
-    $this->data->setUnselectedColor(Builder::convert($unselectedColor));
+    $this->data['unselectedColor'] = $unselectedColor;
     return $this;
   }
 
   public function splashRadius(float $splashRadius): self {
-    $this->data->setSplashRadius(Builder::convert($splashRadius));
+    $this->data['splashRadius'] = $splashRadius;
     return $this;
   }
 
   public function visualDensity(string $visualDensity): self {
-    $this->data->setVisualDensity(Builder::convert($visualDensity));
+    $this->data['visualDensity'] = $visualDensity;
     return $this;
   }
 

@@ -5,28 +5,25 @@ namespace Lenra\App\Base\Components;
 
 use Lenra\App\Components\Base\Builder;
 
-/**
-* @template-extends Builder<\Lenra\App\Response\View\Model\ComponentsFlexible>
-*/
 abstract class FlexibleBase extends Builder {
   public function __construct($child)
   {
-    parent::__construct('flexible', \Lenra\App\Response\View\Model\ComponentsFlexible::class);
+    parent::__construct('flexible');
     $this->child($child);
   }
 
   public function flex(int $flex): self {
-    $this->data->setFlex(Builder::convert($flex));
+    $this->data['flex'] = $flex;
     return $this;
   }
 
   public function fit(string $fit): self {
-    $this->data->setFit(Builder::convert($fit));
+    $this->data['fit'] = $fit;
     return $this;
   }
 
   public function child($child): self {
-    $this->data->setChild(Builder::convert($child));
+    $this->data['child'] = $child;
     return $this;
   }
 
