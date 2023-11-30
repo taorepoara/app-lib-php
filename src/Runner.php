@@ -7,7 +7,6 @@ use Exception;
 use Lenra\App\Manifest\Builder;
 
 class Runner {
-    private const MANIFEST_CLASS = 'App\Manifest';
     private const VIEW = 'View';
     private const LISTENER = 'Listener';
     private static Runner $instance;
@@ -22,11 +21,13 @@ class Runner {
         // Check if data matches one of the expected queries
         if (isset($request->view)) {
             Logger::log("View: $request->view");
-            $this->runHandler(self::VIEW, $request->view, new ViewRequest(
-                $request->data ?? [],
-                $request->props ?? [],
-                $request->context ?? [],
-            ));
+            echo json_encode(
+                $this->runHandler(self::VIEW, $request->view, new ViewRequest(
+                    $request->data ?? [],
+                    $request->props ?? [],
+                    $request->context ?? [],
+                ))
+            );
         } elseif (isset($request->listener)) {
             Logger::log("Listener: $request->listener");
             $api = new Api($request->api);
@@ -41,14 +42,9 @@ class Runner {
         } else {
             Logger::log("Manifest");
             if (!isset($this->manifest)) {
-                $class = self::MANIFEST_CLASS;
-                if (!class_exists($class)) {
-                    Logger::log("class $class does not exist");
-                    throw new Exception("class $class does not exist");
-                }
-                $builder = new ($class)();
-                $this->manifest = $builder->build();
+                $this->manifest = Builder::manifest();
             }
+            echo json_encode($this->manifest);
         }
     }
 
@@ -66,10 +62,17 @@ class Runner {
             $this->handlers[$class] = new $class();
         }
         if ($type === 'View') {
-            $this->handlers[$class]->render($request);
+            return $this->handlers[$class]->render($request);
         } else {
             $this->handlers[$class]->handle($request);
         }
+    }
+
+    public static function instance() {
+        if (!isset(self::$instance)) {
+            self::$instance = new Runner();
+        }
+        return self::$instance;
     }
 
     public static function handleServerRequest() {
@@ -89,7 +92,7 @@ class Runner {
 
         try {
             Logger::log("handleRequest");
-            self::$instance->handleRequest($data);
+            self::instance()->handleRequest($data);
             Logger::log("\\handleRequest");
         } catch (\Exception $e) {
             Logger::log("An error occured: " . $e->getMessage());
