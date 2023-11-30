@@ -18,6 +18,7 @@ class Runner {
     }
 
     protected function handleRequest($request) {
+        Logger::logVar($request, "Request");
         // Check if data matches one of the expected queries
         if (isset($request->view)) {
             Logger::log("View: $request->view");
