@@ -16,15 +16,4 @@ class Builder implements \JsonSerializable {
     function jsonSerialize(): mixed {
         return $this->data;
     }
-
-    static function convert($value): mixed {
-        // if ($value instanceof Builder) {
-        //     $value = $value->data;
-        // } elseif (is_array($value)) {
-        //     $value = array_map(function ($item) {
-        //         return Builder::convert($item);
-        //     }, $value);
-        // }
-        return $value;
-    }
 }

@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'json-schema-file' => __DIR__ . '/api/responses/view.schema.json',
+    'root-class' => 'ViewResponse',
+    'namespace' => 'Lenra\\App\\Response\\View',
+    'directory' => __DIR__ . '/generated/Response/View',
+];
