@@ -5,9 +5,14 @@ namespace Lenra\App;
 class Logger {
     private static $STDOUT;
 
-    private static function initStdio(): void {
+    public static function useStderr(): void {
+        self::initStdio(true);
+    }
+
+    private static function initStdio(bool $stderr = false): void {
+        $stderr = isset($_SERVER);
         if (!isset(self::$STDOUT)) {
-            self::$STDOUT = fopen('php://stdout', 'w');
+            self::$STDOUT = fopen($stderr ? 'php://stderr' : 'php://stdout', 'w');
         }
     }
 

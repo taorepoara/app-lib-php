@@ -96,10 +96,27 @@ class Runner {
         return self::$instance;
     }
 
-    public static function handleServerRequest() {
+    private static function handleServerRequest() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             throw new Exception('The request must be POST');
         }
+        // Takes raw data from the request
+        $json = file_get_contents('php://input');
+
+        // Converts it into a PHP object
+        $data = json_decode($json);
+
+        try {
+            Logger::log("handleRequest");
+            self::instance()->handleRequest($data);
+            Logger::log("\\handleRequest");
+        } catch (\Exception $e) {
+            Logger::log("An error occured: " . $e->getMessage());
+        }
+    }
+
+    private static function handleCliRequest() {
+        Logger::useStderr();
 
         // Takes raw data from the request
         $json = file_get_contents('php://input');
@@ -113,6 +130,14 @@ class Runner {
             Logger::log("\\handleRequest");
         } catch (\Exception $e) {
             Logger::log("An error occured: " . $e->getMessage());
+        }
+    }
+
+    public static function run() {
+        if (php_sapi_name() === 'cli') {
+            self::handleCliRequest();
+        } else {
+            self::handleServerRequest();
         }
     }
 }
