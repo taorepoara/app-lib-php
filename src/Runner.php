@@ -81,7 +81,7 @@ class Runner {
     public static function instance() {
         if (!isset(self::$instance)) {
             $instance = null;
-            if(extension_loaded('apc') && ini_get('apc.enabled')) {
+            if(extension_loaded('apcu')) {
                 $instance = apcu_fetch(self::APCU_KEY);
                 if ($instance === false) {
                     $instance = new Runner;
