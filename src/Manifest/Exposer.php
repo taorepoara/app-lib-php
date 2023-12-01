@@ -7,14 +7,14 @@ use Lenra\App\Components\View;
 class Exposer implements \JsonSerializable {
     protected string $version;
     /** 
-    * @var Route[] 
-    */
+     * @var Route[] 
+     */
     protected array $routes;
 
     /** 
-    * @param string 
-    * @param Route[] 
-    */
+     * @param string 
+     * @param Route[] 
+     */
     public function __construct(
         array $routes
     ) {
@@ -26,7 +26,7 @@ class Exposer implements \JsonSerializable {
         return $this;
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         $ret = [
             'routes' => array_map(function ($route) {
                 return $route->jsonSerialize();
