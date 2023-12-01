@@ -8,6 +8,7 @@ use Lenra\App\View\Request as ViewRequest;
 use Lenra\App\Listener\Request as ListenerRequest;
 
 class Runner {
+    private const APCU_KEY = Runner::class . '::instance';
     private const VIEW = 'View';
     private const LISTENER = 'Listener';
     private static Runner $instance;
@@ -79,7 +80,18 @@ class Runner {
 
     public static function instance() {
         if (!isset(self::$instance)) {
-            self::$instance = new Runner();
+            $instance = null;
+            if(extension_loaded('apc') && ini_get('apc.enabled')) {
+                $instance = apcu_fetch(self::APCU_KEY);
+                if ($instance === false) {
+                    $instance = new Runner;
+                    apcu_store(self::APCU_KEY, $instance);
+                }
+            }
+            else {
+                $instance = new Runner;
+            }
+            self::$instance = $instance;
         }
         return self::$instance;
     }
