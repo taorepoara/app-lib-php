@@ -83,6 +83,7 @@ class Runner {
             $instance = null;
             if(extension_loaded('apcu')) {
                 $instance = apcu_fetch(self::APCU_KEY);
+                Logger::logVar($instance, "apcu_fetch");
                 if ($instance === false) {
                     $instance = new Runner;
                     apcu_store(self::APCU_KEY, $instance);
