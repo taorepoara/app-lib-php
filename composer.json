@@ -26,9 +26,7 @@
         }
     ],
     "require": {
-        "lenra/internal-api-client": "^1",
-        "json-mapper/json-mapper": "^2.20",
-        "jane-php/json-schema-runtime": "^7.5"
+        "lenra/internal-api-client": "^1"
     },
     "require-dev": {
         "jane-php/json-schema": "^7.5",

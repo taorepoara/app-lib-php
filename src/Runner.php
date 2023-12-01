@@ -12,7 +12,7 @@ class Runner {
     private const VIEW = 'View';
     private const LISTENER = 'Listener';
     private static Runner $instance;
-    private $manifest;
+    private string $manifest;
     private $handlers = [];
 
     protected function __construct() {
@@ -48,9 +48,9 @@ class Runner {
         } else {
             Logger::log("Manifest");
             if (!isset($this->manifest)) {
-                $this->manifest = Builder::manifest();
+                $this->manifest = json_encode(Builder::manifest());
             }
-            echo json_encode($this->manifest);
+            echo $this->manifest;
         }
     }
 
