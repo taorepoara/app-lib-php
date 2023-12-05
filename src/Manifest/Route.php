@@ -16,7 +16,7 @@ class Route implements \JsonSerializable {
         $this->view = $view;
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         return [
             'path' => $this->path,
             'view' => $this->view->jsonSerialize(),
