@@ -13,9 +13,7 @@ class Api
 
     public function __construct($req)
     {
-        error_log("create API client configuration");
         $config = Configuration::getDefaultConfiguration()->setAccessToken($req->token)->setHost($req->url);
-        error_log("create Data API");
         $this->data = new DataApi(
             new ApiDataApi(
                 new Client(),
