@@ -28,11 +28,9 @@ class Runner {
                 $request->props ?? [],
                 $request->context ?? [],
             ));
-            Logger::log("json_encode resp");
             $resp = json_encode(
                 $resp
             );
-            Logger::log("\\json_encode resp");
             echo $resp;
         } elseif (isset($request->listener)) {
             Logger::log("Listener: $request->listener");
@@ -55,21 +53,17 @@ class Runner {
     }
 
     protected function runHandler($type, $name, $request) {
-        Logger::log("runHandler: $type, $name");
         $parts = explode(".", $name);
         foreach ($parts as &$part) {
             $part = ucfirst($part);
         }
         $class = "App\\$type\\" . join("\\", $parts);
         if (!isset($this->handlers[$class])) {
-            Logger::log("new $class");
             if (!class_exists($class)) {
                 Logger::log("class $class does not exist");
                 throw new Exception("class $class does not exist");
             }
             $this->handlers[$class] = new $class();
-
-            Logger::log("\\new $class");
         }
         if ($type === 'View') {
             return $this->handlers[$class]->render($request);
@@ -81,14 +75,13 @@ class Runner {
     public static function instance() {
         if (!isset(self::$instance)) {
             $instance = null;
-            if(extension_loaded('apcu')) {
+            if (extension_loaded('apcu')) {
                 $instance = apcu_fetch(self::APCU_KEY);
                 if ($instance === false) {
                     $instance = new Runner;
                     apcu_store(self::APCU_KEY, $instance);
                 }
-            }
-            else {
+            } else {
                 $instance = new Runner;
             }
             self::$instance = $instance;
@@ -102,35 +95,13 @@ class Runner {
         }
         // Takes raw data from the request
         $json = file_get_contents('php://input');
-
-        // Converts it into a PHP object
-        $data = json_decode($json);
-
-        try {
-            Logger::log("handleRequest");
-            self::instance()->handleRequest($data);
-            Logger::log("\\handleRequest");
-        } catch (\Exception $e) {
-            Logger::log("An error occured: " . $e->getMessage());
-        }
+        self::instance()->handleRequest(json_decode($json));
     }
 
     private static function handleCliRequest() {
         Logger::useStderr();
-
-        // Takes raw data from the request
         $json = stream_get_contents(STDIN);
-
-        // Converts it into a PHP object
-        $data = json_decode($json);
-
-        try {
-            Logger::log("handleRequest");
-            self::instance()->handleRequest($data);
-            Logger::log("\\handleRequest");
-        } catch (\Exception $e) {
-            Logger::log("An error occured: " . $e->getMessage());
-        }
+        self::instance()->handleRequest(json_decode($json));
     }
 
     public static function run() {
