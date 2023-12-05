@@ -19,7 +19,7 @@ class Manifest implements \JsonSerializable {
         return $this;
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize(): mixed {
         $ret = [];
         if (isset($this->json)) {
             $ret['json'] = $this->json->jsonSerialize();
